@@ -44,7 +44,12 @@ module.exports = () => {
         from: 'src/favicons',
         to: 'favicons'
       }
-    ])
+    ]),
+    {
+      devServer: {
+        historyApiFallback: true
+      }
+    }
   );
 
   if (process.env.mode === 'development') {

@@ -4,6 +4,6 @@ import './sass/common.scss';
 import App from '#comps/app';
 
 ReactDom.render(
-  <App text='hello, I am the App'/>,
+  <App/>,
   document.querySelector('.root')
 );
