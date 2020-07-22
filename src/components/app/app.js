@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '#comps/header';
 
-const App = (props) => {
+const App = () => {
   return (
-    <div>{props.text}</div>
+    <div className='container'>
+      <Header/>
+    </div>
+
   );
 };
 

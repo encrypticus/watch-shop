@@ -1,0 +1,10 @@
+$container-width: 1366px;
+$container-padding: 55px;
+
+@import '~flexbox-grid-pro/grid/scss/grid';
+@import 'fonts';
+
+html {
+  font-size: 16px;
+  font-family: 'Playfair Display', Arial, sans-serif;
+}
