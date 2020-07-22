@@ -1,0 +1,67 @@
+//desktop-first breakpoints
+@mixin for-desktop-down() {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin for-laptop-down() {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-down() {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-phone-landscape-down() {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-phone-only() {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin for-middle-phone-only() {
+  @media (max-width: 360px) {
+    @content;
+  }
+}
+
+@mixin for-small-phone-only() {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+//mobile-first breakpoints
+@mixin for-phone-up() {
+  @media (min-width: 481px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-up() {
+  @media (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin for-laptop-up() {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up() {
+  @media (min-width: 1281px) {
+    @content;
+  }
+}

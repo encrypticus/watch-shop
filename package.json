@@ -1,0 +1,92 @@
+{
+  "name": "webpack-starter-kit",
+  "version": "1.0.0",
+  "description": "Стартовый репозиторий для frontend-разработки c webpack на борту",
+  "main": "index.js",
+  "scripts": {
+    "browser-sync": "cross-env mode=development webpack --mode development --watch",
+    "dev-server": "cross-env mode=development webpack-dev-server --mode development --watch",
+    "prod": "cross-env mode=production webpack --mode production --watch",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/encrypticus/webpack-starter-kit.git"
+  },
+  "keywords": [
+    "webpack",
+    "webpack boilerplate",
+    "webpack starter kit",
+    "frontend starter kit",
+    "frontend boilerplate"
+  ],
+  "author": "Alexander Timofeev aka encrypticus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/encrypticus/webpack-starter-kit/issues"
+  },
+  "homepage": "https://github.com/encrypticus/webpack-starter-kit#readme",
+  "browserslist": [
+    "defaults"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.10.4",
+    "autoprefixer": "^9.7.0",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-import": "^2.18.2",
+    "file-loader": "^4.2.0",
+    "gh-pages": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "postcss-loader": "^3.0.0",
+    "pug-html-loader": "^1.1.5",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "styled-components": "^5.1.1",
+    "stylelint": "^12.0.0",
+    "stylelint-order": "^3.1.1",
+    "stylelint-scss": "^3.12.1",
+    "stylelint-webpack-plugin": "^1.0.3",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.0",
+    "bootstrap": "^4.3.1",
+    "flexbox-grid-pro": "^1.0.1",
+    "hamburgers": "^1.1.3",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.4.1",
+    "material-icons": "^0.3.1",
+    "mmenu-js": "^8.4.3",
+    "popper": "^1.0.1",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.2.2",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0",
+    "reset-css": "^5.0.1"
+  }
+}
