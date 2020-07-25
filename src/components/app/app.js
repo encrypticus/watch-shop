@@ -4,22 +4,30 @@ import Header from '#comps/header';
 import IndexPage from '#pages/index';
 import CardPage from '#pages/card';
 import CatalogPage from '#pages/catalog';
+import MainNav from '#comps/main-nav';
+import { Provider } from 'react-redux';
+import store from '#store';
+
 
 const App = () => {
+
   return (
-    <Router>
-      <div className='container'>
-        <Header/>
+    <Provider store={store}>
+      <Router>
+        <MainNav/>
+        <div className='container'>
+          <Header/>
 
-        <Switch>
-          <Route path='/' exact component={IndexPage}/>
-          <Route path='/catalog' exact component={CatalogPage}/>
-          <Route path='/card' exact component={CardPage}/>
-          <Route render={() => (<h1 className="text-center">Page not found</h1>)}/>
-        </Switch>
+          <Switch>
+            <Route path='/' exact component={IndexPage}/>
+            <Route path='/catalog' exact component={CatalogPage}/>
+            <Route path='/card' exact component={CardPage}/>
+            <Route render={() => (<h1 className="text-center">Page not found</h1>)}/>
+          </Switch>
 
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </Provider>
   );
 };
 

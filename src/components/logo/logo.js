@@ -4,7 +4,7 @@ import { Link } from './styles';
 const Logo = (props) => {
 
   return (
-    <Link className='col' href={props.href || '/'}>
+    <Link href={props.href || '/'}>
       Conquest
     </Link>
   );

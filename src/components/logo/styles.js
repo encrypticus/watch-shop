@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import logoImg from './img/logo-img.png';
 
 export const Link = styled.a`
-  display: block;
+  display: inline-block;
+  margin-left: 49px;
   position: relative;
   font-family: Playfair Display, Arial, sans-serif;
   font-size: 12px;

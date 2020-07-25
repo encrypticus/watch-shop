@@ -1,3 +1,11 @@
 @import 'breakpoints';
 
 @import 'functions';
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin f-start {
+  align-items: flex-start;
+}
