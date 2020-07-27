@@ -7,7 +7,8 @@
     "browser-sync": "cross-env mode=development webpack --mode development --watch",
     "dev-server": "cross-env mode=development webpack-dev-server --mode development --watch",
     "prod": "cross-env mode=production webpack --mode production --watch",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "component-creator": "node componentsCreator.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,8 @@
     "babel-plugin-styled-components": "^1.10.7",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
+    "camel-case": "^4.1.1",
+    "chokidar": "^3.4.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.5",
     "cross-env": "^6.0.3",
@@ -67,6 +70,7 @@
     "stylelint-scss": "^3.12.1",
     "stylelint-webpack-plugin": "^1.0.3",
     "terser-webpack-plugin": "^2.2.1",
+    "ucfirst": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
