@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './hamburger.scss';
 import { StyledSpan } from './styles';
-import { isMenuOpen } from '../../redux/actions/main-nav';
+import { isMenuOpen } from '#act/main-nav';
 
 const Hamburger = (props) => {
   const btn = useRef(null);
