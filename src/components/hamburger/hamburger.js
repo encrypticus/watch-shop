@@ -12,18 +12,6 @@ const Hamburger = (props) => {
   useEffect(() => {
     const button = btn.current;
     isOpen ? button.classList.add('is-active') : button.classList.remove('is-active');
-
-    /*const hamburgers = document.querySelectorAll('.hamburger');
-    const mainNav = document.querySelector('.main-nav');
-
-    if (hamburgers.length > 0) {
-      Array.prototype.forEach.call(hamburgers, (hamburger) => {
-        hamburger.addEventListener('click', () => {
-          hamburger.classList.toggle('is-active');
-          mainNav.classList.toggle('is-open');
-        }, false);
-      });
-    }*/
   }, [isOpen]);
 
   const isActiveHandler = () => {

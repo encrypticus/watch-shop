@@ -8,7 +8,7 @@
     "dev-server": "cross-env mode=development webpack-dev-server --mode development --watch",
     "prod": "cross-env mode=production webpack --mode production --watch",
     "deploy": "gh-pages -d dist",
-    "component-creator": "node componentsCreator.js"
+    "component-creator": "node componentCreator/componentsCreator.js"
   },
   "repository": {
     "type": "git",

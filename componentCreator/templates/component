@@ -1,0 +1,10 @@
+import React from 'react';
+import STYLE_FILENAME;
+
+const NAME = (props) => {
+  return (
+    <div>NAME</div>
+  );
+};
+
+export default NAME;
