@@ -1,0 +1,46 @@
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme.css';
+@import '../../sass/utils';
+@import '../../sass/vars';
+
+.slick-carousel {
+  &-wrapper {
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__btn-left,
+  &__btn-right, {
+    position: absolute;
+    bottom: -30px;
+    z-index: 10;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__btn-left {
+    right: 138px;
+  }
+
+  &__btn-right {
+    right: 80px;
+  }
+
+  &__count {
+    position: absolute;
+    right: 108px;
+    bottom: -31px;
+    font-size: 12px;
+    font-family: Prata, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
+    color: rgba(27, 26, 23, 0.82);
+  }
+}
