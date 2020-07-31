@@ -4,6 +4,10 @@
 
   &__inner {
     padding: 0 55px;
+
+    @media (max-width: 1366px) {
+      padding: 0;
+    }
   }
 
   &__link-wrapper {
@@ -32,5 +36,7 @@
 
   &__cards-preview {
     padding-top: pxToRem(51);
+    display: flex;
+    flex-wrap: wrap;
   }
 }

@@ -1,0 +1,81 @@
+@import '../../../sass/utils';
+@import '../../../sass/vars';
+
+.large-preview-card {
+  outline: 1px solid red;
+  flex-grow: 1;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 7.29588%;
+
+  &__left-block {
+    display: flex;
+    padding: 30px 0 95px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include for-laptop-sm-down {
+      padding-bottom: 30px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: Playfair Display, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1;
+    color: rgba(27, 26, 23, 0.82);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 16px;
+    font-family: Prata, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 22px;
+    color: rgba(27, 26, 23, 0.82);
+  }
+
+  &__info {
+
+  }
+
+  &__img {
+    margin-left: auto;
+    width: 100%;
+    height: auto;
+  }
+
+  &__img-wrapper {
+    display: flex;
+    margin-right: 33px;
+    width: 70.74433%;
+    min-width: 309px;
+  }
+
+  &__link-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__decor-line-wrapper {
+    margin-right: 17px;
+  }
+
+  &__link {
+    font-size: 16px;
+    font-family: Playfair Display, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 21px;
+    color: #1B1A17;
+    text-decoration: none;
+  }
+}

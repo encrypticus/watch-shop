@@ -11,6 +11,12 @@
   }
 }
 
+@mixin for-laptop-sm-down {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
 @mixin for-tablet-landscape-down() {
   @media (max-width: 768px) {
     @content;

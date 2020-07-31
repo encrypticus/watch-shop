@@ -32,4 +32,9 @@ body {
 .container {
   box-sizing: border-box;
   position: relative;
+
+  @media (max-width: 1366px) {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 }
