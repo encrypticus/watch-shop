@@ -1,0 +1,11 @@
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_vertical {
+    width: 18px;
+    height: 75px;
+    flex-direction: column;
+  }
+}

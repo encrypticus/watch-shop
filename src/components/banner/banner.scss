@@ -1,0 +1,42 @@
+@import '../../sass/utils';
+
+.banner {
+  position: absolute;
+  top: -33px;
+  left: 34.4%;
+  display: flex;
+  width: pxToPercent(698, 1366);
+  background-image: url('./img/ellipse.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0 -29px;
+
+  &__img {
+    width: pxToPercent(503, 698);
+    height: auto;
+    margin-left: auto;
+  }
+
+  &__tooltip-wrapper {
+    position: absolute;
+    top: 17.5%;
+    left: 16.1%;
+    display: flex;
+    align-items: center;
+
+    &_bottom {
+      min-width: 190px;
+      top: 80.5%;
+      left: 84.8%;
+    }
+  }
+
+  &__decor-line-wrapper {
+    margin-left: 19px;
+
+    &_right {
+      margin-left: 0;
+      margin-right: 19px;
+    }
+  }
+}

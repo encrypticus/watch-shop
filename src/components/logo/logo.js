@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from './styles';
+import { StyledLink } from './styles';
 
 const Logo = (props) => {
 
   return (
-    <Link href={props.href || '/'}>
+    <StyledLink to={props.href || '/'}>
       Conquest
-    </Link>
+    </StyledLink>
   );
 };
 

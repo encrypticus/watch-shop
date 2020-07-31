@@ -7,6 +7,8 @@ import CatalogPage from '#pages/catalog';
 import MainNav from '#comps/main-nav';
 import { Provider } from 'react-redux';
 import store from '#store';
+import Socials from '#comps/socials';
+import Hero from '#comps/hero';
 
 
 const App = () => {

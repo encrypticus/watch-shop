@@ -1,15 +1,25 @@
+@import '../../sass/utils';
+
 .heading {
-  position:absolute;
-  top: 236px;
-  left: 185px;
-  width: 343px;
-  height: 48px;
+  margin: 0;
   font-size: 45px;
-
-  font-family:Playfair Display, Arial, sans-serif;
-  font-style:normal;
-  font-weight:normal;
+  font-family: Playfair Display, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
   line-height: 60px;
-
   color: #1B1A17;
+
+  &_centered {
+    text-align: center;
+  }
+}
+
+h2.heading {
+  font-size: pxToRem(32);
+  line-height: 43px;
+}
+
+h3.heading {
+  font-size: pxToRem(30);
+  line-height: 40px;
 }

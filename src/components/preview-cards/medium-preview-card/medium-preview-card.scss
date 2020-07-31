@@ -1,0 +1,53 @@
+@import '../../../sass/utils';
+
+.medium-preview-card {
+  width: pxToRem(370);
+  padding: pxToRem(10) pxToRem(29);
+  outline: 1px solid red;
+
+  &__title {
+    margin: 0;
+    font-size: 14px;
+    font-family: Playfair Display, Arial, sans-serif;
+    font-weight: bold;
+    line-height: 24px;
+    color: rgba(27, 26, 23, 0.82);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 12px;
+    font-family: Prata, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 16px;
+    color: rgba(27, 26, 23, 0.82);
+  }
+
+  &__link-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-size: 16px;
+    font-family: Playfair Display, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 21px;
+    color: #1B1A17;
+    text-decoration: none;
+  }
+
+  &__decor-line-wrapper {
+    margin-right: 17px;
+  }
+
+  &__img-wrapper {
+    margin-bottom: 12px;
+    background-image: url(../img/medium-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
