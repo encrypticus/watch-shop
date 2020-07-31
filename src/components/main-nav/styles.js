@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const Nav = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   display: flex;
   min-width: 30vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   padding: 10px;
   background-color: #444240;
   transform: ${(props) => (props.opened ? 'translateX(0)' : 'translateX(-30vw)')};

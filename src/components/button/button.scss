@@ -1,6 +1,8 @@
+@import '../../sass/utils';
+
 .button {
   display: inline-block;
-  padding: 24px 37px;
+  padding: pxToRem(24) pxToRem(37);
   font-size: 12px;
   font-family: 'Roboto Medium', Arial, sans-serif;
   font-weight: 500;
@@ -10,4 +12,8 @@
   text-transform: uppercase;
   background-color: #444240;
   text-decoration: none;
+
+  &_color_brown {
+    background: #D4B098;
+  }
 }

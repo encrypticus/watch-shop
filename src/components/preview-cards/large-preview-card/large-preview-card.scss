@@ -2,7 +2,6 @@
 @import '../../../sass/vars';
 
 .large-preview-card {
-  outline: 1px solid red;
   flex-grow: 1;
   margin-left: auto;
   display: flex;
@@ -57,7 +56,6 @@
     display: flex;
     margin-right: 33px;
     width: 70.74433%;
-    min-width: 309px;
   }
 
   &__link-wrapper {

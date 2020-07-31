@@ -17,6 +17,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <MainNav/>
+
         <div className='container'>
           <Header/>
 
@@ -26,7 +27,6 @@ const App = () => {
             <Route path='/card' exact component={CardPage}/>
             <Route render={() => (<h1 className="text-center">Page not found</h1>)}/>
           </Switch>
-
         </div>
       </Router>
     </Provider>

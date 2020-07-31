@@ -11,6 +11,10 @@
   background-size: contain;
   background-position: 0 -29px;
 
+  @include for-tablet-landscape-down {
+    display: none;
+  }
+
   &__img {
     width: pxToPercent(503, 698);
     height: auto;

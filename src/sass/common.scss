@@ -11,27 +11,35 @@ $container-padding: 55px;
 }
 
 html {
-  height: 100%;
   font-size: 16px;
   font-family: 'Playfair Display', Arial, sans-serif;
-  min-height: 100vh;
+  min-height: 100%;
+
+  @include for-tablet-landscape-down {
+    font-size: 14px;
+  }
 }
 
 body {
-  min-height: 100vh;
+  position: relative;
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .root {
   height: 100%;
+  min-height: 100%;
   padding: 40px 0 0 0;
 }
 
 .container {
   box-sizing: border-box;
   position: relative;
+
+  &_quality {
+    padding: 0;
+  }
 
   @media (max-width: 1366px) {
     padding-right: 20px;
