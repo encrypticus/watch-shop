@@ -40,5 +40,9 @@
     position: absolute;
     top: 60%;
     left: -65px;
+
+    @include for-tablet-landscape-down {
+      display: none;
+    }
   }
 }

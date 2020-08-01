@@ -60,5 +60,9 @@
 
   &__img {
     margin-left: auto;
+
+    @include for-tablet-landscape-down {
+      max-width: 50%;
+    }
   }
 }
