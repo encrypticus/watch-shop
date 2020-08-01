@@ -10,83 +10,105 @@ import { smallCard, smallCard2 } from '#comps/preview-cards/small-preview-card/s
 import Button from '#comps/button';
 import SlickCarousel from '#comps/slick-carousel';
 import banner from './img/photo_banner.jpg';
+import photo1 from './img/photo_1.jpg';
+import photo2 from './img/photo_2.jpg';
+import photo3 from './img/photo_3.jpg';
+import Socials from '#comps/socials';
 
 const MainPage = (props) => {
 
   return (
     <>
-        <Hero/>
+      <Hero/>
 
       <main className='main'>
-          <section className='popular'>
+        <section className='popular'>
 
-            <Heading level='h2' centered>
-              Популярные модели
-            </Heading>
+          <Heading level='h2' centered>
+            Популярные модели
+          </Heading>
 
-            <div className='popular__inner'>
+          <div className='popular__inner'>
 
-              <div className='popular__link-wrapper'>
-                <Link to='/catalog' className='popular__link-all'>
-                  Смотреть все
-                </Link>
-              </div>
+            <div className='popular__link-wrapper'>
+              <Link to='/catalog' className='popular__link-all'>
+                Смотреть все
+              </Link>
+            </div>
 
-              <div className='popular__cards-preview'>
-                <MediumPreviewCard/>
-                <LargePreviewCard/>
-                <SmallPreviewCard
-                  title='Bvlgari'
-                  price='81 700 ₽'
-                  alt='Bvlgari'
-                  src={smallCard}
-                />
-                <SmallPreviewCard
-                  title='Bvlgari'
-                  price='72 700 ₽'
-                  alt='Bvlgari'
-                  src={smallCard2}
-                />
-              </div>
+            <div className='popular__cards-preview'>
+              <MediumPreviewCard/>
+              <LargePreviewCard/>
+              <SmallPreviewCard
+                title='Bvlgari'
+                price='81 700 ₽'
+                alt='Bvlgari'
+                src={smallCard}
+              />
+              <SmallPreviewCard
+                title='Bvlgari'
+                price='72 700 ₽'
+                alt='Bvlgari'
+                src={smallCard2}
+              />
+            </div>
+
+          </div>
+
+        </section>
+
+        <section className='quality'>
+          <div className='quality__bg-block'></div>
+
+          <div className='quality__inner'>
+
+            <div className='quality__slider'>
+              <SlickCarousel>
+                <img src={banner} alt='banner'/>
+                <img src={banner} alt='banner'/>
+                <img src={banner} alt='banner'/>
+                <img src={banner} alt='banner'/>
+                <img src={banner} alt='banner'/>
+              </SlickCarousel>
+            </div>
+
+            <div className='quality__info'>
+
+              <Heading level='h2'>
+                Подлинное качество
+              </Heading>
+
+              <p className='quality__text'>
+                Все часы производятся в Швейцарии и имеют сертификаты качества. Настоящие швейцарские часы —
+                это предмет гордости и престижа.
+              </p>
+
+              <Button to='/catalog' brown>Смотреть каталог</Button>
 
             </div>
 
-          </section>
+          </div>
 
+        </section>
 
-          <section className='quality'>
-            <div className='quality__bg-block'></div>
-
-            <div className='quality__inner'>
-
-              <div className='quality__slider'>
-                <SlickCarousel>
-                  <img src={banner} alt='banner'/>
-                  <img src={banner} alt='banner'/>
-                  <img src={banner} alt='banner'/>
-                  <img src={banner} alt='banner'/>
-                  <img src={banner} alt='banner'/>
-                </SlickCarousel>
-              </div>
-
-              <div className='quality__info'>
-
-                <Heading level='h2'>
-                  Подлинное качество
-                </Heading>
-
-                <p className='quality__text'>
-                  Все часы производятся в Швейцарии и имеют сертификаты качества. Настоящие швейцарские часы —
-                  это предмет гордости и престижа.
-                </p>
-
-                <Button to='/catalog' brown>Смотреть каталог</Button>
-
-              </div>
-
+        <section className='news'>
+          <div className='news__text'>
+            <div className='news__title'>
+              <Heading level='h2'>
+                Следите за нашими новостями
+              </Heading>
             </div>
-
-          </section>
+            <p className='news__info'>
+              Подписывайтесь на @conquest_watch в соцсетях и узнавайте о новинках и акциях первыми.
+            </p>
+            <Socials horizontal/>
+          </div>
+          <div className='news__images'>
+            <img src={photo1} alt='photo 1'/>
+            <img src={photo2} alt='photo 2'/>
+            <img src={photo3} alt='photo 3'/>
+          </div>
+        </section>
 
       </main>
     </>
