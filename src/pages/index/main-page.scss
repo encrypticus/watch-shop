@@ -119,6 +119,7 @@
   align-items: center;
   justify-content: space-between;
   margin: auto;
+  margin-bottom: pxToRem(80);
   max-width: 1170px;
 
   @include for-tablet-landscape-down {
@@ -153,6 +154,22 @@
     'photo1 photo3'
     'photo2 photo3';
     grid-gap: 10px;
+    align-items: stretch;
+
+    @include for-phone-only {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+      'photo1 photo2'
+      'photo3 photo3';
+    }
+
+    @include for-small-phone-only {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'photo1'
+      'photo2'
+      'photo3';
+    }
 
     img:first-child {
       grid-area: photo1;
