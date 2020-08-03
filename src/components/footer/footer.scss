@@ -1,0 +1,62 @@
+@import '../../sass/utils';
+
+.page-footer {
+  background: #444240;
+  padding: pxToRem(67) 0;
+  max-width: 1366px;
+  margin: auto;
+
+  &__inner {
+    max-width: 1000px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include for-laptop-down {
+      padding: 0 20px !important;
+    }
+
+    @include for-tablet-landscape-down {
+      grid-template-columns: repeat(2, 1fr);
+      grid-row-gap: pxToRem(23);
+    }
+
+    @include for-phone-only {
+      grid-template-columns: 1fr;
+    }
+
+    @include for-small-phone-only() {
+      justify-content: center;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 26px;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+  }
+
+  h4 {
+    margin: 0;
+    margin-bottom: pxToRem(23);
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 16px;
+    color: #FFF;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+}
