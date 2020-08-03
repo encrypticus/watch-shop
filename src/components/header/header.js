@@ -2,14 +2,21 @@ import React from 'react';
 import Logo from '#comps/logo';
 import Userbar from '#comps/userbar';
 import Hamburger from '#comps/hamburger';
+import './header.scss';
 
-const Header = () => {
+const Header = (props) => {
+  let classList = 'page-header__hamburger';
+  if (props.menuHidden) {
+    classList += ' page-header__hamburger_hidden'
+  }
 
   return (
-    <div className='row align-items-center'>
+    <div className='page-header row align-items-center'>
 
       <div className='col no-v-gutters flex f-start'>
-        <Hamburger/>
+        <div className={classList}>
+          <Hamburger/>
+        </div>
         <Logo to='/'/>
       </div>
 

@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '#comps/header';
 
 const CatalogPage = (props) => {
 
   return (
-    <div>CatalogPage</div>
+    <>
+      <Header menuHidden/>
+      <div>CatalogPage</div>
+    </>
   );
 };
 

@@ -14,11 +14,13 @@ import photo1 from './img/photo_1.jpg';
 import photo2 from './img/photo_2.jpg';
 import photo3 from './img/photo_3.jpg';
 import Socials from '#comps/socials';
+import Header from '#comps/header';
 
 const MainPage = (props) => {
 
   return (
     <>
+      <Header/>
       <Hero/>
 
       <main className='main'>

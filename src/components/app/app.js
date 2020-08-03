@@ -20,7 +20,6 @@ const App = () => {
         <MainNav/>
 
         <div className='container'>
-          <Header/>
 
           <Switch>
             <Route path='/' exact component={IndexPage}/>
