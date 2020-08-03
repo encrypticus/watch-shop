@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import logoImg from './img/logo-img.png';
+import logoLightImg from './img/logo-light-img.png';
 import { Link } from 'react-router-dom';
 
 export const StyledLink = styled(Link)`
@@ -10,7 +11,7 @@ export const StyledLink = styled(Link)`
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.14em;
-  color: #555248;
+  color: ${(props) => props.light ? '#fff' : '#555248'};
   text-decoration: none;
   text-transform: uppercase;
   
@@ -21,6 +22,6 @@ export const StyledLink = styled(Link)`
     left: -22px;
     width: 20px;
     height: 20px;
-    background-image:url(${logoImg});
+    background-image:${(props) => props.light === 'true' ? `url(${logoLightImg})` : `url(${logoImg})`};
   }
 `;

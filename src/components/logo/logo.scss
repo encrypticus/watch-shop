@@ -1,0 +1,37 @@
+.logo {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  font-family: Playfair Display, Arial, sans-serif;
+  line-height: 16px;
+  color: #555248;
+  margin-left: 49px;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background-image: url('img/logo-img.png');
+  }
+
+  &_light {
+    font-size: 14px;
+    line-height: 19px;
+    color: #fff;
+    margin-left: 26px;
+
+    &::before {
+      top: -12px;
+      left: -33px;
+      width: 25px;
+      height: 30px;
+      background-image: url('img/logo-light-img.png');
+    }
+  }
+}

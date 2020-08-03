@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import store from '#store';
 import Socials from '#comps/socials';
 import Hero from '#comps/hero';
+import Footer from '#comps/footer';
 
 
 const App = () => {
@@ -27,7 +28,9 @@ const App = () => {
             <Route path='/card' exact component={CardPage}/>
             <Route render={() => (<h1 className="text-center">Page not found</h1>)}/>
           </Switch>
+
         </div>
+        <Footer/>
       </Router>
     </Provider>
   );

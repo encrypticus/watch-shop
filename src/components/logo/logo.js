@@ -1,12 +1,15 @@
 import React from 'react';
-import { StyledLink } from './styles';
+import  { Link } from 'react-router-dom';
+import './logo.scss';
 
 const Logo = (props) => {
+  let classList = 'logo';
+  if (props.light) classList += ' logo_light'
 
   return (
-    <StyledLink to={props.href || '/'}>
+    <Link to={props.to} className={classList}>
       Conquest
-    </StyledLink>
+    </Link>
   );
 };
 

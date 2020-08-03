@@ -10,7 +10,7 @@ const Header = () => {
 
       <div className='col no-v-gutters flex f-start'>
         <Hamburger/>
-        <Logo/>
+        <Logo to='/'/>
       </div>
 
       <div className='col no-v-gutters'>
