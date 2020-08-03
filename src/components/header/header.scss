@@ -1,6 +1,22 @@
+@import '../../sass/utils';
+
 .page-header {
 
   &__hamburger {
+
+    &_hidden {
+      display: none;
+
+      @include for-tablet-landscape-down {
+        display: block;
+      }
+    }
+  }
+
+  &__nav {
+    @include for-tablet-landscape-down {
+      display: none;
+    }
 
     &_hidden {
       display: none;

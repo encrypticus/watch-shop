@@ -20,7 +20,7 @@ const MainPage = (props) => {
 
   return (
     <>
-      <Header/>
+      <Header navHidden/>
       <Hero/>
 
       <main className='main'>
