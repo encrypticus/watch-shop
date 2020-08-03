@@ -43,6 +43,10 @@ module.exports = () => {
       {
         from: 'src/favicons',
         to: 'favicons'
+      },
+      {
+        from: 'src/components/card/img',
+        to: 'img'
       }
     ]),
     {
