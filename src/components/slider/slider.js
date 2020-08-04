@@ -24,7 +24,9 @@ const Slider = (props) => {
   }, []);
 
   return (
-    <div className='slider' ref={sliderRef}></div>
+    <div className='slider-wrapper'>
+      <div className='slider' ref={sliderRef}></div>
+    </div>
   );
 };
 

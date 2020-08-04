@@ -1,5 +1,12 @@
+.slider-wrapper {
+  position: relative;
+  height: 14px;
+}
+
 .slider {
-  
+  position: absolute;
+  top: 5.5px;
+  left: 0;
 }
 
 .noUi-target {
@@ -36,4 +43,8 @@
 .noUi-horizontal .noUi-handle {
   top: -4px !important;
   right: -10px !important;
+}
+
+.noUi-horizontal .noUi-handle.noUi-handle-upper {
+  right: 3px !important;
 }
