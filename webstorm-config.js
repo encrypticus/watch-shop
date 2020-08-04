@@ -6,6 +6,7 @@ System.config({
     '#act': path.resolve(__dirname, '../../src/redux/actions'),
     '#red': path.resolve(__dirname, '../../src/redux/reducers'),
     '#store': path.resolve(__dirname, '../../src/redux/store.js'),
-    '#pages': path.resolve(__dirname, '../../src/pages')
+    '#pages': path.resolve(__dirname, '../../src/pages'),
+    '#blocks': path.resolve(__dirname, '../../src/blocks')
   }
 });
