@@ -2,4 +2,54 @@
 
 .card {
   width: pxToRem(252);
+  padding: pxToRem(20);
+  font-family: Roboto, Arial, sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__vendor {
+    margin: 0;
+    margin-bottom: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 21px;
+    color: #444240;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 52px;
+    justify-content: space-between;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 16px;
+    color: #636261;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+
+  }
+
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
 }
