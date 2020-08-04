@@ -86,6 +86,7 @@
     "magic-burgers": "^1.0.0",
     "material-icons": "^0.3.1",
     "mmenu-js": "^8.4.3",
+    "nouislider": "^14.6.0",
     "popper": "^1.0.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
