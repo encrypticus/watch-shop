@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './slider.scss';
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.min.css';
+import wNumb from 'wnumb';
 
 const Slider = (props) => {
   const sliderRef = useRef(null);
@@ -10,12 +11,18 @@ const Slider = (props) => {
     const slider = sliderRef.current;
 
     noUiSlider.create(slider, {
-      start: [20, 80],
+      start: [20000, 60000],
       connect: true,
+      tooltips: [true, true],
       range: {
-        'min': 0,
-        'max': 100
-      }
+        'min': 10000,
+        'max': 100000
+      },
+      format: wNumb({
+        decimals: 3,
+        thousand: '.',
+        suffix: ' ₽'
+      })
     });
 
     slider.noUiSlider.on('change', function (values) {

@@ -1,6 +1,6 @@
 .slider-wrapper {
   position: relative;
-  height: 14px;
+  height: 60px;
 }
 
 .slider {
@@ -45,6 +45,18 @@
   right: -10px !important;
 }
 
+.noUi-tooltip {
+  bottom: -17px !important;
+  padding: 0 !important;
+  font-size: 12px;
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 14px;
+  color: rgba(27, 26, 23, 0.82) !important;
+  border: 0 !important;
+}
+
 .noUi-horizontal .noUi-handle.noUi-handle-upper {
-  right: 3px !important;
+  //right: 3px !important;
 }
