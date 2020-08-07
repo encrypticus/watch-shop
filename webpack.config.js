@@ -47,6 +47,10 @@ module.exports = () => {
       {
         from: 'src/components/card/img',
         to: 'img'
+      },
+      {
+        from: 'src/components/band-card/img',
+        to: 'img'
       }
     ]),
     {
