@@ -25,7 +25,7 @@ const Card = (props) => {
       </div>
       <p className='card__price'>{props.price}</p>
       <div className='card__body'>
-        <img className='card__image' src={props.src}/>
+        <img className='card__image' src={props.src} alt={props.vendor}/>
       </div>
     </div>
   );
