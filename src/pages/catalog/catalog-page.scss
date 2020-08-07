@@ -1,6 +1,12 @@
+@import '../../sass/utils';
+
 .container {
 
   &__catalog {
     margin: 0 48px;
+
+    @include for-tablet-landscape-down {
+      margin: 0;
+    }
   }
 }
