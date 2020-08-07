@@ -1,0 +1,112 @@
+@import '../../sass/utils';
+
+.subscribe-wrapper {
+  background-color: #f7f5ef;
+}
+
+.subscribe {
+  padding: 79px 103px 92px 140px;
+  background: url(./img/bg1.png) no-repeat , url(./img/bg2.png) top right no-repeat;
+
+  @include for-laptop-sm-down {
+    padding: 20px;
+  }
+
+  @include for-tablet-landscape-down {
+    background-size: contain;
+  }
+
+  @include for-phone-landscape-down {
+    background: url(./img/bg1.png) no-repeat;
+  }
+
+  &__subscription {
+    margin: 0;
+    margin-bottom: 13px;
+    font-size: 12px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px;
+    color: #818181;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__text {
+
+  }
+
+  &__content {
+    margin: 0;
+    max-width: 505px;
+    font-size: 45px;
+    font-family: Playfair Display, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 60px;
+    color: #1B1A17;
+    letter-spacing: 0.03em;
+
+    @include for-tablet-landscape-down {
+      font-size: pxToRem(30);
+      max-width: unset;
+      margin-bottom: pxToRem(30);
+    }
+  }
+
+  &__form {
+    padding-left: 11.74363%;
+    display: flex;
+    justify-content: space-between;
+
+    @include for-tablet-landscape-down {
+      padding-left: 0;
+    }
+
+    @include for-phone-landscape-down {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__email {
+    padding: 0;
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
+    color: #444240;
+    background-color: transparent;
+    border: 0;
+    padding-bottom: 21px;
+    max-width: 278px;
+    border-bottom: 2px solid #1B1A17;
+    outline: 0;
+
+    @include for-phone-landscape-down {
+      max-width: unset;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__submit {
+    padding: pxToRem(24) pxToRem(40);
+    font-size: 12px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px;
+    color: #FFF;
+    background-color: #31302C;
+    border: 0;
+    max-width: 185px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    @include for-phone-landscape-down {
+      max-width: unset;
+    }
+  }
+}
