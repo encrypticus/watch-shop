@@ -20,44 +20,48 @@ const MainPage = (props) => {
 
   return (
     <>
-      <Header navHidden/>
-      <Hero/>
+      <div className='container'>
+        <Header navHidden/>
+        <Hero/>
+      </div>
 
       <main className='main'>
-        <section className='popular'>
+        <div className='container'>
+          <section className='popular'>
 
-          <Heading level='h2' centered>
-            Популярные модели
-          </Heading>
+            <Heading level='h2' centered>
+              Популярные модели
+            </Heading>
 
-          <div className='popular__inner'>
+            <div className='popular__inner'>
 
-            <div className='popular__link-wrapper'>
-              <Link to='/catalog' className='popular__link-all'>
-                Смотреть все
-              </Link>
+              <div className='popular__link-wrapper'>
+                <Link to='/catalog' className='popular__link-all'>
+                  Смотреть все
+                </Link>
+              </div>
+
+              <div className='popular__cards-preview'>
+                <MediumPreviewCard/>
+                <LargePreviewCard/>
+                <SmallPreviewCard
+                  title='Bvlgari'
+                  price='81 700 ₽'
+                  alt='Bvlgari'
+                  src={smallCard}
+                />
+                <SmallPreviewCard
+                  title='Bvlgari'
+                  price='72 700 ₽'
+                  alt='Bvlgari'
+                  src={smallCard2}
+                />
+              </div>
+
             </div>
 
-            <div className='popular__cards-preview'>
-              <MediumPreviewCard/>
-              <LargePreviewCard/>
-              <SmallPreviewCard
-                title='Bvlgari'
-                price='81 700 ₽'
-                alt='Bvlgari'
-                src={smallCard}
-              />
-              <SmallPreviewCard
-                title='Bvlgari'
-                price='72 700 ₽'
-                alt='Bvlgari'
-                src={smallCard2}
-              />
-            </div>
-
-          </div>
-
-        </section>
+          </section>
+        </div>
 
         <section className='quality'>
           <div className='quality__bg-block'></div>

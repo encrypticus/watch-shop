@@ -19,8 +19,6 @@ const App = () => {
       <Router>
         <MainNav/>
 
-        <div className='container'>
-
           <Switch>
             <Route path='/' exact component={IndexPage}/>
             <Route path='/catalog' exact component={CatalogPage}/>
@@ -28,7 +26,6 @@ const App = () => {
             <Route render={() => (<h1 className="text-center">Page not found</h1>)}/>
           </Switch>
 
-        </div>
         <Footer/>
       </Router>
     </Provider>

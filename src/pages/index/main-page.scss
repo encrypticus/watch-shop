@@ -1,5 +1,10 @@
 @import '../../sass/utils';
 @import '../../sass/vars';
+$container-width: 1366px;
+$container-padding: 55px;
+$h-gutter: 0;
+
+@import '~flexbox-grid-pro/grid/scss/grid';
 
 .popular {
   margin-bottom: 40px;
