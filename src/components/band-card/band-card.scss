@@ -1,0 +1,48 @@
+.band-card {
+  max-width: 320px;
+  font-family: Roboto, Arial, sans-serif;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__vendor {
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 21px;
+    color: #444240;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 52px;
+    justify-content: space-between;
+  }
+
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__price {
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 16px;
+    color: #636261;
+  }
+}

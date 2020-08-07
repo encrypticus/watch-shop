@@ -1,0 +1,38 @@
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme.css';
+
+.band-carousel {
+  display: flex;
+  margin: auto;
+  max-width: 1100px;
+  justify-content: space-between;
+
+  &__btn-left,
+  &__btn-right, {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__btn-left {
+    left: 50px;
+  }
+
+  &__btn-right {
+    right: 50px;
+  }
+}
+
+.band-carousel-wrapper {
+  position: relative;
+  padding: 0 20px;
+}
+
+.slick-slide > div {
+  display: flex;
+  justify-content: space-around;
+}
