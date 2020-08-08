@@ -1,0 +1,28 @@
+.breadcrumbs {
+
+  &__link {
+    font-size: 14px;
+    font-family: Roboto Medium, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    color: #B3B3B3;
+    text-decoration: none;
+
+    &:not(:last-child) {
+      &::after {
+        margin-left: 15px;
+        margin-right: 11px;
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 9px;
+        background-image: url(./img/arrow-crumbs.svg);
+      }
+    }
+
+    &_active {
+      color: #555248;
+    }
+  }
+}
