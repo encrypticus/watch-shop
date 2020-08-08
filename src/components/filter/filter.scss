@@ -1,5 +1,11 @@
+@import '../../sass/utils';
+
 .filter {
-  width: 270px;
+  max-width: 270px;
+
+  @include for-phone-landscape-down {
+    max-width: unset;
+  }
 
   &__button {
     display: flex;
@@ -22,7 +28,7 @@
 
     &:active,
     &:focus {
-      box-shadow: 0 0 5px #1b1a1730;
+      outline: 1px solid rgba(0, 0, 0 , .1);
     }
   }
 
@@ -40,6 +46,10 @@
     height: 2px;
     margin-right: 41px;
     background-color: #1B1A17;
+
+    @include for-laptop-down {
+      margin-right: 0;
+    }
 
     &::before {
       content: '';
