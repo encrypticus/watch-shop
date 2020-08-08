@@ -8,5 +8,24 @@
     @include for-tablet-landscape-down {
       margin: 0;
     }
+
+    @media (max-width: 1366px) {
+      margin: 0;
+    }
+  }
+}
+
+.catalog-main {
+  display: grid;
+  grid-template-columns: minmax(200px, 270px) 1fr;
+  grid-gap: 45px;
+
+  @media (max-width: 1366px) {
+    grid-gap: 0;
+  }
+
+  @include for-phone-landscape-down{
+    grid-template-columns: 1fr;
+    align-items: center;
   }
 }

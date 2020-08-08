@@ -16,9 +16,11 @@ const CatalogPage = (props) => {
         <div className='container__catalog'>
           <Header menuHidden/>
 
+          <main className='catalog-main'>
+            <FilterForm/>
+            <Cards/>
+          </main>
           <Cards/>
-
-          <FilterForm/>
         </div>
 
       </div>
