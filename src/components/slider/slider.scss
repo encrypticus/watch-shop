@@ -1,3 +1,5 @@
+@import '../../sass/utils';
+
 .slider-wrapper {
   position: relative;
   height: 60px;
@@ -10,10 +12,15 @@
 }
 
 .noUi-target {
-  width: 230px !important;
+  width: 218px !important;
+  margin-left: 15px;
   height: 1px !important;
   background: #D4D4D4 !important;
   border: 0 !important;
+
+  @include for-phone-landscape-down {
+    width: 90% !important;
+  }
 }
 
 .noUi-connect {
