@@ -6,6 +6,7 @@ import './catalog-page.scss';
 import Subscribe from '#comps/subscribe';
 import BandCard from '#comps/band-card';
 import BandCarousel from '#comps/band-carousel';
+import Heading from '#comps/heading';
 
 const CatalogPage = (props) => {
 
@@ -17,7 +18,14 @@ const CatalogPage = (props) => {
           <Header menuHidden/>
 
           <main className='catalog-main'>
-            <FilterForm/>
+            <div className='catalog-main__filter'>
+              <div className='catalog-main__heading'>
+                <Heading level='h2'>
+                  Мужские часы
+                </Heading>
+              </div>
+              <FilterForm/>
+            </div>
             <Cards/>
           </main>
           <Cards/>
