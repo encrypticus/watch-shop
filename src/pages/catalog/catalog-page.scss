@@ -30,7 +30,9 @@
   }
 
   &__heading {
-    margin-bottom: pxToRem(27);
+    @include for-phone-landscape-down {
+      margin-bottom: pxToRem(30);
+    }
   }
 
   &__bands-heading {
@@ -41,5 +43,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1.6875rem;
+
+    @include for-phone-landscape-down {
+      flex-direction: column;
+    }
   }
 }

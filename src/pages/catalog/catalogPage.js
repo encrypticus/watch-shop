@@ -8,6 +8,7 @@ import BandCard from '#comps/band-card';
 import BandCarousel from '#comps/band-carousel';
 import Heading from '#comps/heading';
 import Breadcrumbs from '#comps/breadcrumbs';
+import Sorting from '#comps/sorting';
 
 const CatalogPage = (props) => {
 
@@ -25,6 +26,7 @@ const CatalogPage = (props) => {
                 Мужские часы
               </Heading>
             </div>
+            <Sorting/>
           </div>
           <main className='catalog-main'>
             <FilterForm/>
