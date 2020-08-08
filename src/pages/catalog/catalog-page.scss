@@ -32,4 +32,10 @@
   &__heading {
     margin-bottom: pxToRem(27);
   }
+
+  &__sorting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

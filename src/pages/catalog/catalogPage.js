@@ -7,6 +7,7 @@ import Subscribe from '#comps/subscribe';
 import BandCard from '#comps/band-card';
 import BandCarousel from '#comps/band-carousel';
 import Heading from '#comps/heading';
+import Breadcrumbs from '#comps/breadcrumbs';
 
 const CatalogPage = (props) => {
 
@@ -16,19 +17,20 @@ const CatalogPage = (props) => {
 
         <div className='container__catalog'>
           <Header menuHidden/>
-
-          <main className='catalog-main'>
-            <div className='catalog-main__filter'>
-              <div className='catalog-main__heading'>
-                <Heading level='h2'>
-                  Мужские часы
-                </Heading>
-              </div>
-              <FilterForm/>
+          <div className='breadcrumbs-wrapper'>
+            <Breadcrumbs/>
+          </div>
+          <div className='catalog-main__sorting'>
+            <div className='catalog-main__heading'>
+              <Heading level='h2'>
+                Мужские часы
+              </Heading>
             </div>
+          </div>
+          <main className='catalog-main'>
+            <FilterForm/>
             <Cards/>
           </main>
-          <Cards/>
         </div>
 
       </div>

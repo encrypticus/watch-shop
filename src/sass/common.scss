@@ -55,3 +55,8 @@ body {
   width: 146px;
   justify-content: space-between;
 }
+
+.breadcrumbs-wrapper {
+  margin-top: pxToRem(57);
+  margin-bottom: pxToRem(35);
+}
