@@ -1,5 +1,6 @@
 @import '~slick-carousel/slick/slick';
 @import '~slick-carousel/slick/slick-theme.css';
+@import '../../sass/utils';
 
 .band-carousel {
   display: flex;
@@ -30,6 +31,7 @@
 .band-carousel-wrapper {
   position: relative;
   padding: 0 20px;
+  margin-bottom: pxToRem(106);
 }
 
 .slick-slide > div {

@@ -2,10 +2,11 @@
 
 .subscribe-wrapper {
   background-color: #f7f5ef;
+  margin-bottom: pxToRem(68);
 }
 
 .subscribe {
-  padding: 79px 103px 92px 140px;
+  padding: 68px 103px 92px 140px;
   background: url(./img/bg1.png) no-repeat , url(./img/bg2.png) top right no-repeat;
 
   @include for-laptop-sm-down {

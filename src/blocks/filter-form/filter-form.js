@@ -7,7 +7,7 @@ import Checkbox from '#comps/checkbox';
 
 const FilterForm = (props) => {
   return (
-    <form className='filter__form'>
+    <form className='filter-form'>
       <Filter>
         <FilterItem title='Стоимость'>
           <Slider/>
@@ -70,6 +70,7 @@ const FilterForm = (props) => {
           </Checkbox>
         </FilterItem>
       </Filter>
+      <button className='filter-form__button' type='reset'>Сбросить фильтр</button>
     </form>
   );
 };

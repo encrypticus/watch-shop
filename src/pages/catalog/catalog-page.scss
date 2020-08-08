@@ -3,7 +3,7 @@
 .container {
 
   &__catalog {
-    margin: 0 48px;
+    margin: 0 48px pxToRem(149);
 
     @include for-tablet-landscape-down {
       margin: 0;
@@ -31,6 +31,10 @@
 
   &__heading {
     margin-bottom: pxToRem(27);
+  }
+
+  &__bands-heading {
+    margin: 0 48px pxToRem(60);
   }
 
   &__sorting {

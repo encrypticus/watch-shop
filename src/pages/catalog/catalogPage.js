@@ -14,7 +14,6 @@ const CatalogPage = (props) => {
   return (
     <>
       <div className='container'>
-
         <div className='container__catalog'>
           <Header menuHidden/>
           <div className='breadcrumbs-wrapper'>
@@ -32,9 +31,15 @@ const CatalogPage = (props) => {
             <Cards/>
           </main>
         </div>
-
       </div>
       <Subscribe/>
+      <div className='container'>
+        <div className='catalog-main__bands-heading'>
+          <Heading level='h2'>
+            Ремешки
+          </Heading>
+        </div>
+      </div>
       <BandCarousel>
         <BandCard vendor='Georg Jensen' price='6 500 ₽' src='./img/band1.png'/>
         <BandCard vendor='Nato' price='3 200 ₽' src='./img/band2.png'/>

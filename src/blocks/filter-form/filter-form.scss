@@ -1,3 +1,25 @@
+@import '../../sass/utils';
+
 .filter-form {
-  
+
+  &__button {
+    width: 86%;
+    margin-top: pxToRem(20);
+    padding: 21px 53px;
+    font-size: 12px;
+    font-family: Roboto Medium, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: #1D1A1A;
+    background-color: transparent;
+    border: 2px solid #E7E0CF;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    @include for-laptop-down {
+      width: 100%;
+    }
+  }
 }
