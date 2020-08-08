@@ -68,7 +68,7 @@ $h-gutter: 0;
     background-position: right center;
 
     @include for-laptop-down {
-      padding-left: 0;
+      padding: 20px;
     }
 
     @include for-phone-landscape-down {
@@ -120,12 +120,17 @@ $h-gutter: 0;
 }
 
 .news {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: auto;
   margin-bottom: pxToRem(80);
   max-width: 1170px;
+
+  @include for-laptop-down {
+    padding: 20px;
+  }
 
   @include for-tablet-landscape-down {
     flex-direction: column;
