@@ -1,0 +1,41 @@
+@import '../../sass/utils';
+
+.sorting {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 21px;
+  color: #BDB9B5;
+
+  @include for-phone-landscape-down {
+    align-self: flex-start;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 32px;
+    display: block;
+    width: 12px;
+    height: 7px;
+    background-image: url(./img/select-arrow.svg);
+  }
+
+  &__text {
+    margin-right: 5px;
+  }
+
+  &__select {
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    border: 0;
+    appearance: none;
+    outline-color: rgba(0, 0, 0, .1);
+  }
+}
