@@ -1,0 +1,68 @@
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme.css';
+@import '../../sass/utils';
+
+.card-carousel {
+  max-width: 560px;
+  position: relative;
+
+  &__for {
+    .card-carousel__img {
+      width: 100%;
+      max-width: 443px;
+      height: auto;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+    .slick-track {
+      display: flex;
+      justify-content: space-between;
+      transform: none !important;
+    }
+
+    .slick-slide {
+      width: 100% !important;
+      max-width: 127px;
+      background-color: rgba(100, 100, 100, 0.15);
+      transition: background-color .5s;
+      cursor: pointer;
+    }
+
+    .slick-current {
+      background-color: transparent;
+    }
+
+    .card-carousel__img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__preview {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &_left {
+      left: 0;
+    }
+
+    &_right {
+      right: 0;
+    }
+  }
+}
