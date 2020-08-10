@@ -1,7 +1,10 @@
 import React from 'react';
+import './card-page.scss';
 import Header from '#comps/header';
 import Breadcrumbs from '#comps/breadcrumbs';
 import CardCarousel, { CardCarouselPreview } from '#comps/card-carousel';
+import Button from '#comps/button';
+import LikeButton from '#comps/like-button';
 
 const CardPage = (props) => {
 
@@ -31,16 +34,51 @@ const CardPage = (props) => {
           <div className='breadcrumbs-wrapper'>
             <Breadcrumbs/>
           </div>
+          <section className='card-block'>
+            <div className='card-block__carousel'>
+              <CardCarousel
+                renderPreview={() => {
+                  return previewBlock;
+                }}
+                renderFullImg={() => {
+                  return fullImgBlock;
+                }}
+              >
+              </CardCarousel>
+            </div>
+
+            <div className='card-block__info'>
+              <div className='card-block__head'>
+                <h3 className='card-block__vendor'>
+                  Kulte, 26mm
+                </h3>
+                <LikeButton/>
+              </div>
+
+              <p className='card-block__price'>
+                12 700 ₽
+              </p>
+              <h4 className='card-block__description'>
+                Описание
+              </h4>
+              <p className='card-block__content'>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A delectus distinctio maiores nesciunt nisi
+                ratione suscipit unde vero voluptate? Debitis doloribus enim et laudantium molestiae mollitia
+                necessitatibus quisquam reprehenderit voluptatum?
+              </p>
+              <p className='card-block__content'>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A delectus distinctio maiores nesciunt nisi
+                ratione suscipit unde vero voluptate? Debitis doloribus enim et laudantium molestiae mollitia
+                necessitatibus quisquam reprehenderit voluptatum?
+              </p>
+              <p className='card-block__button'>
+                <Button>
+                  В корзину
+                </Button>
+              </p>
+            </div>
+          </section>
         </div>
-        <CardCarousel
-          renderPreview={() => {
-            return previewBlock;
-          }}
-          renderFullImg={() => {
-            return fullImgBlock;
-          }}
-        >
-        </CardCarousel>
       </div>
     </>
   );

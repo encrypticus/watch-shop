@@ -1,0 +1,85 @@
+@import '../../sass/utils';
+
+.card-block {
+  display: flex;
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 23px;
+  color: #000;
+
+  &__carousel {
+    width: pxToPercent(560, 1160);
+
+    @include for-phone-landscape-down {
+      width: 80%;
+    }
+  }
+
+  @include for-phone-landscape-down {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__info {
+    padding-top: 90px;
+    padding-left: 108px;
+    padding-right: 59px;
+    padding-bottom: 49px;
+
+    @include for-desktop-down {
+      padding: 20px;
+    }
+
+    @include for-tablet-landscape-down {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__vendor {
+    margin-top: 0;
+    margin-bottom: 9px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 37px;
+    color: #444240;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    margin-top: 0;
+    margin-bottom: pxToRem(43);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 28px;
+    color: #686868;
+  }
+
+  &__description {
+    margin-top: 0;
+    margin-bottom: pxToRem(31);
+    font-size: 16px;
+    font-family: Roboto Medium, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27px;
+    color: #444240;
+  }
+
+  &__conten {
+    margin-top: 0;
+  }
+
+  &__button {
+    margin-top: pxToRem(63);
+  }
+}
