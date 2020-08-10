@@ -36,7 +36,7 @@ const MainPage = (props) => {
             <div className='popular__inner'>
 
               <div className='popular__link-wrapper'>
-                <Link to='/catalog' className='popular__link-all'>
+                <Link to='/card' className='popular__link-all'>
                   Смотреть все
                 </Link>
               </div>

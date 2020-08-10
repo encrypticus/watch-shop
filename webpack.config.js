@@ -51,6 +51,10 @@ module.exports = () => {
       {
         from: 'src/components/band-card/img',
         to: 'img'
+      },
+      {
+        from: 'src/components/card-carousel/img',
+        to: 'img'
       }
     ]),
     {
