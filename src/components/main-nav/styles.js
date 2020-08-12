@@ -11,7 +11,6 @@ export const Nav = styled.div`
   min-height: 100vh;
   height: 100%;
   padding: 10px;
-  //background-color: #444240;
   background-color: rgba(0, 0, 0, .9);
   transform: ${(props) => (props.opened ? 'translateX(0)' : 'translateX(-30vw)')};
   z-index: 10;
