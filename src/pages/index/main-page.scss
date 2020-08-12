@@ -46,6 +46,12 @@ $h-gutter: 0;
     display: flex;
     flex-wrap: wrap;
   }
+
+  &__cards-preview-wrapper {
+    @include for-phone-only {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .quality {

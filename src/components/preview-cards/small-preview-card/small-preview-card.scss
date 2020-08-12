@@ -15,6 +15,10 @@
     @include for-laptop-sm-down {
       padding-bottom: 30px;
     }
+
+    @include for-phone-only {
+      padding-left: 0;
+    }
   }
 
   &__title {

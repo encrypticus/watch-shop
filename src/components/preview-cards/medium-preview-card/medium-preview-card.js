@@ -13,7 +13,7 @@ const MediumPreviewCard = (props) => {
       </div>
 
       <div className='medium-preview-card__img-wrapper'>
-        <img src={cardMedium} alt='Rado'/>
+        <img className='medium-preview-card__img' src={cardMedium} alt='Rado'/>
       </div>
 
       <div className='medium-preview-card__link-wrapper'>

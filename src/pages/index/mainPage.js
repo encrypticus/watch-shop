@@ -42,14 +42,23 @@ const MainPage = (props) => {
               </div>
 
               <div className='popular__cards-preview'>
-                <MediumPreviewCard/>
-                <LargePreviewCard/>
-                <SmallPreviewCard
-                  title='Bvlgari'
-                  price='81 700 ₽'
-                  alt='Bvlgari'
-                  src={smallCard}
-                />
+                <div className='popular__cards-preview-wrapper'>
+                  <MediumPreviewCard/>
+                </div>
+
+                <div className='popular__cards-preview-wrapper'>
+                  <LargePreviewCard/>
+                </div>
+
+                <div className='popular__cards-preview-wrapper'>
+                  <SmallPreviewCard
+                    title='Bvlgari'
+                    price='81 700 ₽'
+                    alt='Bvlgari'
+                    src={smallCard}
+                  />
+                </div>
+
                 <SmallPreviewCard
                   title='Bvlgari'
                   price='72 700 ₽'
