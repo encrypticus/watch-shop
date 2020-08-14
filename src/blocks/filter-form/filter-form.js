@@ -4,6 +4,7 @@ import Filter from '#comps/filter';
 import { FilterItem } from '#comps/filter/filter';
 import Slider from '#comps/slider';
 import Checkbox from '#comps/checkbox';
+import { sortByColor, sortByMaterial, sortByMechanism, sortByVendor } from '#act/catalog-cards';
 
 const FilterForm = (props) => {
   return (
@@ -16,56 +17,56 @@ const FilterForm = (props) => {
 
       <Filter>
         <FilterItem title='Бренд'>
-          <Checkbox id='techne'>
+          <Checkbox id='Techne' actionCreator={sortByVendor}>
             Techne
           </Checkbox>
-          <Checkbox id='rado'>
+          <Checkbox id='Rado' actionCreator={sortByVendor}>
             Rado
           </Checkbox>
-          <Checkbox id='bvlgari'>
+          <Checkbox id='Bvlgari' actionCreator={sortByVendor}>
             Bvlgari
           </Checkbox>
-          <Checkbox id='tissot'>
+          <Checkbox id='Tissot' actionCreator={sortByVendor}>
             Tissot
           </Checkbox>
-          <Checkbox id='omega'>
+          <Checkbox id='Omega' actionCreator={sortByVendor}>
             Omega
           </Checkbox>
-          <Checkbox id='montblanc'>
+          <Checkbox id='Montblanc' actionCreator={sortByVendor}>
             Montblanc
           </Checkbox>
         </FilterItem>
 
         <FilterItem title='Механизм'>
-          <Checkbox id='quartz'>
+          <Checkbox id='quartz' actionCreator={sortByMechanism}>
             Кварц
           </Checkbox>
-          <Checkbox id='mechanic'>
+          <Checkbox id='mechanic' actionCreator={sortByMechanism}>
             Механика
           </Checkbox>
         </FilterItem>
 
         <FilterItem title='Материал'>
-          <Checkbox id='plastic'>
+          <Checkbox id='plastic' actionCreator={sortByMaterial}>
             Пластик
           </Checkbox>
 
-          <Checkbox id='still'>
+          <Checkbox id='metal' actionCreator={sortByMaterial}>
             Металл
           </Checkbox>
         </FilterItem>
 
         <FilterItem title='Цвет'>
-          <Checkbox id='black'>
+          <Checkbox id='black' actionCreator={sortByColor}>
             Черный
           </Checkbox>
-          <Checkbox id='brown'>
+          <Checkbox id='brown' actionCreator={sortByColor}>
             Коричневый
           </Checkbox>
-          <Checkbox id='yellow'>
-            Желтый
+          <Checkbox id='green' actionCreator={sortByColor}>
+            Зелёный
           </Checkbox>
-          <Checkbox id='red'>
+          <Checkbox id='red' actionCreator={sortByColor}>
             Красный
           </Checkbox>
         </FilterItem>
