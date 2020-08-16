@@ -5,10 +5,25 @@ import { FilterItem } from '#comps/filter/filter';
 import Slider from '#comps/slider';
 import Checkbox from '#comps/checkbox';
 import { sortByColor, sortByMaterial, sortByMechanism, sortByVendor } from '#act/catalog-cards';
+import { useDispatch, useSelector } from 'react-redux';
+import { Formik } from 'formik';
 
 const FilterForm = (props) => {
+  const dispatch = useDispatch();
+  const ids = useSelector(state => state.catalogCardsReducer.cards.map(card => card.vendor));
+
+  const resetVendors = () => {
+    ids.forEach((id) => {
+      dispatch(sortByVendor({ id, checked: true }));
+    });
+  }
+
+  const onResetHandler = () => {
+    resetVendors();
+  };
+
   return (
-    <form className='filter-form'>
+    <form className='filter-form' onReset={onResetHandler}>
       <Filter>
         <FilterItem title='Стоимость'>
           <Slider/>
@@ -17,22 +32,22 @@ const FilterForm = (props) => {
 
       <Filter>
         <FilterItem title='Бренд'>
-          <Checkbox id='Techne' actionCreator={sortByVendor}>
+          <Checkbox id='Techne' actionCreator={sortByVendor} checked={true}>
             Techne
           </Checkbox>
-          <Checkbox id='Rado' actionCreator={sortByVendor}>
+          <Checkbox id='Rado' actionCreator={sortByVendor} checked={true}>
             Rado
           </Checkbox>
-          <Checkbox id='Bvlgari' actionCreator={sortByVendor}>
+          <Checkbox id='Bvlgari' actionCreator={sortByVendor} checked={true}>
             Bvlgari
           </Checkbox>
-          <Checkbox id='Tissot' actionCreator={sortByVendor}>
+          <Checkbox id='Tissot' actionCreator={sortByVendor} checked={true}>
             Tissot
           </Checkbox>
-          <Checkbox id='Omega' actionCreator={sortByVendor}>
+          <Checkbox id='Omega' actionCreator={sortByVendor} checked={true}>
             Omega
           </Checkbox>
-          <Checkbox id='Montblanc' actionCreator={sortByVendor}>
+          <Checkbox id='Montblanc' actionCreator={sortByVendor} checked={true}>
             Montblanc
           </Checkbox>
         </FilterItem>
@@ -71,7 +86,7 @@ const FilterForm = (props) => {
           </Checkbox>
         </FilterItem>
       </Filter>
-      <button className='filter-form__button' type='reset'>Сбросить фильтр</button>
+      {/*<button className='filter-form__button' type='reset'>Сбросить фильтр</button>*/}
     </form>
   );
 };

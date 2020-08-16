@@ -2,6 +2,7 @@ export const SORT_CARDS_BY_VENDOR = 'SORT_CARDS_BY_VENDOR';
 export const SORT_CARDS_BY_MECHANISM = 'SORT_CARDS_BY_MECHANISM';
 export const SORT_CARDS_BY_MATERIAL = 'SORT_CARDS_BY_MATERIAL';
 export const SORT_CARDS_BY_COLOR = 'SORT_CARDS_BY_COLOR';
+export const SORT_CARDS_BY_PRICE = 'SORT_CARDS_BY_PRICE';
 
 export const sortByVendor = data => ({
   type: SORT_CARDS_BY_VENDOR,
@@ -21,4 +22,9 @@ export const sortByMaterial = data => ({
 export const sortByColor = data => ({
   type: SORT_CARDS_BY_COLOR,
   payload: data
+});
+
+export const sortByPrice = data => ({
+  type: SORT_CARDS_BY_PRICE,
+    payload: data
 });

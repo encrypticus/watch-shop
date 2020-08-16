@@ -1,7 +1,7 @@
 import {
   SORT_CARDS_BY_COLOR,
   SORT_CARDS_BY_MATERIAL,
-  SORT_CARDS_BY_MECHANISM,
+  SORT_CARDS_BY_MECHANISM, SORT_CARDS_BY_PRICE,
   SORT_CARDS_BY_VENDOR
 } from '#act/catalog-cards';
 
@@ -176,7 +176,11 @@ const initialState = {
       materialChecked: true,
       colorChecked: true
     },
-  ]
+  ],
+  price: {
+    min: 10000,
+    max: 100000
+  }
 };
 
 const catalogCardsReducer = (state = initialState, action) => {
@@ -192,17 +196,19 @@ const catalogCardsReducer = (state = initialState, action) => {
       });
 
       return {
+        ...state,
         cards: watchesByVendor
       };
 
     case SORT_CARDS_BY_MECHANISM:
       let watchesByMechanism = state.cards.map((card) => {
-        if(card.mechanism === data.id) {
+        if (card.mechanism === data.id) {
           card.mechanismChecked = data.checked;
         }
         return card;
       });
       return {
+        ...state,
         cards: watchesByMechanism
       }
 
@@ -214,6 +220,7 @@ const catalogCardsReducer = (state = initialState, action) => {
         return card;
       });
       return {
+        ...state,
         cards: watchesByMaterial
       }
 
@@ -225,7 +232,16 @@ const catalogCardsReducer = (state = initialState, action) => {
         return card;
       });
       return {
+        ...state,
         cards: watchesByColor
+      }
+
+    case SORT_CARDS_BY_PRICE:
+      const { min, max } = data;
+
+      return {
+        ...state,
+        price: { min, max }
       }
 
     default:
