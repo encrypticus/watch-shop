@@ -3,19 +3,20 @@ import './slider.scss';
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.min.css';
 import wNumb from 'wnumb';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { sortByPrice } from '#act/catalog-cards';
-import { type } from 'mmenu-js/dist/_modules/helpers';
 
 const Slider = (props) => {
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
+  const minmax = useSelector(state => state.catalogCardsReducer.price);
+  const { min, max } = minmax;
 
   useEffect(() => {
     const slider = sliderRef.current;
 
     noUiSlider.create(slider, {
-      start: [10000, 100000],
+      start: [min, max],
       connect: true,
       tooltips: [true, true],
       range: {
@@ -36,6 +37,11 @@ const Slider = (props) => {
       dispatch(sortByPrice({ min, max }));
     });
   }, []);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    slider.noUiSlider.set([min, max]);
+  }, [minmax]);
 
   return (
     <div className='slider-wrapper'>

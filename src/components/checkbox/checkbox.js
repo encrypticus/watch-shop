@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './checkbox.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Field } from 'formik';
 
 const Checkbox = (props) => {
   const dispatch = useDispatch();
-  let isChecked = useSelector(state => state.catalogCardsReducer.cards[0].vendorChecked);
-  const [checked, setChecked] = useState(true);
-  const { actionCreator, id } = props;
+  const { actionCreator, id, checked, children } = props;
 
   const onChangeHandler = ({ target: { checked } }) => {
     if (actionCreator) {
@@ -19,8 +16,7 @@ const Checkbox = (props) => {
         }));
       }
     }
-    setChecked(checked)
-  }
+  };
 
   return (
     <div className='checkbox-wrapper'>
@@ -31,7 +27,7 @@ const Checkbox = (props) => {
         onChange={onChangeHandler}
         checked={checked}
       />
-      <label htmlFor={props.id}>{props.children}</label>
+      <label htmlFor={id}>{children}</label>
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import {
   SORT_CARDS_BY_COLOR,
   SORT_CARDS_BY_MATERIAL,
-  SORT_CARDS_BY_MECHANISM, SORT_CARDS_BY_PRICE,
+  SORT_CARDS_BY_MECHANISM,
+  SORT_CARDS_BY_PRICE,
   SORT_CARDS_BY_VENDOR
 } from '#act/catalog-cards';
 
@@ -180,14 +181,34 @@ const initialState = {
   price: {
     min: 10000,
     max: 100000
+  },
+  checkboxes: {
+    techne: true,
+    rado: true,
+    bvlgari: true,
+    tissot: true,
+    omega: true,
+    montblanc: true,
+    quartz: true,
+    mechanic: true,
+    metal: true,
+    plastic: true,
+    black: true,
+    brown: true,
+    green: true,
+    red: true
   }
 };
 
 const catalogCardsReducer = (state = initialState, action) => {
   const data = action.payload;
+  let checkboxes = { ...state.checkboxes };
+  let key = '';
 
   switch (action.type) {
+
     case SORT_CARDS_BY_VENDOR:
+
       let watchesByVendor = state.cards.map((card) => {
         if (card.vendor === data.id) {
           card.vendorChecked = data.checked;
@@ -195,34 +216,50 @@ const catalogCardsReducer = (state = initialState, action) => {
         return card;
       });
 
+      key = data.id.toLowerCase();
+      checkboxes[key] = data.checked;
+
       return {
         ...state,
+        checkboxes,
         cards: watchesByVendor
       };
 
     case SORT_CARDS_BY_MECHANISM:
+
       let watchesByMechanism = state.cards.map((card) => {
         if (card.mechanism === data.id) {
           card.mechanismChecked = data.checked;
         }
         return card;
       });
+
+      key = data.id.toLowerCase();
+      checkboxes[key] = data.checked;
+
       return {
         ...state,
+        checkboxes,
         cards: watchesByMechanism
-      }
+      };
 
     case SORT_CARDS_BY_MATERIAL:
+
       let watchesByMaterial = state.cards.map((card) => {
         if (card.material === data.id) {
           card.materialChecked = data.checked;
         }
         return card;
       });
+
+      key = data.id.toLowerCase();
+      checkboxes[key] = data.checked;
+
       return {
         ...state,
+        checkboxes,
         cards: watchesByMaterial
-      }
+      };
 
     case SORT_CARDS_BY_COLOR:
       let watchesByColor = state.cards.map((card) => {
@@ -231,18 +268,25 @@ const catalogCardsReducer = (state = initialState, action) => {
         }
         return card;
       });
+
+      key = data.id.toLowerCase();
+      checkboxes[key] = data.checked;
+
       return {
         ...state,
+        checkboxes,
         cards: watchesByColor
-      }
+      };
 
     case SORT_CARDS_BY_PRICE:
+
       const { min, max } = data;
 
       return {
         ...state,
+        checkboxes,
         price: { min, max }
-      }
+      };
 
     default:
       return state;
