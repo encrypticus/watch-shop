@@ -4,7 +4,7 @@ import catalogCardsReducer from './catalog-cards';
 
 const reducers = combineReducers({
   mainNavReducer,
-  catalogCardsReducer
+  catalogCardsReducer,
 });
 
 export default reducers;

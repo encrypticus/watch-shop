@@ -10,7 +10,7 @@ const Header = (props) => {
   let navClassList = 'page-header__nav';
 
   if (props.menuHidden) {
-    hamburgerClassList += ' page-header__hamburger_hidden'
+    hamburgerClassList += ' page-header__hamburger_hidden';
   }
 
   if (props.navHidden) {

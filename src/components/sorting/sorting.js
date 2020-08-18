@@ -1,8 +1,7 @@
 import React from 'react';
 import './sorting.scss';
 
-const Sorting = (props) => {
-  return (
+const Sorting = (props) => (
     <form className='sorting'>
       <span className='sorting__text'>Cортировать по: </span>
       <select className='sorting__select'>
@@ -17,7 +16,6 @@ const Sorting = (props) => {
         </option>
       </select>
     </form>
-  );
-};
+);
 
 export default Sorting;

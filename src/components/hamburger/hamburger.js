@@ -6,7 +6,7 @@ import { isMenuOpen } from '#act/main-nav';
 
 const Hamburger = (props) => {
   const btn = useRef(null);
-  const isOpen = useSelector(state => state.mainNavReducer.isOpen);
+  const isOpen = useSelector((state) => state.mainNavReducer.isOpen);
   const dispatch = useDispatch();
 
   useEffect(() => {

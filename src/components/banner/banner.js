@@ -4,8 +4,7 @@ import banner from './img/watch_main.png';
 import Tooltip from '#comps/tooltip';
 import DecorLine from '#comps/decor-line';
 
-const Banner = (props) => {
-  return (
+const Banner = (props) => (
     <div className='banner'>
       <div className='banner__tooltip-wrapper'>
         <Tooltip>
@@ -27,7 +26,6 @@ const Banner = (props) => {
         </Tooltip>
       </div>
     </div>
-  );
-};
+);
 
 export default Banner;

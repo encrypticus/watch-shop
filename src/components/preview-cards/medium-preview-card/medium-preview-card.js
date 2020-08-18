@@ -1,11 +1,10 @@
 import React from 'react';
 import './medium-preview-card.scss';
-import cardMedium from '../img/medium.png';
 import { Link } from 'react-router-dom';
+import cardMedium from '../img/medium.png';
 import DecorLine from '#comps/decor-line';
 
-const MediumPreviewCard = (props) => {
-  return (
+const MediumPreviewCard = (props) => (
     <div className='medium-preview-card'>
       <div className='medium-preview-card__info'>
         <h4 className='medium-preview-card__title'>Rado</h4>
@@ -25,7 +24,6 @@ const MediumPreviewCard = (props) => {
         </Link>
       </div>
     </div>
-  );
-};
+);
 
 export default MediumPreviewCard;

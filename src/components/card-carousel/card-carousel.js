@@ -31,16 +31,15 @@ const CardCarousel = (props) => {
       fade: true,
       asNavFor: '.card-carousel__nav',
       prevArrow: btnLeft,
-      nextArrow: btnRight
+      nextArrow: btnRight,
     });
     $(navElt).slick({
       slidesToShow: 4,
       slidesToScroll: 1,
       asNavFor: '.card-carousel__for',
       focusOnSelect: true,
-      adaptiveHeight: true
+      adaptiveHeight: true,
     });
-
   }, []);
 
   return (
@@ -55,13 +54,11 @@ const CardCarousel = (props) => {
   );
 };
 
-const CardCarouselPreview = (props) => {
-  return (
+const CardCarouselPreview = (props) => (
     <div className='card-carousel__preview'>
       <img className='card-carousel__img' src={props.src} alt={props.alt || 'preview'}/>
     </div>
-  );
-};
+);
 
 export { CardCarouselPreview };
 export default CardCarousel;

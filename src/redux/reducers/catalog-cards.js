@@ -3,7 +3,7 @@ import {
   SORT_CARDS_BY_MATERIAL,
   SORT_CARDS_BY_MECHANISM,
   SORT_CARDS_BY_PRICE,
-  SORT_CARDS_BY_VENDOR
+  SORT_CARDS_BY_VENDOR,
 } from '#act/catalog-cards';
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '2',
@@ -32,7 +32,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '3',
@@ -45,7 +45,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '4',
@@ -58,7 +58,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '5',
@@ -71,7 +71,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '6',
@@ -84,7 +84,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '7',
@@ -97,7 +97,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '8',
@@ -110,7 +110,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '9',
@@ -123,7 +123,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '10',
@@ -136,7 +136,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '11',
@@ -149,7 +149,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '12',
@@ -162,7 +162,7 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
     {
       id: '13',
@@ -175,12 +175,12 @@ const initialState = {
       mechanismChecked: true,
       vendorChecked: true,
       materialChecked: true,
-      colorChecked: true
+      colorChecked: true,
     },
   ],
   price: {
     min: 10000,
-    max: 100000
+    max: 100000,
   },
   checkboxes: {
     techne: true,
@@ -196,20 +196,19 @@ const initialState = {
     black: true,
     brown: true,
     green: true,
-    red: true
-  }
+    red: true,
+  },
 };
 
 const catalogCardsReducer = (state = initialState, action) => {
   const data = action.payload;
-  let checkboxes = { ...state.checkboxes };
+  const checkboxes = { ...state.checkboxes };
   let key = '';
 
   switch (action.type) {
-
     case SORT_CARDS_BY_VENDOR:
 
-      let watchesByVendor = state.cards.map((card) => {
+      const watchesByVendor = state.cards.map((card) => {
         if (card.vendor === data.id) {
           card.vendorChecked = data.checked;
         }
@@ -222,12 +221,12 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByVendor
+        cards: watchesByVendor,
       };
 
     case SORT_CARDS_BY_MECHANISM:
 
-      let watchesByMechanism = state.cards.map((card) => {
+      const watchesByMechanism = state.cards.map((card) => {
         if (card.mechanism === data.id) {
           card.mechanismChecked = data.checked;
         }
@@ -240,12 +239,12 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByMechanism
+        cards: watchesByMechanism,
       };
 
     case SORT_CARDS_BY_MATERIAL:
 
-      let watchesByMaterial = state.cards.map((card) => {
+      const watchesByMaterial = state.cards.map((card) => {
         if (card.material === data.id) {
           card.materialChecked = data.checked;
         }
@@ -258,11 +257,11 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByMaterial
+        cards: watchesByMaterial,
       };
 
     case SORT_CARDS_BY_COLOR:
-      let watchesByColor = state.cards.map((card) => {
+      const watchesByColor = state.cards.map((card) => {
         if (card.color === data.id) {
           card.colorChecked = data.checked;
         }
@@ -275,7 +274,7 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByColor
+        cards: watchesByColor,
       };
 
     case SORT_CARDS_BY_PRICE:
@@ -285,12 +284,12 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        price: { min, max }
+        price: { min, max },
       };
 
     default:
       return state;
   }
-}
+};
 
 export default catalogCardsReducer;

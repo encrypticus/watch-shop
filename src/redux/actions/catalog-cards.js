@@ -4,27 +4,27 @@ export const SORT_CARDS_BY_MATERIAL = 'SORT_CARDS_BY_MATERIAL';
 export const SORT_CARDS_BY_COLOR = 'SORT_CARDS_BY_COLOR';
 export const SORT_CARDS_BY_PRICE = 'SORT_CARDS_BY_PRICE';
 
-export const sortByVendor = data => ({
+export const sortByVendor = (data) => ({
   type: SORT_CARDS_BY_VENDOR,
-  payload: data
+  payload: data,
 });
 
-export const sortByMechanism = data => ({
+export const sortByMechanism = (data) => ({
   type: SORT_CARDS_BY_MECHANISM,
-  payload: data
+  payload: data,
 });
 
-export const sortByMaterial = data => ({
+export const sortByMaterial = (data) => ({
   type: SORT_CARDS_BY_MATERIAL,
-  payload: data
+  payload: data,
 });
 
-export const sortByColor = data => ({
+export const sortByColor = (data) => ({
   type: SORT_CARDS_BY_COLOR,
-  payload: data
+  payload: data,
 });
 
-export const sortByPrice = data => ({
+export const sortByPrice = (data) => ({
   type: SORT_CARDS_BY_PRICE,
-    payload: data
+  payload: data,
 });

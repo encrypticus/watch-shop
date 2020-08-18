@@ -2,8 +2,7 @@ import React from 'react';
 import './subscribe.scss';
 import Button from '#comps/button';
 
-const Subscribe = (props) => {
-  return (
+const Subscribe = (props) => (
     <div className='subscribe-wrapper'>
       <section className='subscribe row direction-tablet-landscape-column'>
         <div className='subscribe__text col'>
@@ -21,7 +20,6 @@ const Subscribe = (props) => {
         </form>
       </section>
     </div>
-  );
-};
+);
 
 export default Subscribe;

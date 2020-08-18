@@ -5,8 +5,8 @@ import './cards.scss';
 import { useSelector } from 'react-redux';
 
 const Cards = () => {
-  const cards = useSelector(state => state.catalogCardsReducer.cards);
-  const minmax = useSelector(state => state.catalogCardsReducer.price);
+  const cards = useSelector((state) => state.catalogCardsReducer.cards);
+  const minmax = useSelector((state) => state.catalogCardsReducer.price);
   const { min, max } = minmax;
 
   let cardsList = cards.map((card) => {
@@ -18,7 +18,7 @@ const Cards = () => {
     }
   });
 
-  cardsList = cardsList.filter(card => card !== undefined);
+  cardsList = cardsList.filter((card) => card !== undefined);
 
   cardsList = cardsList.map((card) => {
     const {
@@ -29,7 +29,7 @@ const Cards = () => {
       mechanismChecked,
       vendorChecked,
       materialChecked,
-      colorChecked
+      colorChecked,
     } = card;
     const isFiltered = () => vendorChecked && mechanismChecked && materialChecked && colorChecked;
 
@@ -49,7 +49,7 @@ const Cards = () => {
     <div className='cards'>
       {cardsList}
     </div>
-  )
-}
+  );
+};
 
 export default Cards;

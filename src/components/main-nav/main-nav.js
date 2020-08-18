@@ -4,7 +4,7 @@ import { Nav, Wrapper } from './styles';
 import Hamburger from '#comps/hamburger';
 
 const MainNav = () => {
-  const isOpen = useSelector(state => state.mainNavReducer.isOpen);
+  const isOpen = useSelector((state) => state.mainNavReducer.isOpen);
 
   return (
     <Nav opened={isOpen}>

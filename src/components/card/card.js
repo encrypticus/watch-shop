@@ -1,8 +1,7 @@
 import React from 'react';
 import './card.scss';
 
-const Card = (props) => {
-  return (
+const Card = (props) => (
     <div className='card'>
       <div className='card__header'>
         <h4 className='card__vendor'>{props.vendor}</h4>
@@ -28,7 +27,6 @@ const Card = (props) => {
         <img className='card__image' src={props.src} alt={props.vendor}/>
       </div>
     </div>
-  );
-};
+);
 
 export default Card;

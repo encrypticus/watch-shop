@@ -1,11 +1,10 @@
 import React from 'react';
 import './large-preview-card.scss';
-import cardLarge from '../img/large.png';
 import { Link } from 'react-router-dom';
+import cardLarge from '../img/large.png';
 import DecorLine from '#comps/decor-line';
 
-const LargePreviewCard = (props) => {
-  return (
+const LargePreviewCard = (props) => (
     <div className='large-preview-card'>
       <div className='large-preview-card__left-block'>
         <div className='large-preview-card__info'>
@@ -27,7 +26,6 @@ const LargePreviewCard = (props) => {
       </div>
 
     </div>
-  );
-};
+);
 
 export default LargePreviewCard;

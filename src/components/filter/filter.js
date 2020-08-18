@@ -1,14 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import './filter.scss';
 
-const Filter = (props) => {
-
-  return (
+const Filter = (props) => (
     <div className='filter'>
       {props.children}
     </div>
-  );
-};
+);
 
 const FilterItem = (props) => {
   const btnRef = useRef(null);
@@ -45,7 +42,7 @@ const FilterItem = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export { FilterItem };
 export default Filter;

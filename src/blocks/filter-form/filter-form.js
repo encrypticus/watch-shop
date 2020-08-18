@@ -1,15 +1,17 @@
 import React from 'react';
 import './filter-form.scss';
-import Filter from '#comps/filter';
-import { FilterItem } from '#comps/filter';
+import { useDispatch, useSelector } from 'react-redux';
+import Filter, { FilterItem } from '#comps/filter';
+
 import Slider from '#comps/slider';
 import Checkbox from '#comps/checkbox';
-import { sortByColor, sortByMaterial, sortByMechanism, sortByVendor, sortByPrice } from '#act/catalog-cards';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  sortByColor, sortByMaterial, sortByMechanism, sortByVendor, sortByPrice,
+} from '#act/catalog-cards';
 
 const FilterForm = (props) => {
   const dispatch = useDispatch();
-  const checkboxes = useSelector(state => state.catalogCardsReducer.checkboxes);
+  const checkboxes = useSelector((state) => state.catalogCardsReducer.checkboxes);
 
   const {
     techne,
@@ -25,12 +27,10 @@ const FilterForm = (props) => {
     black,
     brown,
     green,
-    red
+    red,
   } = checkboxes;
 
-  const getIds = (key) => {
-    return useSelector(state => state.catalogCardsReducer.cards.map(card => card[key]));
-  };
+  const getIds = (key) => useSelector((state) => state.catalogCardsReducer.cards.map((card) => card[key]));
 
   const vendorIds = getIds('vendor');
   const colorIds = getIds('color');
@@ -44,7 +44,7 @@ const FilterForm = (props) => {
       { ids: vendorIds, actionCreator: sortByVendor },
       { ids: colorIds, actionCreator: sortByColor },
       { ids: mechanismIds, actionCreator: sortByMechanism },
-      { ids: materialIds, actionCreator: sortByMaterial }
+      { ids: materialIds, actionCreator: sortByMaterial },
     ];
 
     actions.forEach((action) => {
