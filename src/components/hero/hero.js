@@ -6,7 +6,7 @@ import Button from '#comps/button';
 import Banner from '#comps/banner';
 import DecorLine from '#comps/decor-line';
 
-const Hero = (props) => (
+const Hero = () => (
     <section className='hero'>
       <Socials vertical/>
 

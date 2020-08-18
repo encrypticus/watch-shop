@@ -6,7 +6,7 @@ import CardCarousel, { CardCarouselPreview } from '#comps/card-carousel';
 import Button from '#comps/button';
 import LikeButton from '#comps/like-button';
 
-const CardPage = (props) => {
+const CardPage = () => {
   const previewBlock = (
     <>
       <CardCarouselPreview src='./img/kulte-preview-1.png'/>

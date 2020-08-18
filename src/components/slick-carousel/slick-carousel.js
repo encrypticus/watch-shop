@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import './slick-carousel.scss';
 import $ from 'jquery';
 import 'slick-carousel/slick/slick';
@@ -67,6 +68,10 @@ const SlickCarousel = (props) => {
     </div>
 
   );
+};
+
+SlickCarousel.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default SlickCarousel;

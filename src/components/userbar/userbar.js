@@ -5,20 +5,20 @@ import SearchIcon from './search-icon';
 import HeartIcon from './heart-icon';
 import CartIcon from './cart-icon';
 
-const Userbar = (props) => (
-    <Div>
-      <UserbarLink href='/'>
-        <SearchIcon/>
-      </UserbarLink>
+const Userbar = () => (
+  <Div>
+    <UserbarLink href='/'>
+      <SearchIcon/>
+    </UserbarLink>
 
-      <UserbarLink href='/'>
-        <HeartIcon/>
-      </UserbarLink>
+    <UserbarLink href='/'>
+      <HeartIcon/>
+    </UserbarLink>
 
-      <UserbarLink href='/'>
-        <CartIcon/>
-      </UserbarLink>
-    </Div>
+    <UserbarLink href='/'>
+      <CartIcon/>
+    </UserbarLink>
+  </Div>
 );
 
 export default Userbar;

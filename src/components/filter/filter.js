@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './filter.scss';
 
 const Filter = (props) => (
-    <div className='filter'>
-      {props.children}
-    </div>
+  <div className='filter'>
+    {props.children}
+  </div>
 );
 
 const FilterItem = (props) => {
@@ -13,7 +14,7 @@ const FilterItem = (props) => {
   useEffect(() => {
     const btn = btnRef.current;
 
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function btnHandler() {
       const itemWrapper = this.nextElementSibling;
       const span = this.querySelector('.filter__item-icon');
       span.classList.toggle('filter__item-icon_expanded');
@@ -42,6 +43,15 @@ const FilterItem = (props) => {
       </div>
     </div>
   );
+};
+
+Filter.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+FilterItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export { FilterItem };

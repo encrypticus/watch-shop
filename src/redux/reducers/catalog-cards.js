@@ -206,13 +206,15 @@ const catalogCardsReducer = (state = initialState, action) => {
   let key = '';
 
   switch (action.type) {
-    case SORT_CARDS_BY_VENDOR:
-
+    case SORT_CARDS_BY_VENDOR: {
       const watchesByVendor = state.cards.map((card) => {
+        const clonedCard = { ...card };
+
         if (card.vendor === data.id) {
-          card.vendorChecked = data.checked;
+          clonedCard.vendorChecked = data.checked;
         }
-        return card;
+
+        return clonedCard;
       });
 
       key = data.id.toLowerCase();
@@ -223,14 +225,17 @@ const catalogCardsReducer = (state = initialState, action) => {
         checkboxes,
         cards: watchesByVendor,
       };
+    }
 
-    case SORT_CARDS_BY_MECHANISM:
-
+    case SORT_CARDS_BY_MECHANISM: {
       const watchesByMechanism = state.cards.map((card) => {
+        const clonedCard = { ...card };
+
         if (card.mechanism === data.id) {
-          card.mechanismChecked = data.checked;
+          clonedCard.mechanismChecked = data.checked;
         }
-        return card;
+
+        return clonedCard;
       });
 
       key = data.id.toLowerCase();
@@ -241,14 +246,17 @@ const catalogCardsReducer = (state = initialState, action) => {
         checkboxes,
         cards: watchesByMechanism,
       };
+    }
 
-    case SORT_CARDS_BY_MATERIAL:
-
+    case SORT_CARDS_BY_MATERIAL: {
       const watchesByMaterial = state.cards.map((card) => {
+        const clonedCard = { ...card };
+
         if (card.material === data.id) {
-          card.materialChecked = data.checked;
+          clonedCard.materialChecked = data.checked;
         }
-        return card;
+
+        return clonedCard;
       });
 
       key = data.id.toLowerCase();
@@ -259,13 +267,17 @@ const catalogCardsReducer = (state = initialState, action) => {
         checkboxes,
         cards: watchesByMaterial,
       };
+    }
 
-    case SORT_CARDS_BY_COLOR:
+    case SORT_CARDS_BY_COLOR: {
       const watchesByColor = state.cards.map((card) => {
+        const clonedCard = { ...card };
+
         if (card.color === data.id) {
-          card.colorChecked = data.checked;
+          clonedCard.colorChecked = data.checked;
         }
-        return card;
+
+        return clonedCard;
       });
 
       key = data.id.toLowerCase();
@@ -276,9 +288,9 @@ const catalogCardsReducer = (state = initialState, action) => {
         checkboxes,
         cards: watchesByColor,
       };
+    }
 
-    case SORT_CARDS_BY_PRICE:
-
+    case SORT_CARDS_BY_PRICE: {
       const { min, max } = data;
 
       return {
@@ -286,6 +298,7 @@ const catalogCardsReducer = (state = initialState, action) => {
         checkboxes,
         price: { min, max },
       };
+    }
 
     default:
       return state;

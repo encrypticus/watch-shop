@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   extends: ['airbnb-base', 'plugin:react/recommended'],
   parserOptions: {
@@ -13,6 +15,26 @@ module.exports = {
   settings: {
     react: {
       version: 'detect'
+    },
+    'import/resolver': {
+      'alias': {
+        map: [
+          ['#comps', path.resolve(__dirname, '../../src/components')],
+          ['#conts', path.resolve(__dirname, '../../src/containers')],
+          ['#act', path.resolve(__dirname, '../../src/redux/actions')],
+          ['#red', path.resolve(__dirname, '../../src/redux/reducers')],
+          ['#store', path.resolve(__dirname, '../../src/redux/store.js')],
+          ['#pages', path.resolve(__dirname, '../../src/pages')]
+        ]
+      }
     }
+  },
+
+  rules: {
+    radix: 'off',
+    'max-len': 'off',
+    'import/extensions': 'off',
+    'no-unused-expressions': ['warn', { allowShortCircuit: true, allowTernary: true }],
+    'no-shadow': 'off'
   }
 };

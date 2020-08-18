@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import cardLarge from '../img/large.png';
 import DecorLine from '#comps/decor-line';
 
-const LargePreviewCard = (props) => (
+const LargePreviewCard = () => (
     <div className='large-preview-card'>
       <div className='large-preview-card__left-block'>
         <div className='large-preview-card__info'>

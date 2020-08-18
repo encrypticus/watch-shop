@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Logo from '#comps/logo';
 import Userbar from '#comps/userbar';
 import Hamburger from '#comps/hamburger';
@@ -39,6 +40,11 @@ const Header = (props) => {
 
     </div>
   );
+};
+
+Header.propTypes = {
+  menuHidden: PropTypes.bool,
+  navHidden: PropTypes.bool,
 };
 
 export default Header;

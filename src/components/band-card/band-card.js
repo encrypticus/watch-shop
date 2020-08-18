@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './band-card.scss';
 
 const BandCard = (props) => (
@@ -28,5 +29,11 @@ const BandCard = (props) => (
       </div>
     </div>
 );
+
+BandCard.propTypes = {
+  vendor: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+};
 
 export default BandCard;

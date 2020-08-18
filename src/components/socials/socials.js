@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './socials.scss';
 import fb from './img/facebook_icon.svg';
 import inst from './img/instagram_icon.svg';
@@ -24,6 +25,11 @@ const Socials = ({ vertical, horizontal }) => {
       </a>
     </div>
   );
+};
+
+Socials.propTypes = {
+  vertical: PropTypes.bool,
+  horizontal: PropTypes.bool,
 };
 
 export default Socials;

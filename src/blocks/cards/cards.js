@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import Card from '#comps/card';
-import Discount from '#comps/discount';
-import './cards.scss';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import Card from '#comps/card';
+import './cards.scss';
 
 const Cards = () => {
   const cards = useSelector((state) => state.catalogCardsReducer.cards);
@@ -16,9 +15,11 @@ const Cards = () => {
     if (currentPrice >= min && currentPrice <= max) {
       return card;
     }
+
+    return false;
   });
 
-  cardsList = cardsList.filter((card) => card !== undefined);
+  cardsList = cardsList.filter((card) => card);
 
   cardsList = cardsList.map((card) => {
     const {
@@ -31,6 +32,7 @@ const Cards = () => {
       materialChecked,
       colorChecked,
     } = card;
+
     const isFiltered = () => vendorChecked && mechanismChecked && materialChecked && colorChecked;
 
     if (isFiltered()) {
@@ -43,6 +45,8 @@ const Cards = () => {
         />
       );
     }
+
+    return '';
   });
 
   return (

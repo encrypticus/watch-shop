@@ -2,7 +2,7 @@ import React from 'react';
 import './breadcrumbs.scss';
 import { NavLink } from 'react-router-dom';
 
-const Breadcrumbs = (props) => (
+const Breadcrumbs = () => (
     <div className='breadcrumbs'>
       <NavLink className='breadcrumbs__link' activeClassName='breadcrumbs__link_active' to='/' exact={true}>
         Главная

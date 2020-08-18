@@ -1,3 +1,3 @@
-import BandCarousel from './band-carousel.js';
+import BandCarousel from './band-carousel';
 
 export default BandCarousel;

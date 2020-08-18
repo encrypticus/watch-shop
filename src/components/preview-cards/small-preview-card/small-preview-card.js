@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './small-preview-card.scss';
 import { Link } from 'react-router-dom';
 import DecorLine from '#comps/decor-line';
@@ -30,6 +31,13 @@ const SmallPreviewCard = (props) => (
 
     </div>
 );
+
+SmallPreviewCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
 
 export { smallCard, smallCard2 };
 

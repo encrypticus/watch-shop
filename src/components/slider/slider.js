@@ -6,7 +6,7 @@ import wNumb from 'wnumb';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortByPrice } from '#act/catalog-cards';
 
-const Slider = (props) => {
+const Slider = () => {
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
   const minmax = useSelector((state) => state.catalogCardsReducer.price);

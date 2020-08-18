@@ -1,3 +1,3 @@
-import BandCard from './band-card.js';
+import BandCard from './band-card';
 
 export default BandCard;

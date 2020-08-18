@@ -10,7 +10,7 @@ import Heading from '#comps/heading';
 import Breadcrumbs from '#comps/breadcrumbs';
 import Sorting from '#comps/sorting';
 
-const CatalogPage = (props) => (
+const CatalogPage = () => (
     <>
       <div className='container'>
         <div className='container__catalog'>

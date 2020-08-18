@@ -1,8 +1,8 @@
 import React from 'react';
 import './header-nav.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const HeaderNav = (props) => (
+const HeaderNav = () => (
     <ul className='header-nav'>
       <li className='header-nav__item'>
         <NavLink to='/catalog' className='header-nav__link' activeClassName='header-nav__link_active'>Каталог</NavLink>

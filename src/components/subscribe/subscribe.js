@@ -1,8 +1,7 @@
 import React from 'react';
 import './subscribe.scss';
-import Button from '#comps/button';
 
-const Subscribe = (props) => (
+const Subscribe = () => (
     <div className='subscribe-wrapper'>
       <section className='subscribe row direction-tablet-landscape-column'>
         <div className='subscribe__text col'>

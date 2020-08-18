@@ -2,7 +2,7 @@ import React from 'react';
 import './footer.scss';
 import Logo from '#comps/logo';
 
-const Footer = (props) => (
+const Footer = () => (
     <footer className='page-footer'>
       <ul className='page-footer__inner'>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './card.scss';
 
 const Card = (props) => (
@@ -28,5 +29,11 @@ const Card = (props) => (
       </div>
     </div>
 );
+
+Card.propTypes = {
+  vendor: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+};
 
 export default Card;

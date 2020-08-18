@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import cardMedium from '../img/medium.png';
 import DecorLine from '#comps/decor-line';
 
-const MediumPreviewCard = (props) => (
+const MediumPreviewCard = () => (
     <div className='medium-preview-card'>
       <div className='medium-preview-card__info'>
         <h4 className='medium-preview-card__title'>Rado</h4>

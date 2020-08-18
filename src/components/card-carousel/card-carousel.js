@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './card-carousel.scss';
 import $ from 'jquery';
 import 'slick-carousel/slick/slick';
@@ -59,6 +60,16 @@ const CardCarouselPreview = (props) => (
       <img className='card-carousel__img' src={props.src} alt={props.alt || 'preview'}/>
     </div>
 );
+
+CardCarousel.propTypes = {
+  renderFullImg: PropTypes.func.isRequired,
+  renderPreview: PropTypes.func.isRequired,
+};
+
+CardCarouselPreview.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
 
 export { CardCarouselPreview };
 export default CardCarousel;

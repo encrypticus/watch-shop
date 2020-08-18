@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import './hamburger.scss';
-import { StyledSpan } from './styles';
+import StyledSpan from './styles';
 import { isMenuOpen } from '#act/main-nav';
 
 const Hamburger = (props) => {
@@ -36,6 +37,10 @@ const Hamburger = (props) => {
       </span>
     </button>
   );
+};
+
+Hamburger.propTypes = {
+  color: PropTypes.string,
 };
 
 export default Hamburger;

@@ -2,14 +2,13 @@ import React from 'react';
 import './filter-form.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Filter, { FilterItem } from '#comps/filter';
-
 import Slider from '#comps/slider';
 import Checkbox from '#comps/checkbox';
 import {
   sortByColor, sortByMaterial, sortByMechanism, sortByVendor, sortByPrice,
 } from '#act/catalog-cards';
 
-const FilterForm = (props) => {
+const FilterForm = () => {
   const dispatch = useDispatch();
   const checkboxes = useSelector((state) => state.catalogCardsReducer.checkboxes);
 

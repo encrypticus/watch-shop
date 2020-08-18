@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './band-carousel.scss';
 import $ from 'jquery';
 import 'slick-carousel/slick/slick';
@@ -33,16 +34,6 @@ const BandCarousel = (props) => {
             slidesToScroll: 1,
           },
         },
-        // {
-        //   breakpoint: 480,
-        //   settings: {
-        //     slidesToShow: 1,
-        //     slidesToScroll: 1
-        //   }
-        // }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
       ],
     });
   }, []);
@@ -73,6 +64,10 @@ const BandCarousel = (props) => {
       </button>
     </div>
   );
+};
+
+BandCarousel.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default BandCarousel;

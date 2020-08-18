@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Hero from '#comps/hero';
 import Heading from '#comps/heading';
 import './main-page.scss';
-import { Link } from 'react-router-dom';
 import MediumPreviewCard from '#comps/preview-cards/medium-preview-card';
 import LargePreviewCard from '#comps/preview-cards/large-preview-card';
 import SmallPreviewCard from '#comps/preview-cards/small-preview-card';
@@ -16,7 +16,7 @@ import photo3 from './img/photo_3.jpg';
 import Socials from '#comps/socials';
 import Header from '#comps/header';
 
-const MainPage = (props) => (
+const MainPage = () => (
     <>
       <div className='container'>
         <Header navHidden/>

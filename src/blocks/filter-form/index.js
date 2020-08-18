@@ -1,3 +1,3 @@
-import FilterForm from './filter-form.js';
+import FilterForm from './filter-form';
 
 export default FilterForm;

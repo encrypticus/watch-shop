@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './checkbox.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import './checkbox.scss';
 
 const Checkbox = (props) => {
   const dispatch = useDispatch();
@@ -37,6 +37,8 @@ const Checkbox = (props) => {
 Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   actionCreator: PropTypes.func.isRequired,
+  checked: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Checkbox;
