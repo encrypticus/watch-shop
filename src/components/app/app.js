@@ -1,20 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Header from '#comps/header';
 import IndexPage from '#pages/index';
 import CardPage from '#pages/card';
 import CatalogPage from '#pages/catalog';
 import MainNav from '#comps/main-nav';
-import { Provider } from 'react-redux';
 import store from '#store';
 import Socials from '#comps/socials';
 import Hero from '#comps/hero';
 import Footer from '#comps/footer';
 
-
-const App = () => {
-
-  return (
+const App = () => (
     <Provider store={store}>
       <Router>
         <MainNav/>
@@ -29,7 +26,6 @@ const App = () => {
         <Footer/>
       </Router>
     </Provider>
-  );
-};
+);
 
 export default App;

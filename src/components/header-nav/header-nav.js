@@ -2,8 +2,7 @@ import React from 'react';
 import './header-nav.scss';
 import { Link, NavLink } from 'react-router-dom';
 
-const HeaderNav = (props) => {
-  return (
+const HeaderNav = (props) => (
     <ul className='header-nav'>
       <li className='header-nav__item'>
         <NavLink to='/catalog' className='header-nav__link' activeClassName='header-nav__link_active'>Каталог</NavLink>
@@ -18,7 +17,6 @@ const HeaderNav = (props) => {
         <NavLink exact to='/' className='header-nav__link' activeClassName='header-nav__link_active'>Контакты</NavLink>
       </li>
     </ul>
-  );
-};
+);
 
 export default HeaderNav;

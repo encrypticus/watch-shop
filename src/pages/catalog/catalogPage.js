@@ -10,9 +10,7 @@ import Heading from '#comps/heading';
 import Breadcrumbs from '#comps/breadcrumbs';
 import Sorting from '#comps/sorting';
 
-const CatalogPage = (props) => {
-
-  return (
+const CatalogPage = (props) => (
     <>
       <div className='container'>
         <div className='container__catalog'>
@@ -57,7 +55,6 @@ const CatalogPage = (props) => {
         <BandCard vendor='Spark' price='5 400 ₽' src='./img/band3.png'/>
       </BandCarousel>
     </>
-  );
-};
+);
 
 export default CatalogPage;

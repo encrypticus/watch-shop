@@ -2,18 +2,17 @@ import React from 'react';
 import './heading.scss';
 
 const Heading = (props) => {
-
-  let h1 = <h1 className={`heading ${props.centered ? 'heading_centered' : ''}`}>
+  const h1 = <h1 className={`heading ${props.centered ? 'heading_centered' : ''}`}>
     {props.children}
-  </h1>
+  </h1>;
 
-  let h2 = <h2 className={`heading ${props.centered ? 'heading_centered' : ''}`}>
+  const h2 = <h2 className={`heading ${props.centered ? 'heading_centered' : ''}`}>
     {props.children}
-  </h2>
+  </h2>;
 
-  let h3 = <h3 className={`heading ${props.centered ? 'heading_centered' : ''}`}>
+  const h3 = <h3 className={`heading ${props.centered ? 'heading_centered' : ''}`}>
     {props.children}
-  </h3>
+  </h3>;
 
   switch (props.level) {
     case 'h1':

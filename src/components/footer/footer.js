@@ -2,14 +2,13 @@ import React from 'react';
 import './footer.scss';
 import Logo from '#comps/logo';
 
-const Footer = (props) => {
-  return (
+const Footer = (props) => (
     <footer className='page-footer'>
       <ul className='page-footer__inner'>
 
         <li>
           <ul>
-            <li style={{marginBottom: '23px'}}><Logo to='/' light/></li>
+            <li style={{ marginBottom: '23px' }}><Logo to='/' light/></li>
             <li><a className='page-footer__link' href='tel:+8-499-450-47-97'>8 (499) 450-47-97</a></li>
             <li><a className='page-footer__link' href='mailto:info@conquest.watch.ru'>info@conquest.watch.ru</a> </li>
           </ul>
@@ -47,7 +46,6 @@ const Footer = (props) => {
 
       </ul>
     </footer>
-  );
-};
+);
 
 export default Footer;

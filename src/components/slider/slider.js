@@ -9,7 +9,7 @@ import { sortByPrice } from '#act/catalog-cards';
 const Slider = (props) => {
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
-  const minmax = useSelector(state => state.catalogCardsReducer.price);
+  const minmax = useSelector((state) => state.catalogCardsReducer.price);
   const { min, max } = minmax;
 
   useEffect(() => {
@@ -20,17 +20,17 @@ const Slider = (props) => {
       connect: true,
       tooltips: [true, true],
       range: {
-        'min': 10000,
-        'max': 100000
+        min: 10000,
+        max: 100000,
       },
       format: wNumb({
         thousand: ' ',
         suffix: ' ₽',
-        decimals: 0
-      })
+        decimals: 0,
+      }),
     });
 
-    slider.noUiSlider.on('change', function (values) {
+    slider.noUiSlider.on('change', (values) => {
       const min = parseInt(values[0].replace(/[\D]+/g, ''));
       const max = parseInt(values[1].replace(/[\D]+/g, ''));
 

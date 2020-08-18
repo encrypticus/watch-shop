@@ -7,7 +7,6 @@ import Button from '#comps/button';
 import LikeButton from '#comps/like-button';
 
 const CardPage = (props) => {
-
   const previewBlock = (
     <>
       <CardCarouselPreview src='./img/kulte-preview-1.png'/>
@@ -24,7 +23,7 @@ const CardPage = (props) => {
       <CardCarouselPreview src='./img/watch-full-3.png'/>
       <CardCarouselPreview src='./img/watch-full-4.png'/>
     </>
-  )
+  );
 
   return (
     <>
@@ -37,12 +36,8 @@ const CardPage = (props) => {
           <section className='card-block'>
             <div className='card-block__carousel'>
               <CardCarousel
-                renderPreview={() => {
-                  return previewBlock;
-                }}
-                renderFullImg={() => {
-                  return fullImgBlock;
-                }}
+                renderPreview={() => previewBlock}
+                renderFullImg={() => fullImgBlock}
               >
               </CardCarousel>
             </div>

@@ -5,8 +5,7 @@ import DecorLine from '#comps/decor-line';
 import smallCard from '../img/small1.png';
 import smallCard2 from '../img/small2.png';
 
-const SmallPreviewCard = (props) => {
-  return (
+const SmallPreviewCard = (props) => (
     <div className='small-preview-card'>
 
       <div className='small-preview-card__left-block'>
@@ -30,8 +29,7 @@ const SmallPreviewCard = (props) => {
       <img className='small-preview-card__img' src={props.src} alt={props.alt}/>
 
     </div>
-  );
-};
+);
 
 export { smallCard, smallCard2 };
 

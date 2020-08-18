@@ -45,7 +45,7 @@ module.exports = (options = defaultOptions) => {
           exclude: options.exclude,
           use: [
             babelLoader(options.babelLoader),
-            // eslintLoader(options.eslintLoader)
+            eslintLoader(options.eslintLoader)
           ]
         }
       ]

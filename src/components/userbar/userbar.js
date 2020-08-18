@@ -1,13 +1,11 @@
 import React from 'react';
-import { Div }  from './styles';
-import { UserbarLink } from './styles';
+import { Div, UserbarLink } from './styles';
+
 import SearchIcon from './search-icon';
 import HeartIcon from './heart-icon';
 import CartIcon from './cart-icon';
 
-const Userbar = (props) => {
-
-  return (
+const Userbar = (props) => (
     <Div>
       <UserbarLink href='/'>
         <SearchIcon/>
@@ -21,7 +19,6 @@ const Userbar = (props) => {
         <CartIcon/>
       </UserbarLink>
     </Div>
-  );
-};
+);
 
 export default Userbar;

@@ -1,5 +1,4 @@
-import Filter from './filter.js';
-import { FilterItem } from './filter';
+import Filter, { FilterItem } from './filter.js';
 
 export { FilterItem };
 export default Filter;

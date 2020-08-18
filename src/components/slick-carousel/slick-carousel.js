@@ -17,7 +17,7 @@ const SlickCarousel = (props) => {
     $(elt).slick({
       prevArrow: btnLeft,
       nextArrow: btnRight,
-      infinite: false
+      infinite: false,
     });
   }, []);
 
@@ -27,7 +27,7 @@ const SlickCarousel = (props) => {
       return;
     }
     setCount(count + 1);
-  }
+  };
 
   const decrementCount = () => {
     if (count <= 1) {
@@ -35,7 +35,7 @@ const SlickCarousel = (props) => {
       return;
     }
     setCount(count - 1);
-  }
+  };
 
   return (
     <div className='slick-carousel-wrapper'>

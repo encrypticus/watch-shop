@@ -16,9 +16,7 @@ import photo3 from './img/photo_3.jpg';
 import Socials from '#comps/socials';
 import Header from '#comps/header';
 
-const MainPage = (props) => {
-
-  return (
+const MainPage = (props) => (
     <>
       <div className='container'>
         <Header navHidden/>
@@ -127,7 +125,6 @@ const MainPage = (props) => {
 
       </main>
     </>
-  );
-};
+);
 
 export default MainPage;

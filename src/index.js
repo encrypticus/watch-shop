@@ -5,5 +5,5 @@ import App from '#comps/app';
 
 ReactDom.render(
   <App/>,
-  document.querySelector('.root')
+  document.querySelector('.root'),
 );

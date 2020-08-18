@@ -1,8 +1,7 @@
 import React from 'react';
 import './band-card.scss';
 
-const BandCard = (props) => {
-  return (
+const BandCard = (props) => (
     <div className='band-card'>
       <div className='band-card__header'>
         <h4 className='band-card__vendor'>{props.vendor}</h4>
@@ -28,7 +27,6 @@ const BandCard = (props) => {
         <img className='band-card__image' src={props.src} alt={props.vendor}/>
       </div>
     </div>
-  );
-};
+);
 
 export default BandCard;

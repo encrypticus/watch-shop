@@ -6,8 +6,7 @@ import Button from '#comps/button';
 import Banner from '#comps/banner';
 import DecorLine from '#comps/decor-line';
 
-const Hero = (props) => {
-  return (
+const Hero = (props) => (
     <section className='hero'>
       <Socials vertical/>
 
@@ -41,7 +40,6 @@ const Hero = (props) => {
       <Banner/>
 
     </section>
-  );
-};
+);
 
 export default Hero;
