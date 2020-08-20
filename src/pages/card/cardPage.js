@@ -1,27 +1,33 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './card-page.scss';
 import Header from '#comps/header';
 import Breadcrumbs from '#comps/breadcrumbs';
 import CardCarousel, { CardCarouselPreview } from '#comps/card-carousel';
-import Button from '#comps/button';
 import LikeButton from '#comps/like-button';
 
 const CardPage = () => {
+  const { id } = useParams();
+  const watches = useSelector((state) => state.catalogCardsReducer.cards);
+  const card = watches.find((watch) => watch.id === id);
+  const { vendor, price } = card;
+
   const previewBlock = (
     <>
-      <CardCarouselPreview src='./img/kulte-preview-1.png'/>
-      <CardCarouselPreview src='./img/kulte-preview-2.png'/>
-      <CardCarouselPreview src='./img/kulte-preview-3.png'/>
-      <CardCarouselPreview src='./img/kulte-preview-4.png'/>
+      <CardCarouselPreview src='/img/kulte-preview-1.png'/>
+      <CardCarouselPreview src='/img/kulte-preview-2.png'/>
+      <CardCarouselPreview src='/img/kulte-preview-3.png'/>
+      <CardCarouselPreview src='/img/kulte-preview-4.png'/>
     </>
   );
 
   const fullImgBlock = (
     <>
-      <CardCarouselPreview src='./img/watch-full-1.png'/>
-      <CardCarouselPreview src='./img/watch-full-2.png'/>
-      <CardCarouselPreview src='./img/watch-full-3.png'/>
-      <CardCarouselPreview src='./img/watch-full-4.png'/>
+      <CardCarouselPreview src='/img/watch-full-1.png'/>
+      <CardCarouselPreview src='/img/watch-full-2.png'/>
+      <CardCarouselPreview src='/img/watch-full-3.png'/>
+      <CardCarouselPreview src='/img/watch-full-4.png'/>
     </>
   );
 
@@ -45,13 +51,13 @@ const CardPage = () => {
             <div className='card-block__info'>
               <div className='card-block__head'>
                 <h3 className='card-block__vendor'>
-                  Kulte, 26mm
+                  {vendor}, 26mm
                 </h3>
                 <LikeButton/>
               </div>
 
               <p className='card-block__price'>
-                12 700 ₽
+                {price} ₽
               </p>
               <h4 className='card-block__description'>
                 Описание
@@ -67,9 +73,9 @@ const CardPage = () => {
                 necessitatibus quisquam reprehenderit voluptatum?
               </p>
               <p className='card-block__button'>
-                <Button>
+                <button className='button' type='button'>
                   В корзину
-                </Button>
+                </button>
               </p>
             </div>
           </section>

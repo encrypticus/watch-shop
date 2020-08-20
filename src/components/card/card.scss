@@ -1,8 +1,6 @@
 @import '../../sass/utils';
 
 .card {
-  width: pxToRem(252);
-  padding: pxToRem(20);
   font-family: Roboto, Arial, sans-serif;
 
   &__header {
@@ -51,5 +49,17 @@
     background-color: transparent;
     border: 0;
     cursor: pointer;
+  }
+
+  &__link {
+    display: block;
+    width: pxToRem(252);
+    padding: pxToRem(20);
+    text-decoration: none;
+    transition: box-shadow .3s;
+
+    &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    }
   }
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './card.scss';
 
 const Card = (props) => (
-    <div className='card'>
+  <div className='card'>
+    <Link to={`/card/${props.id}`} className='card__link'>
       <div className='card__header'>
         <h4 className='card__vendor'>{props.vendor}</h4>
         <div className='card__buttons'>
@@ -27,13 +29,15 @@ const Card = (props) => (
       <div className='card__body'>
         <img className='card__image' src={props.src} alt={props.vendor}/>
       </div>
-    </div>
+    </Link>
+  </div>
 );
 
 Card.propTypes = {
   vendor: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Card;

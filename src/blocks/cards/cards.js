@@ -39,6 +39,7 @@ const Cards = () => {
       return (
         <Card
           key={id}
+          id={id}
           vendor={vendor}
           price={`${price} ₽`}
           src={src}

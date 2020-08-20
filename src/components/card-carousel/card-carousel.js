@@ -68,7 +68,7 @@ CardCarousel.propTypes = {
 
 CardCarouselPreview.propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
 };
 
 export { CardCarouselPreview };

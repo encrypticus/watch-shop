@@ -16,7 +16,7 @@ const App = () => (
           <Switch>
             <Route path='/' exact component={IndexPage}/>
             <Route path='/catalog' exact component={CatalogPage}/>
-            <Route path='/card' exact component={CardPage}/>
+            <Route path='/card/:id' exact component={CardPage}/>
             <Route render={() => (<h1 className="text-center">Page not found</h1>)}/>
           </Switch>
 

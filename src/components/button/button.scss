@@ -8,10 +8,12 @@
   font-weight: 500;
   line-height: 16px;
   color: white;
+  background-color: #444240;
+  border: 0;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background-color: #444240;
   text-decoration: none;
+  cursor: pointer;
 
   &_color_brown {
     background: #D4B098;

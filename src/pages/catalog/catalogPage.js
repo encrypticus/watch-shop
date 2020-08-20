@@ -41,18 +41,18 @@ const CatalogPage = () => (
         </div>
       </div>
       <BandCarousel>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='./img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='./img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='./img/band3.png'/>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='./img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='./img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='./img/band3.png'/>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='./img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='./img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='./img/band3.png'/>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='./img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='./img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='./img/band3.png'/>
+        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
+        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
+        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
+        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
+        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
+        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
+        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
+        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
+        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
+        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
+        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
+        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
       </BandCarousel>
     </>
 );
