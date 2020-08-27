@@ -1,6 +1,12 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import WatchesService from '#services/watches-service';
-import { FETCH_AUTH_REQUEST, authRequestFetching, hasAuthError } from '#act/auth';
+import {
+  FETCH_AUTH_REQUEST,
+  authRequestFetching,
+  hasAuthError,
+  signIn,
+  signUp,
+} from '#act/auth';
 
 const watchesService = new WatchesService();
 
@@ -15,6 +21,17 @@ function* authUser(action) {
     const userData = yield call(watchesService.sign, email, password, method);
 
     yield console.log(userData);
+
+    switch (method) {
+      case 'signIn':
+        yield put(signIn());
+        break;
+      case 'signUp':
+        yield put(signUp());
+        break;
+      default:
+        return false;
+    }
   } catch ({ message }) {
     yield put(hasAuthError({ status: true, message }));
   } finally {
