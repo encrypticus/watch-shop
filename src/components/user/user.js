@@ -1,10 +1,11 @@
 import React, { useReducer, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
+import { signOut } from '#act/auth';
 
 const initialState = {
   authFormShown: false,
@@ -47,6 +48,7 @@ const User = () => {
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { userMenuShown, authFormShown, authFormType } = state;
+  const reduxDispatch = useDispatch();
 
   useEffect(() => {
     if (isUserSignedIn) {
@@ -79,6 +81,11 @@ const User = () => {
     showAuthFormHandler();
   };
 
+  const signOutHandler = (event) => {
+    event.preventDefault();
+    reduxDispatch(signOut());
+  };
+
   const authForm = (
     <Modal hideModal={hideAuthFormHandler}>
       <AuthForm type={authFormType}/>
@@ -90,7 +97,7 @@ const User = () => {
       <li className='user__list-item'>
         {
           isUserSignedIn
-            ? <a className='user__link user__link_unsigned' href='/'>Выход</a>
+            ? <a className='user__link' onClick={signOutHandler} href='/'>Выход</a>
             : <a className='user__link' href='/' onClick={signInHandler}>Вход</a>
         }
 
