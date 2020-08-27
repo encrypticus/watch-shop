@@ -1,12 +1,15 @@
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducer';
 import { authUserWatcher } from './sagas';
 
 const saga = createSagaMiddleware();
 
-const store = createStore(reducers, applyMiddleware(logger, saga));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducers, composeEnhancers(
+  applyMiddleware(saga),
+));
 
 saga.run(authUserWatcher);
 
