@@ -19,3 +19,11 @@ export const hasAuthError = (error) => ({
   type: HAS_AUTH_ERROR,
   payload: error,
 });
+
+export const signIn = () => ({
+  type: SIGN_IN,
+});
+
+export const signUp = () => ({
+  type: SIGN_UP,
+});
