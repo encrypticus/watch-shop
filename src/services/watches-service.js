@@ -26,6 +26,22 @@ class WatchesService {
 
     return await result.json();
   };
+
+  getLocalUser = () => {
+    return JSON.parse(localStorage.getItem('user') || '{}') ;
+  };
+
+  localUserSignIn = () => {
+    const localUser = this.getLocalUser();
+    localUser.isUserSignedIn = true;
+    localStorage.setItem('user', JSON.stringify(localUser));
+  };
+
+  localUserSignOut = () => {
+    const localUser = this.getLocalUser();
+    localUser.isUserSignedIn = false;
+    localStorage.setItem('user', JSON.stringify(localUser));
+  };
 }
 
 export default WatchesService;
