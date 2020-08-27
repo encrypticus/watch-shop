@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import './auth-form.scss';
-import { fetchAuth } from '#act/auth';
+import { fetchAuth, hasAuthError } from '#act/auth';
 
 const AuthForm = ({ type = 'signUp' }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const { isFetching, error: { status: hasAuthError, message } } = useSelector((state) => state.authReducer);
+  const { isFetching, error: { status: isAuthError, message } } = useSelector((state) => state.authReducer);
 
   const errorCodes = {
     EMAIL_NOT_FOUND: 'Пользователь не найден',
     INVALID_PASSWORD: 'Неправильный пароль',
     USER_DISABLED: 'Учётная запись отключена администратором',
   };
+
+  useEffect(() => () => {
+    dispatch(hasAuthError({ status: false, message: '' }));
+  }, []);
 
   const clearForm = () => {
     setEmail('');
@@ -58,7 +62,8 @@ const AuthForm = ({ type = 'signUp' }) => {
           onChange={passwordHandler}
         />
       </div>
-       {hasAuthError ? <p className='auth-form__error-message'>{errorCodes[message] || 'Превышено число попыток входа, попробуйте позже'}</p> : null}
+      {isAuthError ? <p
+        className='auth-form__error-message'>{errorCodes[message] || 'Превышено число попыток входа, попробуйте позже'}</p> : null}
       <div>
         {
           type === 'signUp'
