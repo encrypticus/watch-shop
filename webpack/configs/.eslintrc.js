@@ -24,7 +24,9 @@ module.exports = {
           ['#act', path.resolve(__dirname, '../../src/redux/actions')],
           ['#red', path.resolve(__dirname, '../../src/redux/reducers')],
           ['#store', path.resolve(__dirname, '../../src/redux/store.js')],
-          ['#pages', path.resolve(__dirname, '../../src/pages')]
+          ['#pages', path.resolve(__dirname, '../../src/pages')],
+          ['#services', path.resolve(__dirname, '../../src/services')],
+          ['#context', path.resolve(__dirname, '../../src/context')]
         ]
       }
     }
