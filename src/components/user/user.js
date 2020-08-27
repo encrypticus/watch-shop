@@ -1,5 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
@@ -45,6 +47,13 @@ const User = () => {
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { userMenuShown, authFormShown, authFormType } = state;
+
+  useEffect(() => {
+    if (isUserSignedIn) {
+      hideAuthFormHandler();
+      toast.success('Вход выполнен!');
+    }
+  }, [isUserSignedIn]);
 
   const showUserMenuHandler = () => {
     dispatch({ type: 'SHOW_USER_MENU', payload: !state.userMenuShown });
@@ -112,6 +121,9 @@ const User = () => {
       </div>
 
       {authFormShown ? authForm : null}
+
+      <ToastContainer/>
+      {/* {isUserSignedIn ? toast.success('Вход выполнен!') : null} */}
     </>
   );
 };
