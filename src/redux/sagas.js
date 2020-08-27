@@ -2,10 +2,12 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 import WatchesService from '#services/watches-service';
 import {
   FETCH_AUTH_REQUEST,
+  SIGN_OUT,
   authRequestFetching,
   hasAuthError,
   signIn,
   signUp,
+  signOut,
 } from '#act/auth';
 
 const watchesService = new WatchesService();
@@ -25,6 +27,7 @@ function* authUser(action) {
     switch (method) {
       case 'signIn':
         yield put(signIn());
+        yield call(watchesService.localUserSignIn);
         break;
       case 'signUp':
         yield put(signUp());
@@ -39,6 +42,14 @@ function* authUser(action) {
   }
 }
 
+function* signOutUser() {
+  yield call(watchesService.localUserSignOut);
+}
+
 export function* authUserWatcher() {
   yield takeEvery(FETCH_AUTH_REQUEST, authUser);
+}
+
+export function* signOutWatcher() {
+  yield takeEvery(SIGN_OUT, signOutUser);
 }
