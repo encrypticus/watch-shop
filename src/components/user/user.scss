@@ -1,0 +1,30 @@
+.user {
+  position: relative;
+
+  &__button {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__list {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    padding: 10px;
+    margin: 0;
+    background-color: #444240;
+    min-width: 99px;
+    list-style: none;
+    transform: translateY(100%);
+  }
+
+  &__link {
+    font-size: 14px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+  }
+}
