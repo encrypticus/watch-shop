@@ -1,24 +1,21 @@
 import React from 'react';
-import { Div, UserbarLink } from './styles';
-
-import SearchIcon from './search-icon';
+import './userbar.scss';
 import HeartIcon from './heart-icon';
 import CartIcon from './cart-icon';
+import User from '#comps/user';
 
 const Userbar = () => (
-  <Div>
-    <UserbarLink href='/'>
-      <SearchIcon/>
-    </UserbarLink>
+  <div className='userbar'>
+    <User/>
 
-    <UserbarLink href='/'>
+    <a href='/'>
       <HeartIcon/>
-    </UserbarLink>
+    </a>
 
-    <UserbarLink href='/'>
+    <a href='/'>
       <CartIcon/>
-    </UserbarLink>
-  </Div>
+    </a>
+  </div>
 );
 
 export default Userbar;
