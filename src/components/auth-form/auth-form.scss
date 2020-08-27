@@ -1,0 +1,79 @@
+.auth-form {
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;
+
+  &__input {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 1rem 2.5rem;
+    font-size: 12px;
+    font-family: Roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 14px;
+    color: #fff;
+    background-color: #31302c;
+    border: 0;
+    cursor: pointer;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+
+    &:disabled {
+      background-color: #989895;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error-message {
+    margin: 0 0 8px 0;
+    color: red;
+    text-transform: lowercase;
+    animation: shake .5s;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(3px);
+  }
+  20% {
+    transform: translateX(-3px);
+  }
+  30% {
+    transform: translateX(3px);
+  }
+  40% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  70% {
+    transform: translateX(3px);
+  }
+  80% {
+    transform: translateX(-3px);
+  }
+  90% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
