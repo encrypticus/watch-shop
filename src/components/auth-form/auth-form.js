@@ -14,6 +14,8 @@ const AuthForm = ({ type = 'signUp' }) => {
     EMAIL_NOT_FOUND: 'Пользователь не найден',
     INVALID_PASSWORD: 'Неправильный пароль',
     USER_DISABLED: 'Учётная запись отключена администратором',
+    EMAIL_EXISTS: 'Адрес электронной почты уже используется другим аккаунтом',
+    OPERATION_NOT_ALLOWED: 'Вход с паролем отключен для этого проекта',
   };
 
   useEffect(() => () => {
