@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers/reducer';
-import { authUserWatcher, signOutWatcher } from './sagas';
+import sagas from './sagas/sagas';
 
 const saga = createSagaMiddleware();
 
@@ -11,6 +11,6 @@ const store = createStore(reducers, composeEnhancers(
   applyMiddleware(saga),
 ));
 
-saga.run(authUserWatcher);
+saga.run(sagas);
 
 export default store;
