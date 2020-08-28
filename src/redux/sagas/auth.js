@@ -1,4 +1,6 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import {
+  takeEvery, put, call, all,
+} from 'redux-saga/effects';
 import WatchesService from '#services/watches-service';
 import {
   FETCH_AUTH_REQUEST,
@@ -46,10 +48,14 @@ function* signOutUser() {
   yield call(watchesService.localUserSignOut);
 }
 
-export function* authUserWatcher() {
+function* authUserWatcher() {
   yield takeEvery(FETCH_AUTH_REQUEST, authUser);
 }
 
-export function* signOutWatcher() {
+function* signOutWatcher() {
   yield takeEvery(SIGN_OUT, signOutUser);
+}
+
+export function* userWatcher() {
+  yield all([call(authUserWatcher), call(signOutWatcher)]);
 }

@@ -7,8 +7,11 @@ import CatalogPage from '#pages/catalog';
 import MainNav from '#comps/main-nav';
 import store from '#store';
 import Footer from '#comps/footer';
+import WatchesServiceProvider from '../../context/context';
+import watchesService from '#services/watches-service';
 
 const App = () => (
+  <WatchesServiceProvider.Provider value={watchesService}>
     <Provider store={store}>
       <Router>
         <MainNav/>
@@ -23,6 +26,7 @@ const App = () => (
         <Footer/>
       </Router>
     </Provider>
+  </WatchesServiceProvider.Provider>
 );
 
 export default App;

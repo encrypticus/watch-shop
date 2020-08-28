@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -6,6 +6,7 @@ import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
 import { signOut } from '#act/auth';
+import WatchesServiceProvider from '../../context/context';
 
 const initialState = {
   authFormShown: false,
@@ -49,6 +50,7 @@ const User = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { userMenuShown, authFormShown, authFormType } = state;
   const reduxDispatch = useDispatch();
+  const watchesService = useContext(WatchesServiceProvider);
 
   useEffect(() => {
     if (isUserSignedIn) {
