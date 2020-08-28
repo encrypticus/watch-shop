@@ -1,4 +1,6 @@
 .userbar {
+  position: relative;
+  z-index: 1;
   display: flex;
   width: 99px;
   justify-content: space-between;
