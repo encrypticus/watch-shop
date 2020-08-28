@@ -1,4 +1,6 @@
-import React, { useReducer, useEffect, useContext } from 'react';
+import React, {
+  useReducer, useEffect, useContext, useRef,
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -52,9 +54,11 @@ const User = () => {
   const reduxDispatch = useDispatch();
   const watchesService = useContext(WatchesServiceProvider);
   const { isLocalUserSignedIn } = watchesService;
+  const userRef = useRef(null);
 
   useEffect(() => {
     let isUserSigned = isUserSignedIn;
+    const user = userRef.current;
 
     if (isLocalUserSignedIn() !== undefined && isLocalUserSignedIn()) {
       isUserSigned = isLocalUserSignedIn();
@@ -62,10 +66,24 @@ const User = () => {
     }
 
     isUserSigned && hideAuthFormHandler();
+
+    let hideMenuAsync = '';
+
+    user.addEventListener('mouseout', () => {
+      hideMenuAsync = setTimeout(hideUserMenuHandler, 5000);
+    });
+
+    user.addEventListener('mouseover', () => {
+      clearTimeout(hideMenuAsync);
+    });
   }, [isLocalUserSignedIn()]);
 
   const showUserMenuHandler = () => {
     dispatch({ type: 'SHOW_USER_MENU', payload: !state.userMenuShown });
+  };
+
+  const hideUserMenuHandler = () => {
+    dispatch({ type: 'SHOW_USER_MENU', payload: false });
   };
 
   const showAuthFormHandler = () => {
@@ -121,7 +139,7 @@ const User = () => {
 
   return (
     <>
-      <div className='user'>
+      <div className='user' ref={userRef}>
         <button className='user__button' type='button' onClick={showUserMenuHandler}>
           <svg width="18" height="18"
                role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
