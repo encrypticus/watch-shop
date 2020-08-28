@@ -44,4 +44,6 @@ class WatchesService {
   };
 }
 
-export default WatchesService;
+const watchesService = new WatchesService();
+
+export default watchesService;
