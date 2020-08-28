@@ -1,6 +1,7 @@
 import {
   takeEvery, put, call, all,
 } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 import watchesService from '#services/watches-service';
 import {
   FETCH_AUTH_REQUEST,
@@ -28,6 +29,7 @@ function* authUser(action) {
       case 'signIn':
         yield put(signIn());
         yield call(watchesService.localUserSignIn);
+        yield toast.success('Вход выполнен!');
         break;
       case 'signUp':
         yield put(signUp());

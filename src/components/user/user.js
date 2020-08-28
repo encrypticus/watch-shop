@@ -1,11 +1,11 @@
 import React, { useReducer, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
-import { signOut } from '#act/auth';
+import { signOut, signIn } from '#act/auth';
 import WatchesServiceProvider from '../../context/context';
 
 const initialState = {
@@ -51,13 +51,18 @@ const User = () => {
   const { userMenuShown, authFormShown, authFormType } = state;
   const reduxDispatch = useDispatch();
   const watchesService = useContext(WatchesServiceProvider);
+  const { isLocalUserSignedIn } = watchesService;
 
   useEffect(() => {
-    if (isUserSignedIn) {
-      hideAuthFormHandler();
-      toast.success('Вход выполнен!');
+    let isUserSigned = isUserSignedIn;
+
+    if (isLocalUserSignedIn() !== undefined && isLocalUserSignedIn()) {
+      isUserSigned = isLocalUserSignedIn();
+      reduxDispatch(signIn());
     }
-  }, [isUserSignedIn]);
+
+    isUserSigned && hideAuthFormHandler();
+  }, [isLocalUserSignedIn()]);
 
   const showUserMenuHandler = () => {
     dispatch({ type: 'SHOW_USER_MENU', payload: !state.userMenuShown });
@@ -132,7 +137,6 @@ const User = () => {
       {authFormShown ? authForm : null}
 
       <ToastContainer/>
-      {/* {isUserSignedIn ? toast.success('Вход выполнен!') : null} */}
     </>
   );
 };
