@@ -29,10 +29,14 @@ function* authUser(action) {
       case 'signIn':
         yield put(signIn());
         yield call(watchesService.localUserSignIn);
+        yield call(watchesService.setLocalUserData, userData);
         yield toast.success('Вход выполнен!');
         break;
       case 'signUp':
         yield put(signUp());
+        yield call(watchesService.localUserSignUp);
+        yield call(watchesService.setLocalUserData, userData);
+        yield toast.success('Регистрация успешна!');
         break;
       default:
         return false;
