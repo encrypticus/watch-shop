@@ -42,6 +42,10 @@ class WatchesService {
     localUser.isUserSignedIn = false;
     localStorage.setItem('user', JSON.stringify(localUser));
   };
+
+  isLocalUserSignedIn = () => {
+    return this.getLocalUser().isUserSignedIn;
+  };
 }
 
 const watchesService = new WatchesService();
