@@ -33,18 +33,45 @@ class WatchesService {
 
   localUserSignIn = () => {
     const localUser = this.getLocalUser();
+
     localUser.isUserSignedIn = true;
     localStorage.setItem('user', JSON.stringify(localUser));
   };
 
   localUserSignOut = () => {
     const localUser = this.getLocalUser();
+
     localUser.isUserSignedIn = false;
     localStorage.setItem('user', JSON.stringify(localUser));
   };
 
   isLocalUserSignedIn = () => {
     return this.getLocalUser().isUserSignedIn;
+  };
+
+  localUserSignUp = () => {
+    const localUser = this.getLocalUser();
+
+    localUser.isUserRegistered = true;
+    localStorage.setItem('user', JSON.stringify(localUser));
+    console.log(localUser);
+  };
+
+  isLocalUserRegistered = () => {
+    return this.getLocalUser().isUserRegistered;
+  };
+
+  setLocalUserData = ({ idToken, localId, email }) => {
+    const localUser = this.getLocalUser();
+
+    localUser.idToken = idToken;
+    localUser.localId = localId;
+    localUser.email = email;
+    localStorage.setItem('user', JSON.stringify(localUser));
+  };
+
+  getLocalId = () => {
+    return this.getLocalUser().localId;
   };
 }
 
