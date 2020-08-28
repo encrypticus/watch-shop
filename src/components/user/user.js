@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
-import { signOut, signIn } from '#act/auth';
+import { signOut, signIn, signUp } from '#act/auth';
 import WatchesServiceProvider from '../../context/context';
 
 const initialState = {
@@ -48,13 +48,24 @@ const reducer = (state, action) => {
 };
 
 const User = () => {
-  const { isUserSignedIn } = useSelector((state) => state.authReducer);
+  const { isUserSignedIn, isUserRegistered } = useSelector((state) => state.authReducer);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { userMenuShown, authFormShown, authFormType } = state;
   const reduxDispatch = useDispatch();
   const watchesService = useContext(WatchesServiceProvider);
-  const { isLocalUserSignedIn } = watchesService;
+  const { isLocalUserSignedIn, isLocalUserRegistered, getLocalId } = watchesService;
   const userRef = useRef(null);
+
+  useEffect(() => {
+    let isRegistered = isUserRegistered;
+
+    if (isLocalUserRegistered() !== undefined && isLocalUserRegistered()) {
+      isRegistered = isLocalUserRegistered();
+      reduxDispatch(signUp());
+    }
+
+    isRegistered && hideAuthFormHandler();
+  }, [getLocalId()]);
 
   useEffect(() => {
     let isUserSigned = isUserSignedIn;
