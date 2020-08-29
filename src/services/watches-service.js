@@ -73,6 +73,10 @@ class WatchesService {
   getLocalId = () => {
     return this.getLocalUser().localId;
   };
+
+  getIdToken = () => {
+    return this.getLocalUser().idToken;
+  }
 }
 
 const watchesService = new WatchesService();
