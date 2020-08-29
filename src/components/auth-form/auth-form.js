@@ -29,7 +29,7 @@ const AuthForm = ({ type = 'signUp' }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const userData = { email, password, method: type };
+    const userData = { email: email.trim(), password: password.trim(), method: type };
 
     dispatch(fetchAuth(userData));
     clearForm();
