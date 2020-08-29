@@ -2,7 +2,6 @@ import React, {
   useReducer, useEffect, useContext, useRef,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
@@ -164,8 +163,6 @@ const User = () => {
       </div>
 
       {authFormShown ? authForm : null}
-
-      <ToastContainer/>
     </>
   );
 };
