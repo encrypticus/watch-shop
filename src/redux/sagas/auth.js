@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import watchesService from '#services/watches-service';
+import { animateUserBar } from '#act/animations';
 import {
   FETCH_AUTH_REQUEST,
   SIGN_OUT,
@@ -28,6 +29,7 @@ function* authUser(action) {
     switch (method) {
       case 'signIn':
         yield put(signIn());
+        yield put(animateUserBar(true));
         yield call(watchesService.localUserSignIn);
         yield call(watchesService.setLocalUserData, userData);
         yield toast.success('Вход выполнен!');
@@ -36,7 +38,9 @@ function* authUser(action) {
         yield put(signUp());
         yield call(watchesService.localUserSignUp);
         yield call(watchesService.setLocalUserData, userData);
-        yield toast.success('Регистрация успешна!');
+        yield toast.success('Регистрация успешна!', {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
         break;
       default:
         return false;
@@ -50,6 +54,7 @@ function* authUser(action) {
 
 function* signOutUser() {
   yield call(watchesService.localUserSignOut);
+  yield put(animateUserBar(false));
 }
 
 function* watchAuthUser() {
