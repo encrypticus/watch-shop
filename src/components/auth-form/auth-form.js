@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import './auth-form.scss';
@@ -9,6 +9,7 @@ const AuthForm = ({ type = 'signUp' }) => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const { isFetching, error: { status: isAuthError, message } } = useSelector((state) => state.authReducer);
+  const emailRef = useRef(null);
 
   const errorCodes = {
     EMAIL_NOT_FOUND: 'Пользователь не найден',
@@ -18,9 +19,18 @@ const AuthForm = ({ type = 'signUp' }) => {
     OPERATION_NOT_ALLOWED: 'Вход с паролем отключен для этого проекта',
   };
 
-  useEffect(() => () => {
-    dispatch(hasAuthError({ status: false, message: '' }));
+  useEffect(() => {
+    const emailField = emailRef.current;
+    emailField.focus();
+
+    return () => {
+      dispatch(hasAuthError({ status: false, message: '' }));
+    };
   }, []);
+
+  useEffect(() => {
+    !isAuthError && clearForm();
+  }, [isAuthError]);
 
   const clearForm = () => {
     setEmail('');
@@ -32,7 +42,6 @@ const AuthForm = ({ type = 'signUp' }) => {
     const userData = { email: email.trim(), password: password.trim(), method: type };
 
     dispatch(fetchAuth(userData));
-    clearForm();
   };
 
   const emailHandler = ({ target: { value } }) => {
@@ -52,6 +61,7 @@ const AuthForm = ({ type = 'signUp' }) => {
           required
           value={email}
           onChange={emailHandler}
+          ref={emailRef}
         />
       </div>
       <div>
