@@ -28,14 +28,14 @@ const AuthForm = ({ type = 'signUp' }) => {
     };
   }, []);
 
-  useEffect(() => {
-    !isAuthError && clearForm();
-  }, [isAuthError]);
-
   const clearForm = () => {
     setEmail('');
     setPassword('');
   };
+
+  useEffect(() => {
+    !isAuthError && clearForm();
+  }, [isAuthError]);
 
   const submitHandler = (event) => {
     event.preventDefault();

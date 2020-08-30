@@ -11,7 +11,6 @@ import {
   hasAuthError,
   signIn,
   signUp,
-  signOut,
 } from '#act/auth';
 
 function* authUser(action) {
@@ -23,8 +22,6 @@ function* authUser(action) {
     yield put(hasAuthError({ status: false, message: '' }));
 
     const userData = yield call(watchesService.sign, email, password, method);
-
-    yield console.log(userData);
 
     switch (method) {
       case 'signIn':
@@ -65,6 +62,6 @@ function* watchSignOutUser() {
   yield takeEvery(SIGN_OUT, signOutUser);
 }
 
-export function* watchUserAuthActions() {
+export default function* watchUserAuthActions() {
   yield all([call(watchAuthUser), call(watchSignOutUser)]);
 }

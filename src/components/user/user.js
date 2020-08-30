@@ -55,39 +55,6 @@ const User = () => {
   const { isLocalUserSignedIn, isLocalUserRegistered, getLocalId } = watchesService;
   const userRef = useRef(null);
 
-  useEffect(() => {
-    let isRegistered = isUserRegistered;
-
-    if (isLocalUserRegistered() !== undefined && isLocalUserRegistered()) {
-      isRegistered = isLocalUserRegistered();
-      reduxDispatch(signUp());
-    }
-
-    isRegistered && hideAuthFormHandler();
-  }, [getLocalId()]);
-
-  useEffect(() => {
-    let isUserSigned = isUserSignedIn;
-    const user = userRef.current;
-
-    if (isLocalUserSignedIn() !== undefined && isLocalUserSignedIn()) {
-      isUserSigned = isLocalUserSignedIn();
-      reduxDispatch(signIn());
-    }
-
-    isUserSigned && hideAuthFormHandler();
-
-    let hideMenuAsync = '';
-
-    user.addEventListener('mouseout', () => {
-      hideMenuAsync = setTimeout(hideUserMenuHandler, 5000);
-    });
-
-    user.addEventListener('mouseover', () => {
-      clearTimeout(hideMenuAsync);
-    });
-  }, [isLocalUserSignedIn()]);
-
   const showUserMenuHandler = () => {
     dispatch({ type: 'SHOW_USER_MENU', payload: !state.userMenuShown });
   };
@@ -120,6 +87,39 @@ const User = () => {
     event.preventDefault();
     reduxDispatch(signOut());
   };
+
+  useEffect(() => {
+    let isRegistered = isUserRegistered;
+
+    if (isLocalUserRegistered() !== undefined && isLocalUserRegistered()) {
+      isRegistered = isLocalUserRegistered();
+      reduxDispatch(signUp());
+    }
+
+    isRegistered && hideAuthFormHandler();
+  }, [getLocalId()]);
+
+  useEffect(() => {
+    let isUserSigned = isUserSignedIn;
+    const user = userRef.current;
+
+    if (isLocalUserSignedIn() !== undefined && isLocalUserSignedIn()) {
+      isUserSigned = isLocalUserSignedIn();
+      reduxDispatch(signIn());
+    }
+
+    isUserSigned && hideAuthFormHandler();
+
+    let hideMenuAsync = '';
+
+    user.addEventListener('mouseout', () => {
+      hideMenuAsync = setTimeout(hideUserMenuHandler, 5000);
+    });
+
+    user.addEventListener('mouseover', () => {
+      clearTimeout(hideMenuAsync);
+    });
+  }, [isLocalUserSignedIn()]);
 
   const authForm = (
     <Modal hideModal={hideAuthFormHandler}>

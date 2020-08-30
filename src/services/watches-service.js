@@ -1,8 +1,5 @@
 class WatchesService {
-
-  _getApiKey = () => {
-    return 'AIzaSyCQHVNmMaqmBDaP2cgMMcHXJXK7ee9LpBw';
-  };
+  _getApiKey = () => 'AIzaSyCQHVNmMaqmBDaP2cgMMcHXJXK7ee9LpBw';
 
   sign = async (email, password, type = 'signUp') => {
     const method = type === 'signUp' ? 'signUp' : 'signInWithPassword';
@@ -27,9 +24,7 @@ class WatchesService {
     return await result.json();
   };
 
-  getLocalUser = () => {
-    return JSON.parse(localStorage.getItem('user') || '{}') ;
-  };
+  getLocalUser = () => JSON.parse(localStorage.getItem('user') || '{}');
 
   localUserSignIn = () => {
     const localUser = this.getLocalUser();
@@ -45,21 +40,16 @@ class WatchesService {
     localStorage.setItem('user', JSON.stringify(localUser));
   };
 
-  isLocalUserSignedIn = () => {
-    return this.getLocalUser().isUserSignedIn;
-  };
+  isLocalUserSignedIn = () => this.getLocalUser().isUserSignedIn;
 
   localUserSignUp = () => {
     const localUser = this.getLocalUser();
 
     localUser.isUserRegistered = true;
     localStorage.setItem('user', JSON.stringify(localUser));
-    console.log(localUser);
   };
 
-  isLocalUserRegistered = () => {
-    return this.getLocalUser().isUserRegistered;
-  };
+  isLocalUserRegistered = () => this.getLocalUser().isUserRegistered;
 
   setLocalUserData = ({ idToken, localId, email }) => {
     const localUser = this.getLocalUser();
@@ -70,13 +60,9 @@ class WatchesService {
     localStorage.setItem('user', JSON.stringify(localUser));
   };
 
-  getLocalId = () => {
-    return this.getLocalUser().localId;
-  };
+  getLocalId = () => this.getLocalUser().localId;
 
-  getIdToken = () => {
-    return this.getLocalUser().idToken;
-  }
+  getIdToken = () => this.getLocalUser().idToken
 }
 
 const watchesService = new WatchesService();
