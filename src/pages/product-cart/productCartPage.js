@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '#comps/header';
 import Breadcrumbs from '#comps/breadcrumbs';
+import ProductCart from '#comps/product-cart';
 
 const ProductCartPage = () => (
   <>
@@ -10,7 +11,7 @@ const ProductCartPage = () => (
         <Breadcrumbs/>
       </div>
       <div className='product-cart-page'>
-        Корзина товаров
+        <ProductCart/>
       </div>
     </div>
   </>
