@@ -12,6 +12,8 @@ module.exports = {
     es6: true
   },
 
+  parser: 'babel-eslint',
+
   settings: {
     react: {
       version: 'detect'
@@ -37,6 +39,10 @@ module.exports = {
     'max-len': 'off',
     'import/extensions': 'off',
     'no-unused-expressions': ['warn', { allowShortCircuit: true, allowTernary: true }],
-    'no-shadow': 'off'
+    'no-shadow': 'off',
+    'import/named': 'off',
+    'no-underscore-dangle': 'off',
+    'no-return-await': 'off',
+    'consistent-return': 'off'
   }
 };
