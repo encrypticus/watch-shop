@@ -62,7 +62,22 @@ class WatchesService {
 
   getLocalId = () => this.getLocalUser().localId;
 
-  getIdToken = () => this.getLocalUser().idToken
+  getIdToken = () => this.getLocalUser().idToken;
+
+  getProductCartFromDB = async () => {
+    try {
+      const products = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`);
+
+      // if (!products.ok) {
+      //   const error = await products.json();
+      //   throw new Error(error.error);
+      // }
+
+      return await products.json();
+    } catch (e) {
+      alert(e);
+    }
+  };
 }
 
 const watchesService = new WatchesService();
