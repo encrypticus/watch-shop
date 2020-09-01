@@ -7,12 +7,14 @@ const ProductCart = () => {
   const watchesService = useContext(WatchesServiceProvider);
 
   useEffect(() => {
-    try {
-      watchesService.getProductCartFromDB()
-        .then((products) => console.log(products));
-    } catch (e) {
-      alert(e.message);
-    }
+    watchesService.getProductCartFromDB()
+      .then((products) => {
+        products ? console.log('Корзина успешно получена', products) : alert('Корзина пуста');
+        return products;
+      })
+      .catch((error) => {
+        error.message === 'Failed to fetch' ? alert('Невозможно получить данные, проверьте сетевое соединение') : console.log(error);
+      });
   }, []);
 
   return (
