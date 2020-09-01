@@ -1,6 +1,12 @@
 class WatchesService {
   _getApiKey = () => 'AIzaSyCQHVNmMaqmBDaP2cgMMcHXJXK7ee9LpBw';
 
+  _getErrorCodes = () => ({
+    USER_IS_NOT_AUTHORIZED: 401,
+  });
+
+  _userIsNotAuthorized = (status) => status === this._getErrorCodes().USER_IS_NOT_AUTHORIZED;
+
   sign = async (email, password, type = 'signUp') => {
     const method = type === 'signUp' ? 'signUp' : 'signInWithPassword';
 
@@ -51,12 +57,23 @@ class WatchesService {
 
   isLocalUserRegistered = () => this.getLocalUser().isUserRegistered;
 
-  setLocalUserData = ({ idToken, localId, email }) => {
+  setLocalUserData = ({
+    idToken, refreshToken, localId, email,
+  }) => {
     const localUser = this.getLocalUser();
 
     localUser.idToken = idToken;
+    localUser.refreshToken = refreshToken;
     localUser.localId = localId;
     localUser.email = email;
+    localStorage.setItem('user', JSON.stringify(localUser));
+  };
+
+  refreshTokens = (newIdToken, newRefreshToken) => {
+    const localUser = this.getLocalUser();
+
+    localUser.idToken = newIdToken;
+    localUser.refreshToken = newRefreshToken;
     localStorage.setItem('user', JSON.stringify(localUser));
   };
 
@@ -64,18 +81,45 @@ class WatchesService {
 
   getIdToken = () => this.getLocalUser().idToken;
 
+  getRefreshToken = () => this.getLocalUser().refreshToken;
+
+  getResponseFromServer = async () => await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`);
+
+  reAuthorizeUser = async () => {
+    const response = await fetch(`https://securetoken.googleapis.com/v1/token?key=${this._getApiKey()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        grant_type: 'refresh_token',
+        refresh_token: this.getRefreshToken(),
+      }),
+    });
+
+    return await response;
+  };
+
   getProductCartFromDB = async () => {
     try {
-      const products = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`);
+      const response = await this.getResponseFromServer();
 
-      // if (!products.ok) {
-      //   const error = await products.json();
-      //   throw new Error(error.error);
-      // }
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch ({ message }) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      this.refreshTokens(idToken, refreshToken);
+
+      const products = await this.getResponseFromServer();
 
       return await products.json();
-    } catch (e) {
-      alert(e);
     }
   };
 }
