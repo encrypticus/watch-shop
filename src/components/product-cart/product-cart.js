@@ -1,24 +1,29 @@
-import React, { useContext, useEffect } from 'react';
-
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import Spinner from '#comps/spinner';
+import { fetchProductCart } from '#act/product-cart';
 import './product-cart.scss';
-import WatchesServiceProvider from '#context/context';
 
 const ProductCart = () => {
-  const watchesService = useContext(WatchesServiceProvider);
+  const { isFetching, products, error: { status: hasError, message } } = useSelector((state) => state.productCartReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    watchesService.getProductCartFromDB()
-      .then((products) => {
-        products ? console.log('Корзина успешно получена', products) : alert('Корзина пуста');
-        return products;
-      })
-      .catch((error) => {
-        error.message === 'Failed to fetch' ? alert('Невозможно получить данные, проверьте сетевое соединение') : console.log(error);
-      });
+    dispatch(fetchProductCart());
   }, []);
 
+  useEffect(() => {
+    hasError && toast.error(message);
+  }, [hasError]);
+
+  if (isFetching && !hasError) return <Spinner/>;
+  if (hasError) return <div>{message}</div>;
+
   return (
-    <div className='product-cart'>ProductCart</div>
+    <div className='product-cart'>
+      {!products ? 'Корзина пуста' : products}
+    </div>
   );
 };
 
