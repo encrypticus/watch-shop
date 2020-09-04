@@ -5,7 +5,7 @@ import {
 const initialState = {
   isUserSignedIn: false,
   isUserRegistered: false,
-  isFetching: false,
+  getProductCartIsFetching: false,
   error: {
     status: false,
     message: '',
@@ -37,7 +37,7 @@ const authReducer = (state = initialState, action) => {
     case AUTH_REQUEST_FETCHING:
       return {
         ...state,
-        isFetching: action.payload,
+        getProductCartIsFetching: action.payload,
       };
 
     case HAS_AUTH_ERROR:
