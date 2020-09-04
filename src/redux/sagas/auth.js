@@ -3,36 +3,29 @@ import {
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import watchesService from '#services/watches-service';
+import * as actions from '#act/auth';
 import { animateUserBar } from '#act/animations';
-import {
-  FETCH_AUTH_REQUEST,
-  SIGN_OUT,
-  authRequestFetching,
-  hasAuthError,
-  signIn,
-  signUp,
-} from '#act/auth';
 
 function* authUser(action) {
   const { payload: { email, password, method } } = action;
 
   try {
-    yield put(authRequestFetching(true));
+    yield put(actions.authRequestFetching(true));
 
-    yield put(hasAuthError({ status: false, message: '' }));
+    yield put(actions.hasAuthError({ status: false, message: '' }));
 
     const userData = yield call(watchesService.sign, email, password, method);
 
     switch (method) {
       case 'signIn':
-        yield put(signIn());
+        yield put(actions.signIn());
         yield put(animateUserBar(true));
         yield call(watchesService.localUserSignIn);
         yield call(watchesService.setLocalUserData, userData);
         yield toast.success('Вход выполнен!');
         break;
       case 'signUp':
-        yield put(signUp());
+        yield put(actions.signUp());
         yield call(watchesService.localUserSignUp);
         yield call(watchesService.setLocalUserData, userData);
         yield toast.success('Регистрация успешна!', {
@@ -43,9 +36,9 @@ function* authUser(action) {
         return false;
     }
   } catch ({ message }) {
-    yield put(hasAuthError({ status: true, message }));
+    yield put(actions.hasAuthError({ status: true, message }));
   } finally {
-    yield put(authRequestFetching(false));
+    yield put(actions.authRequestFetching(false));
   }
 }
 
@@ -55,11 +48,11 @@ function* signOutUser() {
 }
 
 function* watchAuthUser() {
-  yield takeEvery(FETCH_AUTH_REQUEST, authUser);
+  yield takeEvery(actions.FETCH_AUTH_REQUEST, authUser);
 }
 
 function* watchSignOutUser() {
-  yield takeEvery(SIGN_OUT, signOutUser);
+  yield takeEvery(actions.SIGN_OUT, signOutUser);
 }
 
 export default function* watchUserAuthActions() {
