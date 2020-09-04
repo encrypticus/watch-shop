@@ -1,15 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { addProductToCartRequest } from '#act/product-cart';
 import './card.scss';
 
 const Card = (props) => {
   const dispatch = useDispatch();
+  const { isUserSignedIn } = useSelector((state) => state.authReducer);
   const { vendor, price, src } = props;
 
   const addProductToCart = () => {
+    if (!isUserSignedIn) {
+      toast.warn('Для добавления товара в корзину необходима авторизация');
+      return;
+    }
+
     dispatch(addProductToCartRequest({ vendor, price, src }));
   };
 
