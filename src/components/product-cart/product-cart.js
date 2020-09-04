@@ -6,7 +6,7 @@ import { fetchProductCart } from '#act/product-cart';
 import './product-cart.scss';
 
 const ProductCart = () => {
-  const { isFetching, products, error: { status: hasError, message } } = useSelector((state) => state.productCartReducer);
+  const { getProductCartIsFetching, products, error: { status: hasError, message } } = useSelector((state) => state.productCartReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,12 +17,16 @@ const ProductCart = () => {
     hasError && toast.error(message);
   }, [hasError]);
 
-  if (isFetching && !hasError) return <Spinner/>;
+  if (getProductCartIsFetching && !hasError) return <Spinner/>;
   if (hasError) return <div>{message}</div>;
+
+  const renderProductCart = (products) => {
+
+  };
 
   return (
     <div className='product-cart'>
-      {!products ? 'Корзина пуста' : products}
+      {!products ? 'Корзина пуста' : <div>products</div>}
     </div>
   );
 };
