@@ -1,12 +1,15 @@
 import {
   PRODUCT_CART_REQUEST_FETCHING,
+  ADD_PRODUCT_TO_CART,
+  ADD_PRODUCT_CART_REQUEST_FETCHING,
   FILL_PRODUCT_CART,
   HAS_PRODUCT_CART_FETCHING_ERROR,
 } from '#act/product-cart';
 
 const initialState = {
   products: null,
-  isFetching: false,
+  getProductCartIsFetching: false,
+  addProductToCartRequestIsFetching: false,
   error: {
     status: false,
     message: '',
@@ -25,7 +28,7 @@ const productCartReducer = (state = initialState, action) => {
     case PRODUCT_CART_REQUEST_FETCHING: {
       return {
         ...state,
-        isFetching: action.payload,
+        getProductCartIsFetching: action.payload,
       };
     }
 
@@ -36,6 +39,23 @@ const productCartReducer = (state = initialState, action) => {
           status: action.payload.status,
           message: action.payload.message,
         },
+      };
+    }
+
+    case ADD_PRODUCT_TO_CART: {
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          ...action.payload,
+        },
+      };
+    }
+
+    case ADD_PRODUCT_CART_REQUEST_FETCHING: {
+      return {
+        ...state,
+        addProductToCartRequestIsFetching: action.payload,
       };
     }
 
