@@ -122,6 +122,46 @@ class WatchesService {
       return await products.json();
     }
   };
+
+  addProductToCartRequest = async ({ vendor, price, src }) => {
+    console.log(vendor, price, src);
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        vendor,
+        price,
+        src,
+      }),
+    });
+
+    return await response;
+  };
+
+  addProductToCart = async (product) => {
+    try {
+      const response = await this.addProductToCartRequest(product);
+
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch (error) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      this.refreshTokens(idToken, refreshToken);
+
+      const productData = await this.addProductToCartRequest(product);
+
+      return await productData.json();
+    }
+  };
 }
 
 const watchesService = new WatchesService();
