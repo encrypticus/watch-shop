@@ -1,7 +1,7 @@
 import {
   take, put, call, all,
 } from 'redux-saga/effects';
-import remoteDBService from '#services/watches-service';
+import remoteDBService from '#services/remote-db-service';
 import * as catalogActions from '#act/catalog-cards';
 
 function* fetchCatalog() {

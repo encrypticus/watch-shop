@@ -10,7 +10,7 @@ import MainNav from '#comps/main-nav';
 import store from '#store';
 import Footer from '#comps/footer';
 import { RemoteDBServiceContext } from '#context';
-import remoteDBService from '#services/watches-service';
+import remoteDBService from '#services/remote-db-service';
 
 const App = () => (
   <RemoteDBServiceContext.Provider value={remoteDBService}>

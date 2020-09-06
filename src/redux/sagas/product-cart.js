@@ -2,7 +2,7 @@ import {
   take, put, call, all,
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import remoteDBService from '#services/watches-service';
+import remoteDBService from '#services/remote-db-service';
 
 import * as actions from '#act/product-cart';
 import * as catalogActions from '#act/catalog-cards';
