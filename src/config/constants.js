@@ -1,4 +1,4 @@
-export const cards = [
+const cards = [
   {
     id: '1',
     vendor: 'Techne',
@@ -208,3 +208,5 @@ export const cards = [
     uniqueId: '',
   },
 ];
+
+export default cards;
