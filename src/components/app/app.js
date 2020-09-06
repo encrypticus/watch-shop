@@ -9,11 +9,11 @@ import ProductCartPage from '#pages/product-cart';
 import MainNav from '#comps/main-nav';
 import store from '#store';
 import Footer from '#comps/footer';
-import WatchesServiceProvider from '../../context/context';
-import watchesService from '#services/watches-service';
+import { RemoteDBServiceContext } from '#context';
+import remoteDBService from '#services/watches-service';
 
 const App = () => (
-  <WatchesServiceProvider.Provider value={watchesService}>
+  <RemoteDBServiceContext.Provider value={remoteDBService}>
     <Provider store={store}>
       <Router>
         <MainNav/>
@@ -29,7 +29,7 @@ const App = () => (
         <Footer/>
       </Router>
     </Provider>
-  </WatchesServiceProvider.Provider>
+  </RemoteDBServiceContext.Provider>
 );
 
 export default App;

@@ -2,7 +2,7 @@ import {
   take, put, call, all,
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import watchesService from '#services/watches-service';
+import remoteDBService from '#services/watches-service';
 
 import * as actions from '#act/product-cart';
 import * as catalogActions from '#act/catalog-cards';
@@ -16,7 +16,7 @@ function* fetchProductCart() {
 
       yield put(actions.productCartRequestFetching(true));
 
-      const products = yield call(watchesService.getProductCartFromDB);
+      const products = yield call(remoteDBService.getProductCartFromDB);
 
       yield put(actions.fillProductCart(products));
     } catch ({ message }) {
@@ -39,9 +39,9 @@ function* addProductToCart() {
 
       yield put(catalogActions.addProductToCartRequestFetching({ isFetching: true, product }));
 
-      const productData = yield call(watchesService.addProductToCart, product);
+      const productData = yield call(remoteDBService.addProductToCart, product);
 
-      const inCart = yield call(watchesService.updateProductCatalog, product.index, productData.name, true);
+      const inCart = yield call(remoteDBService.updateProductCatalog, product.index, productData.name, true);
 
       yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: inCart.uniqueId, inCart: true }));
     } catch (error) {
@@ -65,9 +65,9 @@ function* removeProductFromCart() {
 
       yield put(catalogActions.addProductToCartRequestFetching({ isFetching: true, product }));
 
-      const productData = yield call(watchesService.removeProductFromCart, product);
+      const productData = yield call(remoteDBService.removeProductFromCart, product);
 
-      const inCart = yield call(watchesService.updateProductCatalog, product.index, '', false);
+      const inCart = yield call(remoteDBService.updateProductCatalog, product.index, '', false);
 
       yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: '', inCart: false }));
     } catch (error) {

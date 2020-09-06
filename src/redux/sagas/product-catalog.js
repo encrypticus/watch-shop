@@ -1,7 +1,7 @@
 import {
   take, put, call, all,
 } from 'redux-saga/effects';
-import watchesService from '#services/watches-service';
+import remoteDBService from '#services/watches-service';
 import * as catalogActions from '#act/catalog-cards';
 
 function* fetchCatalog() {
@@ -13,7 +13,7 @@ function* fetchCatalog() {
 
       yield put(catalogActions.productCatalogRequestFetching(true));
 
-      const catalog = yield call(watchesService.getProductCatalogFromDB);
+      const catalog = yield call(remoteDBService.getProductCatalogFromDB);
 
       yield put(catalogActions.fillCatalog(catalog));
     } catch ({ message }) {

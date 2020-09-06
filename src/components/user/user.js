@@ -7,7 +7,7 @@ import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
 import { signOut, signIn, signUp } from '#act/auth';
-import WatchesServiceProvider from '../../context/context';
+import { RemoteDBServiceContext } from '#context';
 import { getProductCatalogFromDB } from '#act/catalog-cards';
 
 const initialState = {
@@ -52,8 +52,8 @@ const User = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { userMenuShown, authFormShown, authFormType } = state;
   const reduxDispatch = useDispatch();
-  const watchesService = useContext(WatchesServiceProvider);
-  const { isLocalUserSignedIn, isLocalUserRegistered, getLocalId } = watchesService;
+  const remoteDBService = useContext(RemoteDBServiceContext);
+  const { isLocalUserSignedIn, isLocalUserRegistered, getLocalId } = remoteDBService;
   const userRef = useRef(null);
 
   const showUserMenuHandler = () => {

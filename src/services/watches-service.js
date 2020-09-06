@@ -1,6 +1,6 @@
 import { cards } from '#const';
 
-class WatchesService {
+class RemoteDBService {
   _getApiKey = () => 'AIzaSyCQHVNmMaqmBDaP2cgMMcHXJXK7ee9LpBw';
 
   _getErrorCodes = () => ({
@@ -251,6 +251,6 @@ class WatchesService {
   };
 }
 
-const watchesService = new WatchesService();
+const remoteDBService = new RemoteDBService();
 
-export default watchesService;
+export default remoteDBService;

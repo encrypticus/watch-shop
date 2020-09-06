@@ -2,7 +2,7 @@ import {
   takeEvery, put, call, all,
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import watchesService from '#services/watches-service';
+import remoteDBService from '#services/watches-service';
 import * as authActions from '#act/auth';
 import * as catalogActions from '#act/catalog-cards';
 import { animateUserBar } from '#act/animations';
@@ -16,7 +16,7 @@ function* authUser(action) {
 
     yield put(authActions.hasAuthError({ status: false, message: '' }));
 
-    const userData = yield call(watchesService.sign, email, password, method);
+    const userData = yield call(remoteDBService.sign, email, password, method);
 
     switch (method) {
       case 'signIn':
@@ -24,13 +24,13 @@ function* authUser(action) {
 
         yield put(animateUserBar(true));
 
-        yield call(watchesService.localUserSignIn);
+        yield call(remoteDBService.localUserSignIn);
 
-        yield call(watchesService.setLocalUserData, userData);
+        yield call(remoteDBService.setLocalUserData, userData);
 
         yield toast.success('Вход выполнен!');
 
-        const productCatalog = yield call(watchesService.getProductCatalogFromDB);
+        const productCatalog = yield call(remoteDBService.getProductCatalogFromDB);
 
         yield put(catalogActions.fillCatalog(productCatalog));
 
@@ -39,11 +39,11 @@ function* authUser(action) {
       case 'signUp':
         yield put(authActions.signUp());
 
-        yield call(watchesService.localUserSignUp);
+        yield call(remoteDBService.localUserSignUp);
 
-        yield call(watchesService.setLocalUserData, userData);
+        yield call(remoteDBService.setLocalUserData, userData);
 
-        yield call(watchesService.addProductCatalogToDB);
+        yield call(remoteDBService.addProductCatalogToDB);
 
         yield toast.success('Регистрация успешна!');
 
@@ -59,7 +59,7 @@ function* authUser(action) {
 }
 
 function* signOutUser() {
-  yield call(watchesService.localUserSignOut);
+  yield call(remoteDBService.localUserSignOut);
   yield put(animateUserBar(false));
   yield put(catalogActions.fillCatalog(cards));
 }
