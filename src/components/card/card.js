@@ -54,7 +54,7 @@ Card.propTypes = {
   addToCartFetching: PropTypes.bool.isRequired,
   inCart: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
-  uniqueId: PropTypes.string.isRequired,
+  uniqueId: PropTypes.string,
 };
 
 export default Card;
