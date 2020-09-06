@@ -19,7 +19,7 @@ function* authUser(action) {
     const userData = yield call(remoteDBService.sign, email, password, method);
 
     switch (method) {
-      case 'signIn':
+      case 'signIn': {
         yield put(authActions.signIn());
 
         yield put(animateUserBar(true));
@@ -35,8 +35,9 @@ function* authUser(action) {
         yield put(catalogActions.fillCatalog(productCatalog));
 
         break;
+      }
 
-      case 'signUp':
+      case 'signUp': {
         yield put(authActions.signUp());
 
         yield call(storage.localUserSignUp);
@@ -48,6 +49,8 @@ function* authUser(action) {
         yield toast.success('Регистрация успешна!');
 
         break;
+      }
+
       default:
         return false;
     }
