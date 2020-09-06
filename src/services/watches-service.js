@@ -229,7 +229,7 @@ class WatchesService {
 
       this.refreshTokens(idToken, refreshToken);
 
-      const productData = await this.addProductToCartRequest(uniqueId);
+      const productData = await this.removeProductFromCartRequest(product);
 
       return await productData.json();
     }
