@@ -1,7 +1,7 @@
 import {
   PRODUCT_CART_REQUEST_FETCHING,
   ADD_PRODUCT_TO_CART,
-  ADD_PRODUCT_CART_REQUEST_FETCHING,
+  UPDATE_PRODUCT_CART_REQUEST_FETCHING,
   FILL_PRODUCT_CART,
   HAS_PRODUCT_CART_FETCHING_ERROR,
 } from '#act/product-cart';
@@ -52,7 +52,7 @@ const productCartReducer = (state = initialState, action) => {
       };
     }
 
-    case ADD_PRODUCT_CART_REQUEST_FETCHING: {
+    case UPDATE_PRODUCT_CART_REQUEST_FETCHING: {
       return {
         ...state,
         addProductToCartRequestIsFetching: action.payload,

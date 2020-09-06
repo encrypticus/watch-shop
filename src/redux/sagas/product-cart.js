@@ -4,25 +4,25 @@ import {
 import { toast } from 'react-toastify';
 import remoteDBService from '#services/remote-db-service';
 
-import * as actions from '#act/product-cart';
+import * as cartActions from '#act/product-cart';
 import * as catalogActions from '#act/catalog-cards';
 
 function* fetchProductCart() {
   while (true) {
     try {
-      yield put(actions.hasProductCartFetchingError({ status: false, message: '' }));
+      yield put(cartActions.hasProductCartFetchingError({ status: false, message: '' }));
 
-      yield take(actions.FETCH_PRODUCT_CART_REQUEST);
+      yield take(cartActions.FETCH_PRODUCT_CART_REQUEST);
 
-      yield put(actions.productCartRequestFetching(true));
+      yield put(cartActions.productCartRequestFetching(true));
 
       const products = yield call(remoteDBService.getProductCartFromDB);
 
-      yield put(actions.fillProductCart(products));
+      yield put(cartActions.fillProductCart(products));
     } catch ({ message }) {
-      yield put(actions.hasProductCartFetchingError({ status: true, message }));
+      yield put(cartActions.hasProductCartFetchingError({ status: true, message }));
     } finally {
-      yield put(actions.productCartRequestFetching(false));
+      yield put(cartActions.productCartRequestFetching(false));
     }
   }
 }
@@ -32,12 +32,12 @@ function* addProductToCart() {
 
   while (true) {
     try {
-      const action = yield take(actions.ADD_PRODUCT_TO_CART_REQUEST);
+      const action = yield take(cartActions.ADD_PRODUCT_TO_CART_REQUEST);
       product = action.payload;
 
-      yield put(actions.addProductToCartRequestFetching(true));
+      yield put(cartActions.updateProductCartRequestFetching(true));
 
-      yield put(catalogActions.addProductToCartRequestFetching({ isFetching: true, product }));
+      yield put(catalogActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
       const productData = yield call(remoteDBService.addProductToCart, product);
 
@@ -47,8 +47,8 @@ function* addProductToCart() {
     } catch (error) {
       toast.error(error.message);
     } finally {
-      yield put(actions.addProductToCartRequestFetching(false));
-      yield put(catalogActions.addProductToCartRequestFetching({ isFetching: false, product }));
+      yield put(cartActions.updateProductCartRequestFetching(false));
+      yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
     }
   }
 }
@@ -58,12 +58,12 @@ function* removeProductFromCart() {
 
   while (true) {
     try {
-      const action = yield take(actions.REMOVE_PRODUCT_FROM_CART_REQUEST);
+      const action = yield take(cartActions.REMOVE_PRODUCT_FROM_CART_REQUEST);
       product = action.payload;
 
-      yield put(actions.addProductToCartRequestFetching(true));
+      yield put(cartActions.updateProductCartRequestFetching(true));
 
-      yield put(catalogActions.addProductToCartRequestFetching({ isFetching: true, product }));
+      yield put(catalogActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
       yield call(remoteDBService.removeProductFromCart, product);
 
@@ -73,8 +73,8 @@ function* removeProductFromCart() {
     } catch (error) {
       toast.error(error.message);
     } finally {
-      yield put(actions.addProductToCartRequestFetching(false));
-      yield put(catalogActions.addProductToCartRequestFetching({ isFetching: false, product }));
+      yield put(cartActions.updateProductCartRequestFetching(false));
+      yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
     }
   }
 }

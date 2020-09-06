@@ -4,7 +4,7 @@ import {
   SORT_CARDS_BY_MECHANISM,
   SORT_CARDS_BY_PRICE,
   SORT_CARDS_BY_VENDOR,
-  ADD_PRODUCT_TO_CART_REQUEST_FETCHING,
+  UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING,
   FILL_CATALOG,
   HAS_PRODUCT_CATALOG_FETCHING_ERROR, PRODUCT_CATALOG_REQUEST_FETCHING, UPDATE_CATALOG,
 } from '#act/catalog-cards';
@@ -334,7 +334,7 @@ const catalogCardsReducer = (state = initialState, action) => {
       };
     }
 
-    case ADD_PRODUCT_TO_CART_REQUEST_FETCHING: {
+    case UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING: {
       const { payload: { product: { id }, isFetching } } = action;
 
       const newCards = state.cards.map((card) => {

@@ -3,7 +3,7 @@ export const SORT_CARDS_BY_MECHANISM = 'SORT_CARDS_BY_MECHANISM';
 export const SORT_CARDS_BY_MATERIAL = 'SORT_CARDS_BY_MATERIAL';
 export const SORT_CARDS_BY_COLOR = 'SORT_CARDS_BY_COLOR';
 export const SORT_CARDS_BY_PRICE = 'SORT_CARDS_BY_PRICE';
-export const ADD_PRODUCT_TO_CART_REQUEST_FETCHING = 'ADD_PRODUCT_TO_CART_REQUEST_FETCHING';
+export const UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING = 'UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING';
 export const FILL_CATALOG = 'FILL_CATALOG';
 export const GET_PRODUCT_CATALOG_FROM_DB_REQUEST = 'GET_PRODUCT_CATALOG_FROM_DB_REQUEST';
 export const PRODUCT_CATALOG_REQUEST_FETCHING = 'PRODUCT_CATALOG_REQUEST_FETCHING';
@@ -35,8 +35,8 @@ export const sortByPrice = (data) => ({
   payload: data,
 });
 
-export const addProductToCartRequestFetching = (fetching) => ({
-  type: ADD_PRODUCT_TO_CART_REQUEST_FETCHING,
+export const updateProductCartRequestFetching = (fetching) => ({
+  type: UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING,
   payload: fetching,
 });
 
