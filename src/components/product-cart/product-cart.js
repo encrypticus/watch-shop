@@ -20,10 +20,6 @@ const ProductCart = () => {
   if (getProductCartIsFetching && !hasError) return <Spinner/>;
   if (hasError) return <div>{message}</div>;
 
-  const renderProductCart = (products) => {
-
-  };
-
   return (
     <div className='product-cart'>
       {!products ? 'Корзина пуста' : <div>products</div>}
