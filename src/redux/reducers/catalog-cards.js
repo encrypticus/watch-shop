@@ -338,10 +338,13 @@ const catalogCardsReducer = (state = initialState, action) => {
       const { payload: { product: { id }, isFetching } } = action;
 
       const newCards = state.cards.map((card) => {
-        if (card.id === id) {
-          card.addToCartFetching = isFetching;
+        const updatedCard = { ...card };
+
+        if (updatedCard.id === id) {
+          updatedCard.addToCartFetching = isFetching;
         }
-        return card;
+
+        return updatedCard;
       });
 
       return {
@@ -383,10 +386,12 @@ const catalogCardsReducer = (state = initialState, action) => {
         uniqueId,
       };
 
-      state.cards[index] = newCard;
+      const newState = { ...state };
+
+      newState.cards[index] = newCard;
 
       return {
-        ...state,
+        ...newState,
       };
     }
 
