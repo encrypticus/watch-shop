@@ -8,6 +8,7 @@ import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';
 import { signOut, signIn, signUp } from '#act/auth';
 import WatchesServiceProvider from '../../context/context';
+import { getProductCatalogFromDB } from '#act/catalog-cards';
 
 const initialState = {
   authFormShown: false,
@@ -106,6 +107,7 @@ const User = () => {
     if (isLocalUserSignedIn() !== undefined && isLocalUserSignedIn()) {
       isUserSigned = isLocalUserSignedIn();
       reduxDispatch(signIn());
+      reduxDispatch(getProductCatalogFromDB());
     }
 
     isUserSigned && hideAuthFormHandler();

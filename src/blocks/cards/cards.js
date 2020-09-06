@@ -1,12 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProductCatalogFromDB, productCatalogRequestFetching } from '#act/catalog-cards';
 import Card from '#comps/card';
+import Spinner from '#comps/spinner';
 import './cards.scss';
 
 const Cards = () => {
-  const cards = useSelector((state) => state.catalogCardsReducer.cards);
-  const minmax = useSelector((state) => state.catalogCardsReducer.price);
-  const { min, max } = minmax;
+  const {
+    cards,
+    getProductCatalogIsFetching,
+    price: { min, max },
+    error: { status: hasError, message },
+  } = useSelector((state) => state.catalogCardsReducer);
+  const { isUserSignedIn } = useSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   console.log(isUserSignedIn);
+  //   isUserSignedIn && dispatch(getProductCatalogFromDB());
+  // }, []);
 
   let cardsList = cards.map((card) => {
     const { price } = card;
@@ -21,12 +33,15 @@ const Cards = () => {
 
   cardsList = cardsList.filter((card) => card);
 
-  cardsList = cardsList.map((card) => {
+  cardsList = cardsList.map((card, index) => {
     const {
       id,
       vendor,
       price,
       src,
+      inCart,
+      uniqueId,
+      addToCartFetching,
       mechanismChecked,
       vendorChecked,
       materialChecked,
@@ -40,15 +55,21 @@ const Cards = () => {
         <Card
           key={id}
           id={id}
+          index={index}
           vendor={vendor}
           price={`${price} ₽`}
           src={src}
+          addToCartFetching={addToCartFetching}
+          inCart={inCart}
+          uniqueId={uniqueId}
         />
       );
     }
 
     return '';
   });
+
+  if (getProductCatalogIsFetching && !hasError && isUserSignedIn) return <Spinner/>;
 
   return (
     <div className='cards'>

@@ -28,7 +28,9 @@ module.exports = {
           ['#store', path.resolve(__dirname, '../../src/redux/store.js')],
           ['#pages', path.resolve(__dirname, '../../src/pages')],
           ['#services', path.resolve(__dirname, '../../src/services')],
-          ['#context', path.resolve(__dirname, '../../src/context')]
+          ['#context', path.resolve(__dirname, '../../src/context')],
+          ['#config', path.resolve(__dirname, '../../src/config')],
+          ['#const', path.resolve(__dirname, '../../src/config/constants')]
         ]
       }
     }

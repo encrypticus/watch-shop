@@ -4,6 +4,9 @@ import {
   SORT_CARDS_BY_MECHANISM,
   SORT_CARDS_BY_PRICE,
   SORT_CARDS_BY_VENDOR,
+  ADD_PRODUCT_TO_CART_REQUEST_FETCHING,
+  FILL_CATALOG,
+  HAS_PRODUCT_CATALOG_FETCHING_ERROR, PRODUCT_CATALOG_REQUEST_FETCHING, UPDATE_CATALOG,
 } from '#act/catalog-cards';
 
 const initialState = {
@@ -20,6 +23,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '2',
@@ -33,6 +38,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '3',
@@ -46,6 +53,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '4',
@@ -59,6 +68,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '5',
@@ -72,6 +83,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '6',
@@ -85,6 +98,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '7',
@@ -98,6 +113,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '8',
@@ -111,6 +128,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '9',
@@ -124,6 +143,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '10',
@@ -137,6 +158,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '11',
@@ -150,6 +173,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '12',
@@ -163,6 +188,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
     {
       id: '13',
@@ -176,6 +203,8 @@ const initialState = {
       vendorChecked: true,
       materialChecked: true,
       colorChecked: true,
+      addToCartFetching: false,
+      inCart: false,
     },
   ],
   price: {
@@ -197,6 +226,11 @@ const initialState = {
     brown: true,
     green: true,
     red: true,
+  },
+  getProductCatalogIsFetching: false,
+  error: {
+    status: false,
+    message: '',
   },
 };
 
@@ -297,6 +331,62 @@ const catalogCardsReducer = (state = initialState, action) => {
         ...state,
         checkboxes,
         price: { min, max },
+      };
+    }
+
+    case ADD_PRODUCT_TO_CART_REQUEST_FETCHING: {
+      const { payload: { product: { id }, isFetching } } = action;
+
+      const newCards = state.cards.map((card) => {
+        if (card.id === id) {
+          card.addToCartFetching = isFetching;
+        }
+        return card;
+      });
+
+      return {
+        ...state,
+        cards: newCards,
+      };
+    }
+
+    case FILL_CATALOG: {
+      return {
+        ...state,
+        cards: action.payload,
+      };
+    }
+
+    case PRODUCT_CATALOG_REQUEST_FETCHING: {
+      return {
+        ...state,
+        getProductCatalogIsFetching: action.payload,
+      };
+    }
+
+    case HAS_PRODUCT_CATALOG_FETCHING_ERROR: {
+      return {
+        ...state,
+        error: {
+          status: action.payload.status,
+          message: action.payload.message,
+        },
+      };
+    }
+
+    case UPDATE_CATALOG: {
+      const { payload: { index, inCart, uniqueId } } = action;
+
+      const newCard = {
+        ...state.cards[index],
+        inCart,
+        uniqueId,
+      };
+
+      state.cards[index] = newCard;
+
+      return {
+        ...state,
       };
     }
 

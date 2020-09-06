@@ -1,3 +1,5 @@
+import { cards } from '#const';
+
 class WatchesService {
   _getApiKey = () => 'AIzaSyCQHVNmMaqmBDaP2cgMMcHXJXK7ee9LpBw';
 
@@ -83,7 +85,9 @@ class WatchesService {
 
   getRefreshToken = () => this.getLocalUser().refreshToken;
 
-  getResponseFromServer = async () => await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`);
+  getProductCartResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`);
+
+  getProductCatalogResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/catalog.json?auth=${this.getIdToken()}`);
 
   reAuthorizeUser = async () => {
     const response = await fetch(`https://securetoken.googleapis.com/v1/token?key=${this._getApiKey()}`, {
@@ -102,7 +106,7 @@ class WatchesService {
 
   getProductCartFromDB = async () => {
     try {
-      const response = await this.getResponseFromServer();
+      const response = await this.getProductCartResponse();
 
       if (this._userIsNotAuthorized(response.status)) {
         throw new Error('Пользователь не авторизован, идём в блок catch...');
@@ -117,14 +121,48 @@ class WatchesService {
 
       this.refreshTokens(idToken, refreshToken);
 
-      const products = await this.getResponseFromServer();
+      const products = await this.getProductCartResponse();
 
       return await products.json();
     }
   };
 
+  getProductCatalogFromDB = async () => {
+    try {
+      const response = await this.getProductCatalogResponse();
+
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch (error) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      this.refreshTokens(idToken, refreshToken);
+
+      const catalog = await this.getProductCatalogResponse();
+
+      return await catalog.json();
+    }
+  };
+
+  addProductCatalogToDB = async () => {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/catalog.json?auth=${this.getIdToken()}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(cards),
+    });
+
+    return await response;
+  };
+
   addProductToCartRequest = async ({ vendor, price, src }) => {
-    console.log(vendor, price, src);
     const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`, {
       method: 'POST',
       headers: {
@@ -161,6 +199,55 @@ class WatchesService {
 
       return await productData.json();
     }
+  };
+
+  removeProductFromCartRequest = async ({ uniqueId }) => {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart/${uniqueId}.json?auth=${this.getIdToken()}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    });
+
+    return await response;
+  };
+
+  removeProductFromCart = async (product) => {
+    try {
+      const response = await this.removeProductFromCartRequest(product);
+
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch (error) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      this.refreshTokens(idToken, refreshToken);
+
+      const productData = await this.addProductToCartRequest(uniqueId);
+
+      return await productData.json();
+    }
+  };
+
+  updateProductCatalog = async (index, uniqueId, inCart) => {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/catalog/${index}.json?auth=${this.getIdToken()}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        uniqueId,
+        inCart,
+      }),
+    });
+
+    return await response.json();
   };
 }
 
