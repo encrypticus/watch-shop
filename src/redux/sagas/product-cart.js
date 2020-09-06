@@ -65,9 +65,9 @@ function* removeProductFromCart() {
 
       yield put(catalogActions.addProductToCartRequestFetching({ isFetching: true, product }));
 
-      const productData = yield call(remoteDBService.removeProductFromCart, product);
+      yield call(remoteDBService.removeProductFromCart, product);
 
-      const inCart = yield call(remoteDBService.updateProductCatalog, product.index, '', false);
+      yield call(remoteDBService.updateProductCatalog, product.index, '', false);
 
       yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: '', inCart: false }));
     } catch (error) {
