@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './card.scss';
-import AddRemoveProductBtn from '#comps/add-to-cart-button';
+import AddRemoveProductBtn from '#comps/add-remove-product-btn';
 
 const Card = (props) => {
   const {
