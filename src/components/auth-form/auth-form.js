@@ -8,7 +8,7 @@ const AuthForm = ({ type = 'signUp' }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const { isFetching, error: { status: isAuthError, message } } = useSelector((state) => state.authReducer);
+  const { authFetching, error: { status: isAuthError, message } } = useSelector((state) => state.authReducer);
   const emailRef = useRef(null);
 
   const errorCodes = {
@@ -80,9 +80,9 @@ const AuthForm = ({ type = 'signUp' }) => {
         {
           type === 'signUp'
             ? <button className='auth-form__button' type='submit'
-                      disabled={isFetching}>{isFetching ? 'Загрузка' : 'Регистрация'}</button>
+                      disabled={authFetching}>{authFetching ? 'Загрузка' : 'Регистрация'}</button>
             : <button className='auth-form__button' type='submit'
-                      disabled={isFetching}>{isFetching ? 'Загрузка' : 'Вход'}</button>
+                      disabled={authFetching}>{authFetching ? 'Загрузка' : 'Вход'}</button>
         }
       </div>
     </form>
