@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getProductCatalogFromDB, productCatalogRequestFetching } from '#act/catalog-cards';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Card from '#comps/card';
 import Spinner from '#comps/spinner';
 import './cards.scss';
@@ -10,15 +9,9 @@ const Cards = () => {
     cards,
     getProductCatalogIsFetching,
     price: { min, max },
-    error: { status: hasError, message },
+    error: { status: hasError },
   } = useSelector((state) => state.catalogCardsReducer);
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log(isUserSignedIn);
-  //   isUserSignedIn && dispatch(getProductCatalogFromDB());
-  // }, []);
 
   let cardsList = cards.map((card) => {
     const { price } = card;
