@@ -51,6 +51,10 @@ Card.propTypes = {
   price: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  addToCartFetching: PropTypes.bool.isRequired,
+  inCart: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  uniqueId: PropTypes.string.isRequired,
 };
 
 export default Card;
