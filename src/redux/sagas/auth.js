@@ -2,7 +2,7 @@ import {
   takeEvery, put, call, all,
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-import remoteDBService from '#services/remote-db-service';
+import { remoteDBService, localStorageService as storage } from '#services';
 import * as authActions from '#act/auth';
 import * as catalogActions from '#act/catalog-cards';
 import { animateUserBar } from '#act/animations';
@@ -24,9 +24,9 @@ function* authUser(action) {
 
         yield put(animateUserBar(true));
 
-        yield call(remoteDBService.localUserSignIn);
+        yield call(storage.localUserSignIn);
 
-        yield call(remoteDBService.setLocalUserData, userData);
+        yield call(storage.setLocalUserData, userData);
 
         yield toast.success('Вход выполнен!');
 
@@ -39,9 +39,9 @@ function* authUser(action) {
       case 'signUp':
         yield put(authActions.signUp());
 
-        yield call(remoteDBService.localUserSignUp);
+        yield call(storage.localUserSignUp);
 
-        yield call(remoteDBService.setLocalUserData, userData);
+        yield call(storage.setLocalUserData, userData);
 
         yield call(remoteDBService.addProductCatalogToDB);
 
@@ -59,7 +59,7 @@ function* authUser(action) {
 }
 
 function* signOutUser() {
-  yield call(remoteDBService.localUserSignOut);
+  yield call(storage.localUserSignOut);
   yield put(animateUserBar(false));
   yield put(catalogActions.fillCatalog(cards));
 }

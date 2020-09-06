@@ -1,5 +1,7 @@
 import { cards } from '#const';
 
+import storage from './local-storage-service';
+
 class RemoteDBService {
   _getApiKey = () => 'AIzaSyCQHVNmMaqmBDaP2cgMMcHXJXK7ee9LpBw';
 
@@ -32,62 +34,9 @@ class RemoteDBService {
     return await result.json();
   };
 
-  getLocalUser = () => JSON.parse(localStorage.getItem('user') || '{}');
+  getProductCartResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart.json?auth=${storage.getIdToken()}`);
 
-  localUserSignIn = () => {
-    const localUser = this.getLocalUser();
-
-    localUser.isUserSignedIn = true;
-    localStorage.setItem('user', JSON.stringify(localUser));
-  };
-
-  localUserSignOut = () => {
-    const localUser = this.getLocalUser();
-
-    localUser.isUserSignedIn = false;
-    localStorage.setItem('user', JSON.stringify(localUser));
-  };
-
-  isLocalUserSignedIn = () => this.getLocalUser().isUserSignedIn;
-
-  localUserSignUp = () => {
-    const localUser = this.getLocalUser();
-
-    localUser.isUserRegistered = true;
-    localStorage.setItem('user', JSON.stringify(localUser));
-  };
-
-  isLocalUserRegistered = () => this.getLocalUser().isUserRegistered;
-
-  setLocalUserData = ({
-    idToken, refreshToken, localId, email,
-  }) => {
-    const localUser = this.getLocalUser();
-
-    localUser.idToken = idToken;
-    localUser.refreshToken = refreshToken;
-    localUser.localId = localId;
-    localUser.email = email;
-    localStorage.setItem('user', JSON.stringify(localUser));
-  };
-
-  refreshTokens = (newIdToken, newRefreshToken) => {
-    const localUser = this.getLocalUser();
-
-    localUser.idToken = newIdToken;
-    localUser.refreshToken = newRefreshToken;
-    localStorage.setItem('user', JSON.stringify(localUser));
-  };
-
-  getLocalId = () => this.getLocalUser().localId;
-
-  getIdToken = () => this.getLocalUser().idToken;
-
-  getRefreshToken = () => this.getLocalUser().refreshToken;
-
-  getProductCartResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`);
-
-  getProductCatalogResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/catalog.json?auth=${this.getIdToken()}`);
+  getProductCatalogResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/catalog.json?auth=${storage.getIdToken()}`);
 
   reAuthorizeUser = async () => {
     const response = await fetch(`https://securetoken.googleapis.com/v1/token?key=${this._getApiKey()}`, {
@@ -97,7 +46,7 @@ class RemoteDBService {
       },
       body: JSON.stringify({
         grant_type: 'refresh_token',
-        refresh_token: this.getRefreshToken(),
+        refresh_token: storage.getRefreshToken(),
       }),
     });
 
@@ -119,7 +68,7 @@ class RemoteDBService {
       const userData = await response.json();
       const { id_token: idToken, refresh_token: refreshToken } = userData;
 
-      this.refreshTokens(idToken, refreshToken);
+      storage.refreshTokens(idToken, refreshToken);
 
       const products = await this.getProductCartResponse();
 
@@ -142,7 +91,7 @@ class RemoteDBService {
       const userData = await response.json();
       const { id_token: idToken, refresh_token: refreshToken } = userData;
 
-      this.refreshTokens(idToken, refreshToken);
+      storage.refreshTokens(idToken, refreshToken);
 
       const catalog = await this.getProductCatalogResponse();
 
@@ -151,7 +100,7 @@ class RemoteDBService {
   };
 
   addProductCatalogToDB = async () => {
-    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/catalog.json?auth=${this.getIdToken()}`, {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/catalog.json?auth=${storage.getIdToken()}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -163,7 +112,7 @@ class RemoteDBService {
   };
 
   addProductToCartRequest = async ({ vendor, price, src }) => {
-    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart.json?auth=${this.getIdToken()}`, {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart.json?auth=${storage.getIdToken()}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -193,7 +142,7 @@ class RemoteDBService {
       const userData = await response.json();
       const { id_token: idToken, refresh_token: refreshToken } = userData;
 
-      this.refreshTokens(idToken, refreshToken);
+      storage.refreshTokens(idToken, refreshToken);
 
       const productData = await this.addProductToCartRequest(product);
 
@@ -202,7 +151,7 @@ class RemoteDBService {
   };
 
   removeProductFromCartRequest = async ({ uniqueId }) => {
-    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/cart/${uniqueId}.json?auth=${this.getIdToken()}`, {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart/${uniqueId}.json?auth=${storage.getIdToken()}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -227,7 +176,7 @@ class RemoteDBService {
       const userData = await response.json();
       const { id_token: idToken, refresh_token: refreshToken } = userData;
 
-      this.refreshTokens(idToken, refreshToken);
+      storage.refreshTokens(idToken, refreshToken);
 
       const productData = await this.removeProductFromCartRequest(product);
 
@@ -236,7 +185,7 @@ class RemoteDBService {
   };
 
   updateProductCatalog = async (index, uniqueId, inCart) => {
-    const response = await fetch(`https://watches-shop.firebaseio.com/users/${this.getLocalId()}/catalog/${index}.json?auth=${this.getIdToken()}`, {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/catalog/${index}.json?auth=${storage.getIdToken()}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

@@ -1,3 +1,6 @@
-import { RemoteDBServiceContext } from './context';
+import { RemoteDBServiceContext, LocalStorageServiceContext } from './context';
 
-export { RemoteDBServiceContext };
+export {
+  RemoteDBServiceContext,
+  LocalStorageServiceContext,
+};
