@@ -18,7 +18,7 @@ const AddRemoveProductBtn = ({
     }
 
     dispatch(addProductToCartRequest({
-      vendor, price, src, id, index,
+      vendor, price, src, id, inCart, index,
     }));
   };
 

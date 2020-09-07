@@ -35,7 +35,7 @@ function* addProductToCart() {
       const action = yield take(cartActions.ADD_PRODUCT_TO_CART_REQUEST);
       product = action.payload;
 
-      yield put(cartActions.updateProductCartRequestFetching(true));
+      yield put(cartActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
       yield put(catalogActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
@@ -44,10 +44,14 @@ function* addProductToCart() {
       const inCart = yield call(remoteDBService.updateProductCatalog, product.index, productData.name, true);
 
       yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: inCart.uniqueId, inCart: true }));
+
+      const products = yield call(remoteDBService.getProductCartFromDB);
+
+      yield put(cartActions.fillProductCart(products));
     } catch (error) {
       toast.error(error.message);
     } finally {
-      yield put(cartActions.updateProductCartRequestFetching(false));
+      yield put(cartActions.updateProductCartRequestFetching({ isFetching: false, product }));
       yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
     }
   }
@@ -61,7 +65,7 @@ function* removeProductFromCart() {
       const action = yield take(cartActions.REMOVE_PRODUCT_FROM_CART_REQUEST);
       product = action.payload;
 
-      yield put(cartActions.updateProductCartRequestFetching(true));
+      yield put(cartActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
       yield put(catalogActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
@@ -70,10 +74,14 @@ function* removeProductFromCart() {
       yield call(remoteDBService.updateProductCatalog, product.index, '', false);
 
       yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: '', inCart: false }));
+
+      const products = yield call(remoteDBService.getProductCartFromDB);
+
+      yield put(cartActions.fillProductCart(products));
     } catch (error) {
       toast.error(error.message);
     } finally {
-      yield put(cartActions.updateProductCartRequestFetching(false));
+      yield put(cartActions.updateProductCartRequestFetching({ isFetching: true, product }));
       yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
     }
   }

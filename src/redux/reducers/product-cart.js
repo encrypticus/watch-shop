@@ -19,9 +19,20 @@ const initialState = {
 const productCartReducer = (state = initialState, action) => {
   switch (action.type) {
     case FILL_PRODUCT_CART: {
+      let products = action.payload;
+
+      if (products) {
+        const uniqueIds = Object.keys(products);
+
+        products = uniqueIds.map((uniqueId) => ({
+          ...products[uniqueId],
+          uniqueId,
+        }));
+      }
+
       return {
         ...state,
-        products: action.payload,
+        products,
       };
     }
 
@@ -53,9 +64,24 @@ const productCartReducer = (state = initialState, action) => {
     }
 
     case UPDATE_PRODUCT_CART_REQUEST_FETCHING: {
+      const { payload: { product: { id }, isFetching } } = action;
+      let newCards = state.products;
+
+      if (newCards) {
+        newCards = state.products.map((card) => {
+          const updatedCard = { ...card };
+
+          if (updatedCard.id === id) {
+            updatedCard.removeFromCartFetching = isFetching;
+          }
+
+          return updatedCard;
+        });
+      }
+
       return {
         ...state,
-        addProductToCartRequestIsFetching: action.payload,
+        products: newCards,
       };
     }
 
