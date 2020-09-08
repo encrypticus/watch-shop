@@ -1,16 +1,18 @@
 @import '../../sass/utils';
 
 .page-footer {
-  background: #444240;
+  width: 100%;
   padding: pxToRem(67) 0;
-  max-width: 1366px;
   margin: auto;
+  background: #444240;
+  max-width: 1366px;
+  flex: 0 0 auto;
 
   &__inner {
+    display: grid;
     max-width: 1000px;
     margin-left: auto !important;
     margin-right: auto !important;
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
 
     @include for-laptop-down {
@@ -49,13 +51,13 @@
 
   h4 {
     margin: 0;
-    margin-bottom: pxToRem(23);
     font-size: 14px;
     font-family: Roboto, Arial, sans-serif;
     font-style: normal;
     font-weight: bold;
     line-height: 16px;
     color: #FFF;
+    margin-bottom: pxToRem(23);
     letter-spacing: 0.07em;
     text-transform: uppercase;
   }
