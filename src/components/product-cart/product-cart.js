@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Spinner from '#comps/spinner';
 import Card from '#comps/card';
 import { fetchProductCart } from '#act/product-cart';
@@ -20,25 +21,36 @@ const ProductCart = () => {
     hasError && toast.error(message);
   }, [hasError]);
 
-  const renderProductCart = () => products.map((product) => {
-    const {
-      id, index, vendor, price, src, inCart, uniqueId, removeFromCartFetching,
-    } = product;
+  const renderProductCart = () => (
+    <TransitionGroup className='product-cart'>
+      {
+        products.map((product) => {
+          const {
+            id, index, vendor, price, src, inCart, uniqueId, removeFromCartFetching,
+          } = product;
 
-    return (
-        <Card
-          key={id}
-          id={id}
-          index={index}
-          vendor={vendor}
-          price={price}
-          src={src}
-          inCart={inCart}
-          uniqueId={uniqueId}
-          addToCartFetching={removeFromCartFetching}
-        />
-    );
-  });
+          return (
+            <CSSTransition
+              timeout={500}
+              classNames="card"
+            >
+              <Card
+                key={id}
+                id={id}
+                index={index}
+                vendor={vendor}
+                price={price}
+                src={src}
+                inCart={inCart}
+                uniqueId={uniqueId}
+                addToCartFetching={removeFromCartFetching}
+              />
+            </CSSTransition>
+          );
+        })
+      }
+    </TransitionGroup>
+  );
 
   if (getProductCartIsFetching && !hasError) return <div className='product-cart product-cart_empty'><Spinner/></div>;
   if (hasError) return <div className='product-cart'>{message}</div>;
@@ -46,7 +58,7 @@ const ProductCart = () => {
   return (
     !products
       ? <div className='product-cart product-cart_empty'>Корзина пуста</div>
-      : <div className='product-cart'>{renderProductCart()}</div>
+      : renderProductCart()
   );
 };
 
