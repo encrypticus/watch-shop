@@ -6,6 +6,7 @@ export const UPDATE_PRODUCT_CART_REQUEST_FETCHING = 'UPDATE_PRODUCT_CART_REQUEST
 export const REMOVE_PRODUCT_FROM_CART_REQUEST = 'REMOVE_PRODUCT_FROM_CART_REQUEST';
 export const HAS_PRODUCT_CART_FETCHING_ERROR = 'HAS_PRODUCT_CART_FETCHING_ERROR';
 export const FILL_PRODUCT_CART = 'FILL_PRODUCT_CART';
+export const HIDE_CARD = 'HIDE_CARD';
 
 export const fetchProductCart = () => ({
   type: FETCH_PRODUCT_CART_REQUEST,
@@ -44,4 +45,9 @@ export const hasProductCartFetchingError = (error) => ({
 export const fillProductCart = (products) => ({
   type: FILL_PRODUCT_CART,
   payload: products,
+});
+
+export const hideCard = (product) => ({
+  type: HIDE_CARD,
+  payload: product,
 });

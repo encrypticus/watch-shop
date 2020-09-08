@@ -127,6 +127,7 @@ class RemoteDBService {
         index,
         inCart: true,
         removeFromCartFetching: false,
+        visible: true,
       }),
     });
 

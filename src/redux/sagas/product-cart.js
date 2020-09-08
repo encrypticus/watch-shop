@@ -1,5 +1,5 @@
 import {
-  take, put, call, all,
+  take, put, call, all, delay,
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import remoteDBService from '#services/remote-db-service';
@@ -76,6 +76,10 @@ function* removeProductFromCart() {
       yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: '', inCart: false }));
 
       const products = yield call(remoteDBService.getProductCartFromDB);
+
+      yield put(cartActions.hideCard(product));
+
+      yield delay(500);
 
       yield put(cartActions.fillProductCart(products));
     } catch (error) {

@@ -4,6 +4,7 @@ import {
   UPDATE_PRODUCT_CART_REQUEST_FETCHING,
   FILL_PRODUCT_CART,
   HAS_PRODUCT_CART_FETCHING_ERROR,
+  HIDE_CARD,
 } from '#act/product-cart';
 
 const initialState = {
@@ -73,6 +74,28 @@ const productCartReducer = (state = initialState, action) => {
 
           if (updatedCard.id === id) {
             updatedCard.removeFromCartFetching = isFetching;
+          }
+
+          return updatedCard;
+        });
+      }
+
+      return {
+        ...state,
+        products: newCards,
+      };
+    }
+
+    case HIDE_CARD: {
+      const { payload: { id } } = action;
+      let newCards = state.products;
+
+      if (newCards) {
+        newCards = state.products.map((card) => {
+          const updatedCard = { ...card };
+
+          if (updatedCard.id === id) {
+            updatedCard.visible = false;
           }
 
           return updatedCard;
