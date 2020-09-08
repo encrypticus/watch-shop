@@ -4,6 +4,7 @@
   position: absolute;
   top: -33px;
   left: 34.4%;
+  z-index: -1;
   display: flex;
   width: pxToPercent(698, 1366);
   background-image: url('./img/ellipse.png');
@@ -29,9 +30,9 @@
     align-items: center;
 
     &_bottom {
-      min-width: 190px;
       top: 80.5%;
       left: 84.8%;
+      min-width: 190px;
     }
   }
 
