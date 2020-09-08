@@ -40,13 +40,13 @@ const ProductCart = () => {
     );
   });
 
-  if (getProductCartIsFetching && !hasError) return <div className='product-cart'><Spinner/></div>;
-  if (hasError) return <div>{message}</div>;
+  if (getProductCartIsFetching && !hasError) return <div className='product-cart product-cart_empty'><Spinner/></div>;
+  if (hasError) return <div className='product-cart'>{message}</div>;
 
   return (
-    <div className='product-cart'>
-      {!products ? 'Корзина пуста' : renderProductCart()}
-    </div>
+    !products
+      ? <div className='product-cart product-cart_empty'>Корзина пуста</div>
+      : <div className='product-cart'>{renderProductCart()}</div>
   );
 };
 

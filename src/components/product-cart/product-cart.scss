@@ -1,6 +1,14 @@
+@import '../../sass/utils';
+
 .product-cart {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
+  grid-gap: pxToRem(40);
+  justify-items: center;
+
+  &_empty {
+    font-size: 30px;
+    font-family: Roboto, Arial, sans-serif;
+    margin-bottom: 30px;
+  }
 }
