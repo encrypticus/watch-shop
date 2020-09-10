@@ -18,9 +18,9 @@ const CartIcon = () => {
         timeout={500}
         classNames="cart-icon__badge"
       >
-        <div>
-          {productCartIsNotEmpty ? <div className='cart-icon__badge'>{products.length}</div> : null}
-        </div>
+        {productCartIsNotEmpty
+          ? <div className='cart-icon__badge'>{products.length}</div>
+          : <></>}
       </CSSTransition>
     </div>
   );
