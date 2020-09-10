@@ -2,6 +2,7 @@ import React, {
   useReducer, useEffect, useContext, useRef,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
@@ -121,6 +122,8 @@ const User = () => {
     user.addEventListener('mouseover', () => {
       clearTimeout(hideMenuAsync);
     });
+
+    return () => clearTimeout(hideMenuAsync);
   }, [isLocalUserSignedIn()]);
 
   const authForm = (
@@ -130,23 +133,30 @@ const User = () => {
   );
 
   const userMenu = (
-    <ul className='user__list'>
-      <li className='user__list-item'>
-        {
-          isUserSignedIn
-            ? <a className='user__link' onClick={signOutHandler} href='/'>Выход</a>
-            : <a className='user__link' href='/' onClick={signInHandler}>Вход</a>
-        }
+    <CSSTransition
+      in={userMenuShown}
+      timeout={300}
+      classNames='user__list'
+      unmountOnExit
+    >
+      <ul className='user__list'>
+        <li className='user__list-item'>
+          {
+            isUserSignedIn
+              ? <a className='user__link' onClick={signOutHandler} href='/'>Выход</a>
+              : <a className='user__link' href='/' onClick={signInHandler}>Вход</a>
+          }
 
-      </li>
-      <li className='user__list-item'>
-        {
-          isUserSignedIn
-            ? null
-            : <a className='user__link' href='/' onClick={signUpHandler}>Регистрация</a>
-        }
-      </li>
-    </ul>
+        </li>
+        <li className='user__list-item'>
+          {
+            isUserSignedIn
+              ? null
+              : <a className='user__link' href='/' onClick={signUpHandler}>Регистрация</a>
+          }
+        </li>
+      </ul>
+    </CSSTransition>
   );
 
   return (
@@ -161,7 +171,7 @@ const User = () => {
             </path>
           </svg>
         </button>
-        {userMenuShown ? userMenu : null}
+        {userMenu}
       </div>
 
       {authFormShown ? authForm : null}

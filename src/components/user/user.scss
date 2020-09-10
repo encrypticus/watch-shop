@@ -18,6 +18,29 @@
     min-width: 99px;
     list-style: none;
     transform: translateY(100%);
+    transform-origin: top;
+
+    &-enter {
+      opacity: 0;
+      transform: translateY(100%) scaleY(0.1);
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: translateY(100%) scaleY(1);
+      transition: 300ms;
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(100%) scaleY(1);
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform:translateY(100%) scaleY(0.1);
+      transition: 300ms;
+    }
   }
 
   &__link {
