@@ -1,15 +1,21 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Wobble from 'react-reveal/Wobble';
 import './userbar.scss';
 import HeartIcon from './heart-icon';
 import CartIcon from './cart-icon';
 import User from '#comps/user';
+import { fetchProductCart } from '#act/product-cart';
 
 const Userbar = () => {
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
   const { animateUserBar } = useSelector((state) => state.animationReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProductCart());
+  }, []);
 
   const carts = (
     <Wobble when={animateUserBar}>
