@@ -23,7 +23,7 @@ const ProductCart = () => {
 
   const renderProductCart = () => products.map((product) => {
     const {
-      id, index, vendor, price, src, inCart, uniqueId, removeFromCartFetching, visible,
+      id, index, vendor, price, src, color, material, mechanism, inCart, uniqueId, removeFromCartFetching, visible,
     } = product;
 
     return (
@@ -41,6 +41,9 @@ const ProductCart = () => {
           vendor={vendor}
           price={price}
           src={src}
+          color={color}
+          material={material}
+          mechanism={mechanism}
           inCart={inCart}
           uniqueId={uniqueId}
           addToCartFetching={removeFromCartFetching}

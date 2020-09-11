@@ -112,7 +112,7 @@ class RemoteDBService {
   };
 
   addProductToCartRequest = async ({
-    vendor, price, src, id, index,
+    vendor, price, src, color, material, mechanism, id, index,
   }) => {
     const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart.json?auth=${storage.getIdToken()}`, {
       method: 'POST',
@@ -123,6 +123,9 @@ class RemoteDBService {
         vendor,
         price,
         src,
+        color,
+        material,
+        mechanism,
         id,
         index,
         inCart: true,

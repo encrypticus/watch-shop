@@ -6,7 +6,7 @@ import { addProductToCartRequest, removeProductFromCartRequest } from '#act/prod
 import CartSpinner from '#comps/spinners/cart-spinner';
 
 const AddRemoveProductBtn = ({
-  vendor, price, src, id, addToCartFetching, inCart, index, uniqueId,
+  vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId,
 }) => {
   const dispatch = useDispatch();
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
@@ -18,7 +18,7 @@ const AddRemoveProductBtn = ({
     }
 
     dispatch(addProductToCartRequest({
-      vendor, price, src, id, inCart, index,
+      vendor, price, src, color, material, mechanism, id, inCart, index,
     }));
   };
 

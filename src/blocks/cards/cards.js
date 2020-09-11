@@ -39,6 +39,9 @@ const Cards = () => {
       vendorChecked,
       materialChecked,
       colorChecked,
+      color,
+      material,
+      mechanism,
     } = card;
 
     const isFiltered = () => vendorChecked && mechanismChecked && materialChecked && colorChecked;
@@ -52,6 +55,9 @@ const Cards = () => {
           vendor={vendor}
           price={`${price} ₽`}
           src={src}
+          color={color}
+          material={material}
+          mechanism={mechanism}
           addToCartFetching={addToCartFetching}
           inCart={inCart}
           uniqueId={uniqueId}
