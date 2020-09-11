@@ -21,6 +21,7 @@ function* fetchProductCart() {
       yield put(cartActions.fillProductCart(products));
     } catch ({ message }) {
       yield put(cartActions.hasProductCartFetchingError({ status: true, message }));
+      yield put(cartActions.fillProductCart(null));
     } finally {
       yield put(cartActions.productCartRequestFetching(false));
     }
@@ -46,8 +47,9 @@ function* addProductToCart(action) {
     const products = yield call(remoteDBService.getProductCartFromDB);
 
     yield put(cartActions.fillProductCart(products));
-  } catch (error) {
-    toast.error(error.message);
+  } catch ({ message }) {
+    const networkConnectionError = 'Failed to fetch';
+    toast.error(message === networkConnectionError ? 'Ошибка сетевого соединения' : message);
   } finally {
     yield put(cartActions.updateProductCartRequestFetching({ isFetching: false, product }));
     yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
@@ -77,10 +79,11 @@ function* removeProductFromCart(action) {
     yield delay(500);
 
     yield put(cartActions.fillProductCart(products));
-  } catch (error) {
-    toast.error(error.message);
+  } catch ({ message }) {
+    const networkConnectionError = 'Failed to fetch';
+    toast.error(message === networkConnectionError ? 'Ошибка сетевого соединения' : message);
   } finally {
-    yield put(cartActions.updateProductCartRequestFetching({ isFetching: true, product }));
+    yield put(cartActions.updateProductCartRequestFetching({ isFetching: false, product }));
     yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
   }
 }

@@ -28,7 +28,7 @@ function* authUser(action) {
 
         yield call(storage.setLocalUserData, userData);
 
-        yield toast.success('Вход выполнен!');
+        yield toast.dark('Вход выполнен!');
 
         const productCatalog = yield call(remoteDBService.getProductCatalogFromDB);
 
@@ -46,7 +46,7 @@ function* authUser(action) {
 
         yield call(remoteDBService.addProductCatalogToDB);
 
-        yield toast.success('Регистрация успешна!');
+        yield toast.dark('Регистрация успешна!');
 
         break;
       }

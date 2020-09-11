@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Flip } from 'react-toastify';
 import IndexPage from '#pages/index';
 import CardPage from '#pages/card';
 import CatalogPage from '#pages/catalog';
@@ -27,7 +27,13 @@ const App = () => (
             <Route render={() => (<h1 className="text-center">Страница не найдена</h1>)}/>
           </Switch>
 
-          <ToastContainer position='bottom-right'/>
+          <ToastContainer
+            position='bottom-right'
+            hideProgressBar={true}
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+            transition={Flip}
+          />
           <Footer/>
         </Router>
       </Provider>

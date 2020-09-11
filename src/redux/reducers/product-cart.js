@@ -45,11 +45,14 @@ const productCartReducer = (state = initialState, action) => {
     }
 
     case HAS_PRODUCT_CART_FETCHING_ERROR: {
+      const { payload: { status, message } } = action;
+      const networkConnectionError = 'Failed to fetch';
+
       return {
         ...state,
         error: {
-          status: action.payload.status,
-          message: action.payload.message,
+          status,
+          message: message === networkConnectionError ? 'Ошибка сетевого соединения' : message,
         },
       };
     }

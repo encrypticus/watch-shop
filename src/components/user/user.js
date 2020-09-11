@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import 'react-toastify/dist/ReactToastify.min.css';
 import './user.scss';
 import Modal from '#comps/modal';
 import AuthForm from '#comps/auth-form';

@@ -13,7 +13,7 @@ const AddRemoveProductBtn = ({
 
   const addProductToCart = () => {
     if (!isUserSignedIn) {
-      toast.warn('Для добавления товара в корзину необходима авторизация');
+      toast.dark('Войдите, чтобы добавить товар в корзину');
       return;
     }
 
@@ -24,7 +24,7 @@ const AddRemoveProductBtn = ({
 
   const removeProductFromCart = () => {
     if (!isUserSignedIn) {
-      toast.warn('Для удаления товара из корзины необходима авторизация');
+      toast.dark('Войдите, чтобы удалить товар из корзины');
       return;
     }
 
