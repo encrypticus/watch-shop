@@ -1,0 +1,27 @@
+.shopping-card {
+  display: flex;
+
+  &__description {
+    font-family: Roboto, Arial, sans-serif;
+  }
+
+  &__vendor {
+    margin: 0 0 3px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #444240;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
