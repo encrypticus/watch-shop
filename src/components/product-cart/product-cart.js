@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { CSSTransition } from 'react-transition-group';
 import Spinner from '#comps/spinner';
-import Card from '#comps/card';
+import ShoppingCard from '#comps/shopping-card';
 import { fetchProductCart } from '#act/product-cart';
 import './product-cart.scss';
 
@@ -34,7 +34,7 @@ const ProductCart = () => {
         classNames="card"
         unmountOnExit
       >
-        <Card
+        <ShoppingCard
           key={id}
           id={id}
           index={index}
