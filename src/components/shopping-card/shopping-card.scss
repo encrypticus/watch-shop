@@ -1,12 +1,15 @@
 .shopping-card {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  &__description {
+  &__description,
+  &__price {
     font-family: Roboto, Arial, sans-serif;
   }
 
   &__vendor {
-    margin: 0 0 3px;
+    margin: 0 0 15px;
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;

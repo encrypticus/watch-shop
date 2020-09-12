@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './shopping-card.scss';
 import AddRemoveProductBtn from '#comps/add-remove-product-btn';
+import { colors, materials, mechanisms } from '#const';
 
 const ShoppingCard = (props) => {
   const {
@@ -19,11 +20,12 @@ const ShoppingCard = (props) => {
         <Link to={`/card/${props.id}`} className='shopping-card__link'>
           <h4 className='shopping-card__vendor'>{vendor}</h4>
         </Link>
-        <div>{color}</div>
-        <div>{material}</div>
-        <div>{mechanism}</div>
-        <div>{price}</div>
+        <div>цвет: {colors[color]}</div>
+        <div>материал: {materials[material]}</div>
+        <div>механизм: {mechanisms[mechanism]}</div>
       </div>
+
+      <div className='shopping-card__price'>цена: {`${price} ₽`}</div>
 
       <AddRemoveProductBtn
         vendor={vendor}
