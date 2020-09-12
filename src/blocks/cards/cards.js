@@ -53,7 +53,7 @@ const Cards = () => {
           id={id}
           index={index}
           vendor={vendor}
-          price={`${price} ₽`}
+          price={price}
           src={src}
           color={color}
           material={material}

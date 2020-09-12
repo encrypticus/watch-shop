@@ -40,7 +40,7 @@ const Card = (props) => {
           />
         </div>
       </div>
-      <p className='card__price'>{props.price}</p>
+      <p className='card__price'>{`${props.price} ₽`}</p>
       <div className='card__body'>
         <Link to={`/card/${props.id}`} className='card__link'>
           <img className='card__image' src={props.src} alt={props.vendor}/>
