@@ -31,7 +31,7 @@ const AddRemoveProductBtn = ({
     dispatch(removeProductFromCartRequest({ index, id, uniqueId }));
   };
 
-  if (addToCartFetching) return <CartSpinner/>;
+  if (addToCartFetching) return <div><CartSpinner/></div>;
 
   const removeBtn = (
     <button className='add-remove-cart-button' onClick={removeProductFromCart}>
