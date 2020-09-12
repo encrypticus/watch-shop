@@ -1,4 +1,4 @@
-const cards = [
+export const cards = [
   {
     id: '1',
     vendor: 'Techne',
@@ -209,4 +209,19 @@ const cards = [
   },
 ];
 
-export default cards;
+export const colors = {
+  black: 'чёрный',
+  brown: 'коричневый',
+  green: 'зелёный',
+  red: 'красный',
+};
+
+export const materials = {
+  metal: 'метал',
+  plastic: 'пластик',
+};
+
+export const mechanisms = {
+  mechanic: 'механика',
+  quartz: 'кварц',
+};
