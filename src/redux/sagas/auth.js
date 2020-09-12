@@ -6,7 +6,7 @@ import { remoteDBService, localStorageService as storage } from '#services';
 import * as authActions from '#act/auth';
 import * as catalogActions from '#act/catalog-cards';
 import { animateUserBar } from '#act/animations';
-import cards from '#const';
+import { cards } from '#const';
 
 function* authUser(action) {
   const { payload: { email, password, method } } = action;

@@ -1,4 +1,4 @@
-import cards from '#const';
+import { cards } from '#const';
 
 import storage from './local-storage-service';
 
