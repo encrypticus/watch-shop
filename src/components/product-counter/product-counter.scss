@@ -1,0 +1,77 @@
+.product-counter {
+  display: flex;
+  
+  &__button {
+    position: relative;
+    width: 30px;
+    height: 36px;
+    padding: 0;
+    background-color: #E6C8B4;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 2px;
+      background-color: #000;
+      margin-top: -1px;
+      margin-left: -5px;
+      transition: 300ms all ease;
+    }
+
+    &:active {
+      background-color: #dcbea9;
+    }
+
+    &:active,
+    &:focus {
+      box-shadow:  0 0 5px rgba(0, 0, 0, .3);
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        background-color: #979797;
+      }
+    }
+
+    &_plus {
+      border-radius: 0 3px 3px 0;
+
+      &::after {
+        margin-top: -5px;
+        margin-left: -1px;
+        width: 2px;
+        height: 10px;
+      }
+    }
+
+    &_minus {
+      border-radius: 3px 0 0 3px;
+    }
+  }
+
+  &__input {
+    width: 30px;
+    height: 36px;
+    padding: 0;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #E6C8B4;
+    border: 0;
+    outline: none;
+
+    &:active,
+    &:focus {
+      box-shadow:  0 0 5px rgba(0, 0, 0, .6);
+    }
+  }
+  
+}
