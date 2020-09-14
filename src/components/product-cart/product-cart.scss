@@ -6,5 +6,39 @@
     font-size: 30px;
     font-family: Roboto, Arial, sans-serif;
     margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &__total-amount-block {
+    display: flex;
+    padding: 10px;
+    border: 1px solid #e2dfdf;
+    margin-bottom: 20px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__total-amount {
+    margin: 0;
+    font-size: 18px;
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: bold;
+  }
+
+  &__button {
+    margin-left: 50px;
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 12px;
+    font-family: Roboto Medium,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 16px;
+    color: #fff;
+    background-color: #444240;
+    border: 0;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
   }
 }

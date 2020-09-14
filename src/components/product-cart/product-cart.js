@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { CSSTransition } from 'react-transition-group';
@@ -9,9 +9,13 @@ import './product-cart.scss';
 
 const ProductCart = () => {
   const {
-    getProductCartIsFetching, products, error: { status: hasError, message },
+    getProductCartIsFetching,
+    products,
+    error: { status: hasError, message },
+    totalAmount,
   } = useSelector((state) => state.productCartReducer);
   const dispatch = useDispatch();
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     dispatch(fetchProductCart());
@@ -21,7 +25,19 @@ const ProductCart = () => {
     hasError && toast.error(message);
   }, [hasError]);
 
-  const renderProductCart = () => products.map((product) => {
+  useEffect(() => {
+    const totalSum = Object.keys(totalAmount)
+      .map((price) => totalAmount[price])
+      .reduce((acc, value) => acc + value, 0);
+
+    setTotal(totalSum);
+  }, [totalAmount]);
+
+  const checkout = () => {
+    toast.dark('Заказ оформлен');
+  };
+
+  const renderShoppingCards = () => products.map((product) => {
     const {
       id, index, vendor, price, src, color, material, mechanism, inCart, uniqueId, removeFromCartFetching, visible,
     } = product;
@@ -51,6 +67,16 @@ const ProductCart = () => {
       </CSSTransition>
     );
   });
+
+  const renderProductCart = () => (
+    <>
+      <div className='product-cart__total-amount-block'>
+        <p className='product-cart__total-amount'>Итого: {`${total} ₽`}</p>
+        <button className='product-cart__button' type='button' onClick={checkout}>Оформить заказ</button>
+      </div>
+      {renderShoppingCards()}
+    </>
+  );
 
   if (getProductCartIsFetching && !hasError) return <div className='product-cart product-cart_empty'><Spinner/></div>;
   if (hasError) return <div className='product-cart'>{message}</div>;
