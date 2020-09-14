@@ -35,6 +35,7 @@ const ShoppingCard = (props) => {
       <ProductCounter
         price={price}
         recalculatePrice={recalculatePrice}
+        uniqueId={uniqueId}
       />
 
       <div className='shopping-card__price'>цена: {`${currentPrice} ₽`}</div>
