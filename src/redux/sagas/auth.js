@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { remoteDBService, localStorageService as storage } from '#services';
 import * as authActions from '#act/auth';
 import * as catalogActions from '#act/catalog-cards';
+import * as cartActions from '#act/product-cart';
 import { animateUserBar } from '#act/animations';
 import { cards } from '#const';
 
@@ -33,6 +34,8 @@ function* authUser(action) {
         const productCatalog = yield call(remoteDBService.getProductCatalogFromDB);
 
         yield put(catalogActions.fillCatalog(productCatalog));
+
+        yield put(cartActions.fetchProductCart());
 
         break;
       }
@@ -65,6 +68,8 @@ function* signOutUser() {
   yield call(storage.localUserSignOut);
   yield put(animateUserBar(false));
   yield put(catalogActions.fillCatalog(cards));
+  yield put(cartActions.resetTotalAmount());
+  yield put(cartActions.fillProductCart(null));
 }
 
 function* watchAuthUser() {
