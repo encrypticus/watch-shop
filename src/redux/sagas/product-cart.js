@@ -76,6 +76,8 @@ function* removeProductFromCart(action) {
 
     yield put(cartActions.hideCard(product));
 
+    yield put(cartActions.removePriceFromTotalAmount(product.uniqueId));
+
     yield delay(500);
 
     yield put(cartActions.fillProductCart(products));
