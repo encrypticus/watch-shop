@@ -7,6 +7,9 @@ export const REMOVE_PRODUCT_FROM_CART_REQUEST = 'REMOVE_PRODUCT_FROM_CART_REQUES
 export const HAS_PRODUCT_CART_FETCHING_ERROR = 'HAS_PRODUCT_CART_FETCHING_ERROR';
 export const FILL_PRODUCT_CART = 'FILL_PRODUCT_CART';
 export const HIDE_CARD = 'HIDE_CARD';
+export const ADD_PRICE_IN_TOTAL_AMOUNT = 'ADD_PRICE_IN_TOTAL_AMOUNT';
+export const REMOVE_PRICE_FROM_TOTAL_AMOUNT = 'REMOVE_PRICE_FROM_TOTAL_AMOUNT';
+export const RESET_TOTAL_AMOUNT = 'RESET_TOTAL_AMOUNT';
 
 export const fetchProductCart = () => ({
   type: FETCH_PRODUCT_CART_REQUEST,
@@ -50,4 +53,18 @@ export const fillProductCart = (products) => ({
 export const hideCard = (product) => ({
   type: HIDE_CARD,
   payload: product,
+});
+
+export const addPriceInTotalAmount = (totalAmount) => ({
+  type: ADD_PRICE_IN_TOTAL_AMOUNT,
+  payload: totalAmount,
+});
+
+export const removePriceFromTotalAmount = (id) => ({
+  type: REMOVE_PRICE_FROM_TOTAL_AMOUNT,
+  payload: id,
+});
+
+export const resetTotalAmount = () => ({
+  type: RESET_TOTAL_AMOUNT,
 });

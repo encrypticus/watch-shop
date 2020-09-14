@@ -5,12 +5,16 @@ import {
   FILL_PRODUCT_CART,
   HAS_PRODUCT_CART_FETCHING_ERROR,
   HIDE_CARD,
+  ADD_PRICE_IN_TOTAL_AMOUNT,
+  REMOVE_PRICE_FROM_TOTAL_AMOUNT,
+  RESET_TOTAL_AMOUNT,
 } from '#act/product-cart';
 
 const initialState = {
   products: null,
   getProductCartIsFetching: false,
   addProductToCartRequestIsFetching: false,
+  totalAmount: {},
   error: {
     status: false,
     message: '',
@@ -108,6 +112,38 @@ const productCartReducer = (state = initialState, action) => {
       return {
         ...state,
         products: newCards,
+      };
+    }
+
+    case ADD_PRICE_IN_TOTAL_AMOUNT: {
+      const { payload: { uniqueId, newPrice } } = action;
+      return {
+        ...state,
+        totalAmount: {
+          ...state.totalAmount,
+          [uniqueId]: newPrice,
+        },
+      };
+    }
+
+    case REMOVE_PRICE_FROM_TOTAL_AMOUNT: {
+      const id = action.payload;
+      const totalAmountClone = { ...state.totalAmount };
+
+      Object.keys(totalAmountClone).forEach((price) => {
+        if (price === id) delete totalAmountClone[price];
+      });
+
+      return {
+        ...state,
+        totalAmount: totalAmountClone,
+      };
+    }
+
+    case RESET_TOTAL_AMOUNT: {
+      return {
+        ...state,
+        totalAmount: {},
       };
     }
 
