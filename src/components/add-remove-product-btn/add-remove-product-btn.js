@@ -4,9 +4,10 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCartRequest, removeProductFromCartRequest } from '#act/product-cart';
 import CartSpinner from '#comps/spinners/cart-spinner';
+import { endpoints } from '#const';
 
 const AddRemoveProductBtn = ({
-  vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId,
+  vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId, productType,
 }) => {
   const dispatch = useDispatch();
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
@@ -17,9 +18,13 @@ const AddRemoveProductBtn = ({
       return;
     }
 
-    dispatch(addProductToCartRequest({
-      vendor, price, src, color, material, mechanism, id, inCart, index,
-    }));
+    productType === endpoints.watchCatalog
+      ? dispatch(addProductToCartRequest({
+        vendor, price, src, color, material, mechanism, id, inCart, index, productType,
+      }))
+      : dispatch(addProductToCartRequest({
+        vendor, price, src, color, id, inCart, index, productType,
+      }));
   };
 
   const removeProductFromCart = () => {
@@ -28,7 +33,9 @@ const AddRemoveProductBtn = ({
       return;
     }
 
-    dispatch(removeProductFromCartRequest({ index, id, uniqueId }));
+    dispatch(removeProductFromCartRequest({
+      index, id, uniqueId, productType,
+    }));
   };
 
   if (addToCartFetching) return <div><CartSpinner/></div>;
