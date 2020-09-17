@@ -6,7 +6,7 @@ import AddRemoveProductBtn from '#comps/add-remove-product-btn';
 
 const Card = (props) => {
   const {
-    vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId,
+    vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId, productType,
   } = props;
 
   return (
@@ -37,6 +37,7 @@ const Card = (props) => {
             addToCartFetching={addToCartFetching}
             inCart={inCart}
             uniqueId={uniqueId}
+            productType={productType}
           />
         </div>
       </div>
@@ -62,6 +63,7 @@ Card.propTypes = {
   inCart: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   uniqueId: PropTypes.string,
+  productType: PropTypes.string.isRequired,
 };
 
 export default Card;
