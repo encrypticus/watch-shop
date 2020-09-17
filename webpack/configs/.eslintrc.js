@@ -45,6 +45,7 @@ module.exports = {
     'import/named': 'off',
     'no-underscore-dangle': 'off',
     'no-return-await': 'off',
-    'consistent-return': 'off'
+    'consistent-return': 'off',
+    'no-nested-ternary': 'off'
   }
 };
