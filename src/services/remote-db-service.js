@@ -1,4 +1,4 @@
-import { cards } from '#const';
+import { cards, straps, endpoints } from '#const';
 
 import storage from './local-storage-service';
 
@@ -36,7 +36,13 @@ class RemoteDBService {
 
   getProductCartResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart.json?auth=${storage.getIdToken()}`);
 
-  getProductCatalogResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/catalog.json?auth=${storage.getIdToken()}`);
+  getProductCatalogResponse = async (productType) => {
+    const endpoint = productType === endpoints.watchCatalog
+      ? endpoints.watchCatalog : productType === endpoints.strapCatalog
+        ? endpoints.strapCatalog : endpoints.watchCatalog;
+
+    return await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/${endpoint}.json?auth=${storage.getIdToken()}`);
+  };
 
   reAuthorizeUser = async () => {
     const response = await fetch(`https://securetoken.googleapis.com/v1/token?key=${this._getApiKey()}`, {
@@ -76,9 +82,9 @@ class RemoteDBService {
     }
   };
 
-  getProductCatalogFromDB = async () => {
+  getProductCatalogFromDB = async (productType = endpoints.watchCatalog) => {
     try {
-      const response = await this.getProductCatalogResponse();
+      const response = await this.getProductCatalogResponse(productType);
 
       if (this._userIsNotAuthorized(response.status)) {
         throw new Error('Пользователь не авторизован, идём в блок catch...');
@@ -99,35 +105,34 @@ class RemoteDBService {
     }
   };
 
-  addProductCatalogToDB = async () => {
-    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/catalog.json?auth=${storage.getIdToken()}`, {
+  addProductCatalogToDB = async (productType = endpoints.watchCatalog) => {
+    const endpoint = productType === endpoints.watchCatalog
+      ? endpoints.watchCatalog : productType === endpoints.strapCatalog
+        ? endpoints.strapCatalog : endpoints.watchCatalog;
+
+    const products = productType === endpoints.watchCatalog
+      ? cards : productType === endpoints.strapCatalog
+        ? straps : cards;
+
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/${endpoint}.json?auth=${storage.getIdToken()}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify(cards),
+      body: JSON.stringify(products),
     });
 
     return await response;
   };
 
-  addProductToCartRequest = async ({
-    vendor, price, src, color, material, mechanism, id, index,
-  }) => {
+  addProductToCartRequest = async (product) => {
     const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart.json?auth=${storage.getIdToken()}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        vendor,
-        price,
-        src,
-        color,
-        material,
-        mechanism,
-        id,
-        index,
+        ...product,
         inCart: true,
         removeFromCartFetching: false,
         visible: true,
@@ -194,8 +199,12 @@ class RemoteDBService {
     }
   };
 
-  updateProductCatalog = async (index, uniqueId, inCart) => {
-    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/catalog/${index}.json?auth=${storage.getIdToken()}`, {
+  updateProductCatalog = async (index, uniqueId, inCart, productType = endpoints.watchCatalog) => {
+    const endpoint = productType === endpoints.watchCatalog
+      ? endpoints.watchCatalog : productType === endpoints.strapCatalog
+        ? endpoints.strapCatalog : endpoints.watchCatalog;
+
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/${endpoint}/${index}.json?auth=${storage.getIdToken()}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
