@@ -3,17 +3,18 @@ import { useSelector } from 'react-redux';
 import Card from '#comps/card';
 import Spinner from '#comps/spinner';
 import './cards.scss';
+import { endpoints } from '#const';
 
 const Cards = () => {
   const {
-    cards,
+    watchCards,
     getProductCatalogIsFetching,
     price: { min, max },
     error: { status: hasError },
   } = useSelector((state) => state.catalogCardsReducer);
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
 
-  let cardsList = cards.map((card) => {
+  let cardsList = watchCards.map((card) => {
     const { price } = card;
     const currentPrice = parseInt(price.replace(/[\D]+/g, ''));
 
@@ -61,6 +62,7 @@ const Cards = () => {
           addToCartFetching={addToCartFetching}
           inCart={inCart}
           uniqueId={uniqueId}
+          productType={endpoints.watchCatalog}
         />
       );
     }
