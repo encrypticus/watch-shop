@@ -5,6 +5,7 @@ export const SORT_CARDS_BY_COLOR = 'SORT_CARDS_BY_COLOR';
 export const SORT_CARDS_BY_PRICE = 'SORT_CARDS_BY_PRICE';
 export const UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING = 'UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING';
 export const FILL_CATALOG = 'FILL_CATALOG';
+export const FILL_STRAP_CATALOG = 'FILL_STRAP_CATALOG';
 export const GET_PRODUCT_CATALOG_FROM_DB_REQUEST = 'GET_PRODUCT_CATALOG_FROM_DB_REQUEST';
 export const PRODUCT_CATALOG_REQUEST_FETCHING = 'PRODUCT_CATALOG_REQUEST_FETCHING';
 export const HAS_PRODUCT_CATALOG_FETCHING_ERROR = 'HAS_PRODUCT_CATALOG_FETCHING_ERROR';
@@ -47,6 +48,11 @@ export const productCatalogRequestFetching = (fetching) => ({
 
 export const fillCatalog = (catalog) => ({
   type: FILL_CATALOG,
+  payload: catalog,
+});
+
+export const fillStrapCatalog = (catalog) => ({
+  type: FILL_STRAP_CATALOG,
   payload: catalog,
 });
 
