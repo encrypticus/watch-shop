@@ -6,207 +6,17 @@ import {
   SORT_CARDS_BY_VENDOR,
   UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING,
   FILL_CATALOG,
-  HAS_PRODUCT_CATALOG_FETCHING_ERROR, PRODUCT_CATALOG_REQUEST_FETCHING, UPDATE_CATALOG,
+  FILL_STRAP_CATALOG,
+  HAS_PRODUCT_CATALOG_FETCHING_ERROR,
+  PRODUCT_CATALOG_REQUEST_FETCHING,
+  UPDATE_CATALOG,
 } from '#act/catalog-cards';
+import * as constants from '#const';
+import { endpoints } from '#const';
 
 const initialState = {
-  cards: [
-    {
-      id: '1',
-      vendor: 'Techne',
-      price: '12 700',
-      src: './img/watch_1.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'green',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '2',
-      vendor: 'Rado',
-      price: '13 900',
-      src: './img/watch_2.png',
-      mechanism: 'quartz',
-      material: 'plastic',
-      color: 'brown',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '3',
-      vendor: 'Bvlgari',
-      price: '18 700',
-      src: './img/watch_3.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'red',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '4',
-      vendor: 'Tissot',
-      price: '18 700',
-      src: './img/watch_3.png',
-      mechanism: 'quartz',
-      material: 'plastic',
-      color: 'red',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '5',
-      vendor: 'Omega',
-      price: '50 700',
-      src: './img/watch_4.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'black',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '6',
-      vendor: 'Tissot',
-      price: '79 300',
-      src: './img/watch_5.png',
-      mechanism: 'quartz',
-      material: 'plastic',
-      color: 'brown',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '7',
-      vendor: 'Montblanc',
-      price: '80 000',
-      src: './img/watch_6.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'brown',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '8',
-      vendor: 'Techne',
-      price: '100 000',
-      src: './img/watch_7.png',
-      mechanism: 'quartz',
-      material: 'plastic',
-      color: 'red',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '9',
-      vendor: 'Rado',
-      price: '33 200',
-      src: './img/watch_8.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'black',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '10',
-      vendor: 'Bvlgari',
-      price: '42 100',
-      src: './img/watch_9.png',
-      mechanism: 'quartz',
-      material: 'plastic',
-      color: 'black',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '11',
-      vendor: 'Tissot',
-      price: '50 000',
-      src: './img/watch_10.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'red',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '12',
-      vendor: 'Omega',
-      price: '53 300',
-      src: './img/watch_11.png',
-      mechanism: 'mechanic',
-      material: 'plastic',
-      color: 'black',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-    {
-      id: '13',
-      vendor: 'Montblanc',
-      price: '66 300',
-      src: './img/watch_1.png',
-      mechanism: 'mechanic',
-      material: 'metal',
-      color: 'green',
-      mechanismChecked: true,
-      vendorChecked: true,
-      materialChecked: true,
-      colorChecked: true,
-      addToCartFetching: false,
-      inCart: false,
-    },
-  ],
+  watchCards: constants.cards,
+  strapCards: constants.straps,
   price: {
     min: 10000,
     max: 100000,
@@ -241,7 +51,7 @@ const catalogCardsReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case SORT_CARDS_BY_VENDOR: {
-      const watchesByVendor = state.cards.map((card) => {
+      const watchesByVendor = state.watchCards.map((card) => {
         const clonedCard = { ...card };
 
         if (card.vendor === data.id) {
@@ -257,12 +67,12 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByVendor,
+        watchCards: watchesByVendor,
       };
     }
 
     case SORT_CARDS_BY_MECHANISM: {
-      const watchesByMechanism = state.cards.map((card) => {
+      const watchesByMechanism = state.watchCards.map((card) => {
         const clonedCard = { ...card };
 
         if (card.mechanism === data.id) {
@@ -278,12 +88,12 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByMechanism,
+        watchCards: watchesByMechanism,
       };
     }
 
     case SORT_CARDS_BY_MATERIAL: {
-      const watchesByMaterial = state.cards.map((card) => {
+      const watchesByMaterial = state.watchCards.map((card) => {
         const clonedCard = { ...card };
 
         if (card.material === data.id) {
@@ -299,12 +109,12 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByMaterial,
+        watchCards: watchesByMaterial,
       };
     }
 
     case SORT_CARDS_BY_COLOR: {
-      const watchesByColor = state.cards.map((card) => {
+      const watchesByColor = state.watchCards.map((card) => {
         const clonedCard = { ...card };
 
         if (card.color === data.id) {
@@ -320,7 +130,7 @@ const catalogCardsReducer = (state = initialState, action) => {
       return {
         ...state,
         checkboxes,
-        cards: watchesByColor,
+        watchCards: watchesByColor,
       };
     }
 
@@ -335,9 +145,11 @@ const catalogCardsReducer = (state = initialState, action) => {
     }
 
     case UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING: {
-      const { payload: { product: { id }, isFetching } } = action;
+      const { payload: { product: { id, productType }, isFetching } } = action;
+      const cards = productType === endpoints.watchCatalog ? state.watchCards : state.strapCards;
+      const cardType = productType === endpoints.watchCatalog ? 'watchCards' : 'strapCards';
 
-      const newCards = state.cards.map((card) => {
+      const newCards = cards.map((card) => {
         const updatedCard = { ...card };
 
         if (updatedCard.id === id) {
@@ -349,14 +161,21 @@ const catalogCardsReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        cards: newCards,
+        [cardType]: newCards,
       };
     }
 
     case FILL_CATALOG: {
       return {
         ...state,
-        cards: action.payload,
+        watchCards: action.payload,
+      };
+    }
+
+    case FILL_STRAP_CATALOG: {
+      return {
+        ...state,
+        strapCards: action.payload,
       };
     }
 
@@ -378,17 +197,24 @@ const catalogCardsReducer = (state = initialState, action) => {
     }
 
     case UPDATE_CATALOG: {
-      const { payload: { index, inCart, uniqueId } } = action;
+      const {
+        payload: {
+          index, inCart, uniqueId, productType,
+        },
+      } = action;
 
-      const newCard = {
-        ...state.cards[index],
+      const cards = productType === constants.endpoints.watchCatalog ? state.watchCards : state.strapCards;
+      const cardType = productType === constants.endpoints.watchCatalog ? 'watchCards' : 'strapCards';
+
+      const updatedCard = {
+        ...cards[index],
         inCart,
         uniqueId,
       };
 
       const newState = { ...state };
 
-      newState.cards[index] = newCard;
+      newState[cardType][index] = updatedCard;
 
       return {
         ...newState,
