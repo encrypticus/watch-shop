@@ -8,7 +8,7 @@ import { colors, materials, mechanisms } from '#const';
 
 const ShoppingCard = (props) => {
   const {
-    vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId,
+    vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId, productType,
   } = props;
 
   const [currentPrice, setPrice] = useState(price);
@@ -52,6 +52,7 @@ const ShoppingCard = (props) => {
         addToCartFetching={addToCartFetching}
         inCart={inCart}
         uniqueId={uniqueId}
+        productType={productType}
       />
     </div>
   );
@@ -62,13 +63,14 @@ ShoppingCard.propTypes = {
   price: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  material: PropTypes.string.isRequired,
-  mechanism: PropTypes.string.isRequired,
+  material: PropTypes.string,
+  mechanism: PropTypes.string,
   id: PropTypes.string.isRequired,
   addToCartFetching: PropTypes.bool.isRequired,
   inCart: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   uniqueId: PropTypes.string,
+  productType: PropTypes.string.isRequired,
 };
 
 export default ShoppingCard;
