@@ -3,7 +3,6 @@ import {
 } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import remoteDBService from '#services/remote-db-service';
-
 import * as cartActions from '#act/product-cart';
 import * as catalogActions from '#act/catalog-cards';
 
@@ -40,9 +39,11 @@ function* addProductToCart(action) {
 
     const productData = yield call(remoteDBService.addProductToCart, product);
 
-    const inCart = yield call(remoteDBService.updateProductCatalog, product.index, productData.name, true);
+    const inCart = yield call(remoteDBService.updateProductCatalog, product.index, productData.name, true, product.productType);
 
-    yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: inCart.uniqueId, inCart: true }));
+    yield put(catalogActions.updateCatalog({
+      index: product.index, uniqueId: inCart.uniqueId, inCart: true, productType: product.productType,
+    }));
 
     const products = yield call(remoteDBService.getProductCartFromDB);
 
@@ -68,9 +69,11 @@ function* removeProductFromCart(action) {
 
     yield call(remoteDBService.removeProductFromCart, product);
 
-    yield call(remoteDBService.updateProductCatalog, product.index, '', false);
+    yield call(remoteDBService.updateProductCatalog, product.index, '', false, product.productType);
 
-    yield put(catalogActions.updateCatalog({ index: product.index, uniqueId: '', inCart: false }));
+    yield put(catalogActions.updateCatalog({
+      index: product.index, uniqueId: '', inCart: false, productType: product.productType,
+    }));
 
     const products = yield call(remoteDBService.getProductCartFromDB);
 
