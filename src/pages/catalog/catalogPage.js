@@ -1,16 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Header from '#comps/header';
 import Cards from '../../blocks/cards';
+import StrapCards from '../../blocks/strap-cards';
 import FilterForm from '../../blocks/filter-form';
 import './catalog-page.scss';
 import Subscribe from '#comps/subscribe';
-import BandCard from '#comps/band-card';
 import BandCarousel from '#comps/band-carousel';
 import Heading from '#comps/heading';
 import Breadcrumbs from '#comps/breadcrumbs';
 import Sorting from '#comps/sorting';
+import Spinner from '#comps/spinner';
 
-const CatalogPage = () => (
+const CatalogPage = () => {
+  const { isUserSignedIn } = useSelector((state) => state.authReducer);
+  const {
+    getProductCatalogIsFetching,
+    error: { status: hasError },
+  } = useSelector((state) => state.catalogCardsReducer);
+
+  return (
     <>
       <div className='container'>
         <div className='container__catalog'>
@@ -40,21 +49,15 @@ const CatalogPage = () => (
           </Heading>
         </div>
       </div>
-      <BandCarousel>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
-        <BandCard vendor='Georg Jensen' price='6 500 ₽' src='/img/band1.png'/>
-        <BandCard vendor='Nato' price='3 200 ₽' src='/img/band2.png'/>
-        <BandCard vendor='Spark' price='5 400 ₽' src='/img/band3.png'/>
-      </BandCarousel>
+      {
+        getProductCatalogIsFetching && !hasError && isUserSignedIn
+          ? <Spinner/>
+          : <BandCarousel>
+            <StrapCards/>
+          </BandCarousel>
+      }
     </>
-);
+  );
+};
 
 export default CatalogPage;
