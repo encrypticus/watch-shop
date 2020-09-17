@@ -9,7 +9,7 @@ import LikeButton from '#comps/like-button';
 
 const CardPage = () => {
   const { id } = useParams();
-  const watches = useSelector((state) => state.catalogCardsReducer.cards);
+  const watches = useSelector((state) => state.catalogCardsReducer.watchCards);
   const card = watches.find((watch) => watch.id === id);
   const { vendor, price } = card;
 
