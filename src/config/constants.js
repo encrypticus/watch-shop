@@ -209,6 +209,69 @@ export const cards = [
   },
 ];
 
+export const straps = [
+  {
+    id: '14',
+    vendor: 'Georg Jensen',
+    price: '6 500',
+    src: '/img/band1.png',
+    color: 'brown',
+    addToCartFetching: false,
+    inCart: false,
+    uniqueId: '',
+  },
+  {
+    id: '15',
+    vendor: 'Nato',
+    price: '3 200',
+    src: '/img/band2.png',
+    color: 'black',
+    addToCartFetching: false,
+    inCart: false,
+    uniqueId: '',
+  },
+  {
+    id: '16',
+    vendor: 'Spark',
+    price: '5 400',
+    src: '/img/band3.png',
+    color: 'yellow',
+    addToCartFetching: false,
+    inCart: false,
+    uniqueId: '',
+  },
+  {
+    id: '17',
+    vendor: 'Gentleman',
+    price: '8 100',
+    src: '/img/band1.png',
+    color: 'brown',
+    addToCartFetching: false,
+    inCart: false,
+    uniqueId: '',
+  },
+  {
+    id: '18',
+    vendor: 'Black Arrow',
+    price: '6 600',
+    src: '/img/band2.png',
+    color: 'black',
+    addToCartFetching: false,
+    inCart: false,
+    uniqueId: '',
+  },
+  {
+    id: '19',
+    vendor: 'Fantasy',
+    price: '2 600',
+    src: '/img/band3.png',
+    color: 'yellow',
+    addToCartFetching: false,
+    inCart: false,
+    uniqueId: '',
+  },
+];
+
 export const colors = {
   black: 'чёрный',
   brown: 'коричневый',
@@ -224,4 +287,9 @@ export const materials = {
 export const mechanisms = {
   mechanic: 'механика',
   quartz: 'кварц',
+};
+
+export const endpoints = {
+  watchCatalog: 'watch-catalog',
+  strapCatalog: 'strap-catalog',
 };
