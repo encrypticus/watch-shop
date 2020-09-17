@@ -29,7 +29,7 @@ const FilterForm = () => {
     red,
   } = checkboxes;
 
-  const getIds = (key) => useSelector((state) => state.catalogCardsReducer.cards.map((card) => card[key]));
+  const getIds = (key) => useSelector((state) => state.catalogCardsReducer.watchCards.map((card) => card[key]));
 
   const vendorIds = getIds('vendor');
   const colorIds = getIds('color');
