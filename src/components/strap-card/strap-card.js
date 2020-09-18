@@ -33,7 +33,7 @@ const StrapCard = (props) => {
             />
           </div>
         </div>
-        <p className='band-card__price'>{props.price}</p>
+        <p className='band-card__price'>{`${props.price} ₽`}</p>
         <div className='band-card__body'>
           <img className='band-card__image' src={props.src} alt={props.vendor}/>
         </div>
