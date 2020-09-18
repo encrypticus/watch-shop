@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 import remoteDBService from '#services/remote-db-service';
 import * as catalogActions from '#act/catalog-cards';
+import { endpoints } from '#const';
 
 function* fetchCatalog() {
   while (true) {
@@ -13,9 +14,13 @@ function* fetchCatalog() {
 
       yield put(catalogActions.productCatalogRequestFetching(true));
 
-      const catalog = yield call(remoteDBService.getProductCatalogFromDB);
+      const watchCatalog = yield call(remoteDBService.getProductCatalogFromDB);
 
-      yield put(catalogActions.fillCatalog(catalog));
+      const strapCatalog = yield call(remoteDBService.getProductCatalogFromDB, endpoints.strapCatalog);
+
+      yield put(catalogActions.fillCatalog(watchCatalog));
+
+      yield put(catalogActions.fillStrapCatalog(strapCatalog));
     } catch ({ message }) {
       yield put(catalogActions.hasProductCatalogFetchingError({ status: true, message }));
     } finally {
