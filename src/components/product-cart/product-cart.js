@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { CSSTransition } from 'react-transition-group';
+import wNumb from 'wnumb';
 import Spinner from '#comps/spinner';
 import ShoppingCard from '#comps/shopping-card';
 import { fetchProductCart } from '#act/product-cart';
@@ -16,6 +17,7 @@ const ProductCart = () => {
   } = useSelector((state) => state.productCartReducer);
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
+  const totalFormat = wNumb({ thousand: ' ' });
 
   useEffect(() => {
     dispatch(fetchProductCart());
@@ -72,7 +74,7 @@ const ProductCart = () => {
   const renderProductCart = () => (
     <>
       <div className='product-cart__total-amount-block'>
-        <p className='product-cart__total-amount'>Итого: {`${total} ₽`}</p>
+        <p className='product-cart__total-amount'>Итого: {`${totalFormat.to(total)} ₽`}</p>
         <button className='product-cart__button' type='button' onClick={checkout}>Оформить заказ</button>
       </div>
       {renderShoppingCards()}

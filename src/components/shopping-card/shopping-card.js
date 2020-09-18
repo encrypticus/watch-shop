@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import wNumb from 'wnumb';
 import './shopping-card.scss';
 import AddRemoveProductBtn from '#comps/add-remove-product-btn';
 import ProductCounter from '#comps/product-counter';
@@ -10,6 +11,8 @@ const ShoppingCard = (props) => {
   const {
     vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId, productType,
   } = props;
+
+  const formatPrice = wNumb({ thousand: ' ' });
 
   const [currentPrice, setPrice] = useState(price);
 
@@ -38,7 +41,7 @@ const ShoppingCard = (props) => {
         uniqueId={uniqueId}
       />
 
-      <div className='shopping-card__price'>цена: {`${currentPrice} ₽`}</div>
+      <div className='shopping-card__price'>цена: {`${formatPrice.to(currentPrice)} ₽`}</div>
 
       <AddRemoveProductBtn
         vendor={vendor}
