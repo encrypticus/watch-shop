@@ -7,7 +7,7 @@ import * as authActions from '#act/auth';
 import * as catalogActions from '#act/catalog-cards';
 import * as cartActions from '#act/product-cart';
 import { animateUserBar } from '#act/animations';
-import { cards } from '#const';
+import { cards, endpoints, straps } from '#const';
 
 function* authUser(action) {
   const { payload: { email, password, method } } = action;
@@ -31,9 +31,13 @@ function* authUser(action) {
 
         yield toast.dark('Вход выполнен!');
 
-        const productCatalog = yield call(remoteDBService.getProductCatalogFromDB);
+        const watchCatalog = yield call(remoteDBService.getProductCatalogFromDB);
 
-        yield put(catalogActions.fillCatalog(productCatalog));
+        const strapCatalog = yield call(remoteDBService.getProductCatalogFromDB, endpoints.strapCatalog);
+
+        yield put(catalogActions.fillCatalog(watchCatalog));
+
+        yield put(catalogActions.fillStrapCatalog(strapCatalog));
 
         yield put(cartActions.fetchProductCart());
 
@@ -48,6 +52,8 @@ function* authUser(action) {
         yield call(storage.setLocalUserData, userData);
 
         yield call(remoteDBService.addProductCatalogToDB);
+
+        yield call(remoteDBService.addProductCatalogToDB, endpoints.strapCatalog);
 
         yield toast.dark('Регистрация успешна!');
 
@@ -66,9 +72,15 @@ function* authUser(action) {
 
 function* signOutUser() {
   yield call(storage.localUserSignOut);
+
   yield put(animateUserBar(false));
+
   yield put(catalogActions.fillCatalog(cards));
+
+  yield put(catalogActions.fillStrapCatalog(straps));
+
   yield put(cartActions.resetTotalAmount());
+
   yield put(cartActions.fillProductCart(null));
 }
 
