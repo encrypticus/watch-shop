@@ -1,0 +1,55 @@
+.favorites-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  border: 1px solid #e2dfdf;
+  margin-bottom: 20px;
+
+  &__description,
+  &__price {
+    font-family: Roboto, Arial, sans-serif;
+  }
+
+  &__vendor {
+    margin: 0 0 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #444240;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-enter {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 500ms, transform 500ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: scale(2);
+    transition: opacity 500ms, transform 500ms;
+  }
+}
