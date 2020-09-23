@@ -3,11 +3,27 @@ import './add-remove-product-btn.scss';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCartRequest, removeProductFromCartRequest } from '#act/product-cart';
+import { addProductToFavoritesRequest, removeProductFromFavoritesRequest } from '#act/favorites-cart';
 import CartSpinner from '#comps/spinners/cart-spinner';
-import { endpoints } from '#const';
+import { endpoints, cartTypes } from '#const';
 
 const AddRemoveProductBtn = ({
-  vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId, productType,
+  vendor,
+  price,
+  src,
+  color,
+  material,
+  mechanism,
+  id,
+  addToCartFetching,
+  addToFavoritesFetching,
+  inCart,
+  inFavorites,
+  index,
+  uniqueId,
+  uniqueFavoritesId,
+  productType,
+  cartType,
 }) => {
   const dispatch = useDispatch();
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
@@ -20,10 +36,10 @@ const AddRemoveProductBtn = ({
 
     productType === endpoints.watchCatalog
       ? dispatch(addProductToCartRequest({
-        vendor, price, src, color, material, mechanism, id, inCart, index, productType,
+        vendor, price, src, color, material, mechanism, id, inCart, inFavorites, index, productType, cartType,
       }))
       : dispatch(addProductToCartRequest({
-        vendor, price, src, color, id, inCart, index, productType,
+        vendor, price, src, color, id, inCart, inFavorites, index, productType, cartType,
       }));
   };
 
@@ -34,13 +50,40 @@ const AddRemoveProductBtn = ({
     }
 
     dispatch(removeProductFromCartRequest({
-      index, id, uniqueId, productType,
+      index, id, uniqueId, productType, cartType,
     }));
   };
 
-  if (addToCartFetching) return <div><CartSpinner/></div>;
+  const addProductToFavorites = () => {
+    if (!isUserSignedIn) {
+      toast.dark('Войдите, чтобы добавить товар в избранное');
+      return;
+    }
 
-  const removeBtn = (
+    productType === endpoints.watchCatalog
+      ? dispatch(addProductToFavoritesRequest({
+        vendor, price, src, color, material, mechanism, id, inCart, inFavorites, index, productType, cartType, addToCartFetching: false,
+      }))
+      : dispatch(addProductToFavoritesRequest({
+        vendor, price, src, color, id, inCart, inFavorites, index, productType, cartType,
+      }));
+  };
+
+  const removeProductFromFavorites = () => {
+    if (!isUserSignedIn) {
+      toast.dark('Войдите, чтобы удалить товар из избранного');
+      return;
+    }
+
+    dispatch(removeProductFromFavoritesRequest({
+      index, id, uniqueFavoritesId, productType, cartType,
+    }));
+  };
+
+  if (addToCartFetching && cartType === cartTypes.product) return <div><CartSpinner/></div>;
+  if (addToFavoritesFetching && cartType === cartTypes.favorites) return <div><CartSpinner/></div>;
+
+  const removeFromProductCartBtn = (
     <button className='add-remove-cart-button' onClick={removeProductFromCart}>
       <svg width="18" height="16"
            className="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +94,17 @@ const AddRemoveProductBtn = ({
     </button>
   );
 
-  const addBtn = (
+  const removeFromFavoritesCartBtn = (
+    <button className='add-remove-cart-button' onClick={removeProductFromFavorites}>
+      <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M8.94618 2.82644C9.67267 1.16278 11.3323 0.000347801 13.2627 0.000347801C15.863 0.000347801 17.7358 2.14957 17.9712 4.71096C17.9712 4.71096 18.0983 5.34678 17.8186 6.49148C17.4377 8.05044 16.5423 9.43548 15.3352 10.4925L8.94618 16L2.66477 10.4922C1.45767 9.43548 0.562332 8.05009 0.181444 6.49113C-0.0982812 5.34644 0.0288014 4.71061 0.0288014 4.71061C0.264246 2.14922 2.137 0 4.73734 0C6.66805 0 8.21968 1.16278 8.94618 2.82644Z"
+          fill="#D75A4A"/>
+      </svg>
+    </button>
+  );
+
+  const addToProductCartBtn = (
     <button className='add-remove-cart-button' onClick={addProductToCart}>
       <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -61,7 +114,29 @@ const AddRemoveProductBtn = ({
     </button>
   );
 
-  const currentBtn = inCart ? removeBtn : addBtn;
+  const addToFavoritesCartBtn = (
+    <button className='add-remove-cart-button' onClick={addProductToFavorites}>
+      <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M19.9686 5.77104C19.6912 3.00625 17.5306 1.00033 14.8266 1.00033C13.0251 1.00033 11.3757 1.87835 10.4475 3.28557C9.5278 1.86015 7.94595 1 6.17336 1C3.4697 1 1.30868 3.00592 1.0317 5.77071C1.00978 5.89283 0.919889 6.53555 1.19321 7.58368C1.58712 9.09548 2.49699 10.4706 3.82378 11.5594L10.4431 17L17.1761 11.5598C18.5029 10.4706 19.4128 9.09581 19.8067 7.58368C20.08 6.53588 19.9902 5.89316 19.9686 5.77104ZM19.0953 7.4321C18.7357 8.81284 17.9022 10.0708 16.6872 11.0676L10.4475 16.1097L4.31489 11.069C3.09772 10.0701 2.26459 8.81251 1.90466 7.43177C1.64595 6.4399 1.75229 5.87959 1.75265 5.87595L1.75813 5.84253C1.99565 3.42027 3.85229 1.66191 6.17336 1.66191C7.88602 1.66191 9.39369 2.61506 10.1092 4.14903L10.4457 4.87151L10.7822 4.14903C11.4864 2.63856 13.0737 1.66224 14.8269 1.66224C17.1476 1.66224 19.0047 3.4206 19.2469 5.8743C19.2476 5.87959 19.354 6.44023 19.0953 7.4321Z"
+          fill="#1B1A17" stroke="#1B1A17" strokeWidth="0.75"></path>
+      </svg>
+    </button>
+  );
+
+  const addBtn = cartType === cartTypes.product ? addToProductCartBtn : addToFavoritesCartBtn;
+
+  const removeBtn = cartType === cartTypes.product ? removeFromProductCartBtn : removeFromFavoritesCartBtn;
+
+  let currentBtn;
+
+  if (cartType === cartTypes.product) {
+    if (inCart) currentBtn = removeBtn;
+    else currentBtn = addBtn;
+  } else if (cartType === cartTypes.favorites) {
+    if (inFavorites) currentBtn = removeBtn;
+    else currentBtn = addBtn;
+  }
 
   return currentBtn;
 };
