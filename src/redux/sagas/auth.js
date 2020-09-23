@@ -6,6 +6,7 @@ import { remoteDBService, localStorageService as storage } from '#services';
 import * as authActions from '#act/auth';
 import * as catalogActions from '#act/catalog-cards';
 import * as cartActions from '#act/product-cart';
+import * as favoritesActions from '#act/favorites-cart';
 import { animateUserBar } from '#act/animations';
 import { cards, endpoints, straps } from '#const';
 
@@ -40,6 +41,8 @@ function* authUser(action) {
         yield put(catalogActions.fillStrapCatalog(strapCatalog));
 
         yield put(cartActions.fetchProductCart());
+
+        yield put(favoritesActions.fetchFavoritesCart());
 
         break;
       }
@@ -82,6 +85,8 @@ function* signOutUser() {
   yield put(cartActions.resetTotalAmount());
 
   yield put(cartActions.fillProductCart(null));
+
+  yield put(favoritesActions.fillFavoritesCart(null));
 }
 
 function* watchAuthUser() {
