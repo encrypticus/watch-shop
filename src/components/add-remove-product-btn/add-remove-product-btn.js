@@ -39,7 +39,7 @@ const AddRemoveProductBtn = ({
         vendor, price, src, color, material, mechanism, id, inCart, inFavorites, index, productType, cartType,
       }))
       : dispatch(addProductToCartRequest({
-        vendor, price, src, color, id, inCart, inFavorites, index, productType, cartType,
+        vendor, price, src, color, material, id, inCart, inFavorites, index, productType, cartType,
       }));
   };
 
@@ -65,7 +65,7 @@ const AddRemoveProductBtn = ({
         vendor, price, src, color, material, mechanism, id, inCart, inFavorites, index, productType, cartType, addToCartFetching: false,
       }))
       : dispatch(addProductToFavoritesRequest({
-        vendor, price, src, color, id, inCart, inFavorites, index, productType, cartType,
+        vendor, price, src, color, material, id, inCart, inFavorites, index, productType, cartType,
       }));
   };
 

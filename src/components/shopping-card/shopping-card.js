@@ -45,7 +45,7 @@ const ShoppingCard = (props) => {
         </Link>
         <div>цвет: {colors[color]}</div>
         <div>материал: {materials[material]}</div>
-        <div>механизм: {mechanisms[mechanism]}</div>
+        {mechanisms[mechanism] ? <div>механизм: {mechanisms[mechanism]}</div> : null}
       </div>
 
       <ProductCounter

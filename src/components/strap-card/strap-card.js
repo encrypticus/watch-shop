@@ -9,6 +9,7 @@ const StrapCard = (props) => {
     vendor,
     price,
     src,
+    material,
     color,
     id,
     addToCartFetching,
@@ -29,6 +30,7 @@ const StrapCard = (props) => {
               vendor={vendor}
               price={price}
               src={src}
+              material={material}
               color={color}
               id={id}
               index={index}
@@ -45,6 +47,7 @@ const StrapCard = (props) => {
               vendor={vendor}
               price={price}
               src={src}
+              material={material}
               color={color}
               id={id}
               index={index}
@@ -71,6 +74,7 @@ StrapCard.propTypes = {
   vendor: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
+  material: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,

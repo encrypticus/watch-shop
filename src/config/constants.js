@@ -254,6 +254,7 @@ export const straps = [
     vendor: 'Georg Jensen',
     price: '6 500',
     src: '/img/band1.png',
+    material: 'leather',
     color: 'brown',
     addToCartFetching: false,
     inCart: false,
@@ -267,6 +268,7 @@ export const straps = [
     vendor: 'Nato',
     price: '3 200',
     src: '/img/band2.png',
+    material: 'leather',
     color: 'black',
     addToCartFetching: false,
     inCart: false,
@@ -280,6 +282,7 @@ export const straps = [
     vendor: 'Spark',
     price: '5 400',
     src: '/img/band3.png',
+    material: 'leather',
     color: 'yellow',
     addToCartFetching: false,
     inCart: false,
@@ -293,6 +296,7 @@ export const straps = [
     vendor: 'Gentleman',
     price: '8 100',
     src: '/img/band1.png',
+    material: 'leather',
     color: 'brown',
     addToCartFetching: false,
     inCart: false,
@@ -306,6 +310,7 @@ export const straps = [
     vendor: 'Black Arrow',
     price: '6 600',
     src: '/img/band2.png',
+    material: 'leather',
     color: 'black',
     addToCartFetching: false,
     inCart: false,
@@ -319,6 +324,7 @@ export const straps = [
     vendor: 'Fantasy',
     price: '2 600',
     src: '/img/band3.png',
+    material: 'leather',
     color: 'yellow',
     addToCartFetching: false,
     inCart: false,
@@ -339,6 +345,7 @@ export const colors = {
 export const materials = {
   metal: 'метал',
   plastic: 'пластик',
+  leather: 'кожа',
 };
 
 export const mechanisms = {

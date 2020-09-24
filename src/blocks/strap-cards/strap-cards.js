@@ -13,6 +13,7 @@ const StrapCards = () => {
       vendor,
       price,
       src,
+      material,
       color,
       inCart,
       inFavorites,
@@ -30,6 +31,7 @@ const StrapCards = () => {
         vendor={vendor}
         price={price}
         src={src}
+        material={material}
         color={color}
         inCart={inCart}
         inFavorites={inFavorites}
