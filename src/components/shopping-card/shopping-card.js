@@ -5,11 +5,24 @@ import wNumb from 'wnumb';
 import './shopping-card.scss';
 import AddRemoveProductBtn from '#comps/add-remove-product-btn';
 import ProductCounter from '#comps/product-counter';
-import { colors, materials, mechanisms } from '#const';
+import {
+  colors, materials, mechanisms, cartTypes,
+} from '#const';
 
 const ShoppingCard = (props) => {
   const {
-    vendor, price, src, color, material, mechanism, id, addToCartFetching, inCart, index, uniqueId, productType,
+    vendor,
+    price,
+    src,
+    color,
+    material,
+    mechanism,
+    id,
+    addToCartFetching,
+    inCart,
+    index,
+    uniqueId,
+    productType,
   } = props;
 
   const formatPrice = wNumb({ thousand: ' ' });
@@ -56,6 +69,7 @@ const ShoppingCard = (props) => {
         inCart={inCart}
         uniqueId={uniqueId}
         productType={productType}
+        cartType={cartTypes.product}
       />
     </div>
   );
