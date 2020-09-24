@@ -15,8 +15,11 @@ const StrapCards = () => {
       src,
       color,
       inCart,
+      inFavorites,
       uniqueId,
+      uniqueFavoritesId,
       addToCartFetching,
+      addToFavoritesFetching,
     } = strapCard;
 
     return (
@@ -28,9 +31,12 @@ const StrapCards = () => {
         price={price}
         src={src}
         color={color}
-        addToCartFetching={addToCartFetching}
         inCart={inCart}
+        inFavorites={inFavorites}
+        addToCartFetching={addToCartFetching}
+        addToFavoritesFetching={addToFavoritesFetching}
         uniqueId={uniqueId}
+        uniqueFavoritesId={uniqueFavoritesId}
         productType={endpoints.strapCatalog}
       />
     );
