@@ -34,8 +34,11 @@ const Cards = () => {
       price,
       src,
       inCart,
+      inFavorites,
       uniqueId,
+      uniqueFavoritesId,
       addToCartFetching,
+      addToFavoritesFetching,
       mechanismChecked,
       vendorChecked,
       materialChecked,
@@ -60,8 +63,11 @@ const Cards = () => {
           material={material}
           mechanism={mechanism}
           addToCartFetching={addToCartFetching}
+          addToFavoritesFetching={addToFavoritesFetching}
           inCart={inCart}
+          inFavorites={inFavorites}
           uniqueId={uniqueId}
+          uniqueFavoritesId={uniqueFavoritesId}
           productType={endpoints.watchCatalog}
         />
       );
