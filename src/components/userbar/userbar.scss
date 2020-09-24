@@ -25,6 +25,10 @@
     align-items: center;
     transform: translate(10px, -32px);
 
+    &_brown {
+      background-color: #fb9d5e;
+    }
+
     &-enter {
       opacity: 0;
       transform: translate(10px, -32px) scale(0.1);

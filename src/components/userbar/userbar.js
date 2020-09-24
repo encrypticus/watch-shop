@@ -7,6 +7,7 @@ import HeartIcon from './heart-icon';
 import CartIcon from './cart-icon';
 import User from '#comps/user';
 import { fetchProductCart } from '#act/product-cart';
+import { fetchFavoritesCart } from '#act/favorites-cart';
 
 const Userbar = () => {
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
@@ -15,11 +16,12 @@ const Userbar = () => {
 
   useEffect(() => {
     dispatch(fetchProductCart());
+    dispatch(fetchFavoritesCart());
   }, []);
 
   const carts = (
     <Wobble when={animateUserBar}>
-      <Link to='/bookmarks' title='перейти в избранное' className='userbar__link'>
+      <Link to='/favorites-cart' title='перейти в избранное' className='userbar__link'>
         <HeartIcon/>
       </Link>
 
