@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import remoteDBService from '#services/remote-db-service';
 import * as cartActions from '#act/product-cart';
 import * as catalogActions from '#act/catalog-cards';
+import * as favoritesActions from '#act/favorites-cart';
 
 function* fetchProductCart() {
   while (true) {
@@ -37,12 +38,18 @@ function* addProductToCart(action) {
 
     yield put(catalogActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
-    const productData = yield call(remoteDBService.addProductToCart, product);
+    yield put(favoritesActions.updateProductInFavoritesRequestFetching({ isFetching: true, product }));
 
-    const inCart = yield call(remoteDBService.updateProductCatalog, product.index, productData.name, true, product.productType);
+    const { name: uniqueId } = yield call(remoteDBService.addProductToCart, product);
+
+    const updatedData = yield call(remoteDBService.updateProductCatalog, { product, uniqueId, inCart: true });
 
     yield put(catalogActions.updateCatalog({
-      index: product.index, uniqueId: inCart.uniqueId, inCart: true, productType: product.productType,
+      index: product.index,
+      uniqueId: updatedData.uniqueId,
+      inCart: true,
+      productType: product.productType,
+      cartType: product.cartType,
     }));
 
     const products = yield call(remoteDBService.getProductCartFromDB);
@@ -54,6 +61,7 @@ function* addProductToCart(action) {
   } finally {
     yield put(cartActions.updateProductCartRequestFetching({ isFetching: false, product }));
     yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
+    yield put(favoritesActions.updateProductInFavoritesRequestFetching({ isFetching: false, product }));
   }
 }
 
@@ -67,12 +75,18 @@ function* removeProductFromCart(action) {
 
     yield put(catalogActions.updateProductCartRequestFetching({ isFetching: true, product }));
 
+    yield put(favoritesActions.updateProductInFavoritesRequestFetching({ isFetching: true, product }));
+
     yield call(remoteDBService.removeProductFromCart, product);
 
-    yield call(remoteDBService.updateProductCatalog, product.index, '', false, product.productType);
+    yield call(remoteDBService.updateProductCatalog, { product, uniqueId: '', inCart: false });
 
     yield put(catalogActions.updateCatalog({
-      index: product.index, uniqueId: '', inCart: false, productType: product.productType,
+      index: product.index,
+      uniqueId: '',
+      inCart: false,
+      productType: product.productType,
+      cartType: product.cartType,
     }));
 
     const products = yield call(remoteDBService.getProductCartFromDB);
@@ -90,6 +104,7 @@ function* removeProductFromCart(action) {
   } finally {
     yield put(cartActions.updateProductCartRequestFetching({ isFetching: false, product }));
     yield put(catalogActions.updateProductCartRequestFetching({ isFetching: false, product }));
+    yield put(favoritesActions.updateProductInFavoritesRequestFetching({ isFetching: false, product }));
   }
 }
 

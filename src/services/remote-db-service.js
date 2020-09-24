@@ -1,4 +1,6 @@
-import { cards, straps, endpoints } from '#const';
+import {
+  cards, straps, endpoints, cartTypes,
+} from '#const';
 
 import storage from './local-storage-service';
 
@@ -35,6 +37,8 @@ class RemoteDBService {
   };
 
   getProductCartResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/cart.json?auth=${storage.getIdToken()}`);
+
+  getFavoritesCartResponse = async () => await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/favorites.json?auth=${storage.getIdToken()}`);
 
   getProductCatalogResponse = async (productType) => {
     const endpoint = productType === endpoints.watchCatalog
@@ -77,6 +81,29 @@ class RemoteDBService {
       storage.refreshTokens(idToken, refreshToken);
 
       const products = await this.getProductCartResponse();
+
+      return await products.json();
+    }
+  };
+
+  getFavoritesCartFromDB = async () => {
+    try {
+      const response = this.getFavoritesCartResponse();
+
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch ({ message }) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      storage.refreshTokens(idToken, refreshToken);
+
+      const products = await this.getFavoritesCartResponse();
 
       return await products.json();
     }
@@ -176,6 +203,17 @@ class RemoteDBService {
     return await response;
   };
 
+  removeProductFromFavoritesRequest = async ({ uniqueFavoritesId }) => {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/favorites/${uniqueFavoritesId}.json?auth=${storage.getIdToken()}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    });
+
+    return await response;
+  };
+
   removeProductFromCart = async (product) => {
     try {
       const response = await this.removeProductFromCartRequest(product);
@@ -199,7 +237,82 @@ class RemoteDBService {
     }
   };
 
-  updateProductCatalog = async (index, uniqueId, inCart, productType = endpoints.watchCatalog) => {
+  removeProductFromFavorites = async (product) => {
+    try {
+      const response = await this.removeProductFromFavoritesRequest(product);
+
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch (error) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      storage.refreshTokens(idToken, refreshToken);
+
+      const productData = await this.removeProductFromFavoritesRequest(product);
+
+      return await productData.json();
+    }
+  };
+
+  addProductToFavoritesRequest = async (product) => {
+    const response = await fetch(`https://watches-shop.firebaseio.com/users/${storage.getLocalId()}/favorites.json?auth=${storage.getIdToken()}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        ...product,
+        inFavorites: true,
+        removeFromFavoritesFetching: false,
+        favoritesVisible: true,
+      }),
+    });
+
+    return await response;
+  };
+
+  addProductToFavorites = async (product) => {
+    try {
+      const response = await this.addProductToFavoritesRequest(product);
+
+      if (this._userIsNotAuthorized(response.status)) {
+        throw new Error('Пользователь не авторизован, идём в блок catch...');
+      }
+
+      return await response.json();
+    } catch (error) {
+      const response = await this.reAuthorizeUser();
+
+      const userData = await response.json();
+      const { id_token: idToken, refresh_token: refreshToken } = userData;
+
+      storage.refreshTokens(idToken, refreshToken);
+
+      const productData = await this.addProductToFavoritesRequest(product);
+
+      return await productData.json();
+    }
+  };
+
+  updateProductCatalog = async (productData) => {
+    const {
+      product: {
+        index,
+        cartType,
+        productType = endpoints.watchCatalog,
+      },
+      uniqueId,
+      inCart,
+    } = productData;
+    const id = cartType === cartTypes.product ? 'uniqueId' : 'uniqueFavoritesId';
+    const inWhere = cartType === cartTypes.product ? 'inCart' : 'inFavorites';
+
     const endpoint = productType === endpoints.watchCatalog
       ? endpoints.watchCatalog : productType === endpoints.strapCatalog
         ? endpoints.strapCatalog : endpoints.watchCatalog;
@@ -210,8 +323,8 @@ class RemoteDBService {
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify({
-        uniqueId,
-        inCart,
+        [id]: uniqueId,
+        [inWhere]: inCart,
       }),
     });
 

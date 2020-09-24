@@ -13,7 +13,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '2',
@@ -29,7 +32,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '3',
@@ -45,7 +51,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '4',
@@ -61,7 +70,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '5',
@@ -77,7 +89,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '6',
@@ -93,7 +108,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '7',
@@ -109,7 +127,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '8',
@@ -125,7 +146,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '9',
@@ -141,7 +165,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '10',
@@ -157,7 +184,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '11',
@@ -173,7 +203,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '12',
@@ -189,7 +222,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '13',
@@ -205,7 +241,10 @@ export const cards = [
     colorChecked: true,
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
 ];
 
@@ -218,7 +257,10 @@ export const straps = [
     color: 'brown',
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '15',
@@ -228,7 +270,10 @@ export const straps = [
     color: 'black',
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '16',
@@ -238,7 +283,10 @@ export const straps = [
     color: 'yellow',
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '17',
@@ -248,7 +296,10 @@ export const straps = [
     color: 'brown',
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '18',
@@ -258,7 +309,10 @@ export const straps = [
     color: 'black',
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
   {
     id: '19',
@@ -268,7 +322,10 @@ export const straps = [
     color: 'yellow',
     addToCartFetching: false,
     inCart: false,
+    addToFavoritesFetching: false,
+    inFavorites: false,
     uniqueId: '',
+    uniqueFavoritesId: '',
   },
 ];
 
@@ -292,4 +349,9 @@ export const mechanisms = {
 export const endpoints = {
   watchCatalog: 'watch-catalog',
   strapCatalog: 'strap-catalog',
+};
+
+export const cartTypes = {
+  product: 'product',
+  favorites: 'favorites',
 };
