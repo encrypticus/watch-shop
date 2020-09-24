@@ -12,7 +12,7 @@ import {
   UPDATE_CATALOG,
 } from '#act/catalog-cards';
 import * as constants from '#const';
-import { endpoints } from '#const';
+import { endpoints, cartTypes } from '#const';
 
 const initialState = {
   watchCards: constants.cards,
@@ -145,15 +145,16 @@ const catalogCardsReducer = (state = initialState, action) => {
     }
 
     case UPDATE_PRODUCT_IN_CART_REQUEST_FETCHING: {
-      const { payload: { product: { id, productType }, isFetching } } = action;
+      const { payload: { product: { id, productType, cartType }, isFetching } } = action;
       const cards = productType === endpoints.watchCatalog ? state.watchCards : state.strapCards;
       const cardType = productType === endpoints.watchCatalog ? 'watchCards' : 'strapCards';
+      const fetching = cartType === cartTypes.product ? 'addToCartFetching' : 'addToFavoritesFetching';
 
       const newCards = cards.map((card) => {
         const updatedCard = { ...card };
 
         if (updatedCard.id === id) {
-          updatedCard.addToCartFetching = isFetching;
+          updatedCard[fetching] = isFetching;
         }
 
         return updatedCard;
@@ -199,17 +200,23 @@ const catalogCardsReducer = (state = initialState, action) => {
     case UPDATE_CATALOG: {
       const {
         payload: {
-          index, inCart, uniqueId, productType,
+          index,
+          inCart,
+          uniqueId,
+          productType,
+          cartType,
         },
       } = action;
 
       const cards = productType === constants.endpoints.watchCatalog ? state.watchCards : state.strapCards;
       const cardType = productType === constants.endpoints.watchCatalog ? 'watchCards' : 'strapCards';
+      const id = cartType === cartTypes.product ? 'uniqueId' : 'uniqueFavoritesId';
+      const inWhere = cartType === cartTypes.product ? 'inCart' : 'inFavorites';
 
       const updatedCard = {
         ...cards[index],
-        inCart,
-        uniqueId,
+        [id]: uniqueId,
+        [inWhere]: inCart,
       };
 
       const newState = { ...state };
