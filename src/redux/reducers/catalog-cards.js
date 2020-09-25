@@ -1,4 +1,5 @@
 import {
+  SORT_BY,
   SORT_CARDS_BY_COLOR,
   SORT_CARDS_BY_MATERIAL,
   SORT_CARDS_BY_MECHANISM,
@@ -42,6 +43,7 @@ const initialState = {
     status: false,
     message: '',
   },
+  sort: 'popularity',
 };
 
 const catalogCardsReducer = (state = initialState, action) => {
@@ -50,6 +52,13 @@ const catalogCardsReducer = (state = initialState, action) => {
   let key = '';
 
   switch (action.type) {
+    case SORT_BY: {
+      return {
+        ...state,
+        sort: action.payload,
+      };
+    }
+
     case SORT_CARDS_BY_VENDOR: {
       const watchesByVendor = state.watchCards.map((card) => {
         const clonedCard = { ...card };

@@ -11,8 +11,11 @@ const Cards = () => {
     getProductCatalogIsFetching,
     price: { min, max },
     error: { status: hasError },
+    sort,
   } = useSelector((state) => state.catalogCardsReducer);
+
   const { isUserSignedIn } = useSelector((state) => state.authReducer);
+  const toNumber = (num) => parseInt(num.replaceAll(/\s/g, ''));
 
   let cardsList = watchCards.map((card) => {
     const { price } = card;
@@ -26,6 +29,14 @@ const Cards = () => {
   });
 
   cardsList = cardsList.filter((card) => card);
+
+  if (sort === 'asc') {
+    cardsList = cardsList.sort((prev, next) => toNumber(prev.price) - toNumber(next.price));
+  }
+
+  if (sort === 'desc') {
+    cardsList = cardsList.sort((prev, next) => toNumber(next.price) - toNumber(prev.price));
+  }
 
   cardsList = cardsList.map((card, index) => {
     const {
