@@ -6,7 +6,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
-    color: #B3B3B3;
+    color: #555248;
     text-decoration: none;
 
     &:not(:last-child) {
@@ -22,7 +22,9 @@
     }
 
     &_active {
-      color: #555248;
+      color: #B3B3B3;
+      pointer-events: none;
+      cursor: default;
     }
   }
 }

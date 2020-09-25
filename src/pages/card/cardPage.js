@@ -1,6 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import './card-page.scss';
 import Header from '#comps/header';
 import Breadcrumbs from '#comps/breadcrumbs';
@@ -12,6 +13,9 @@ const CardPage = () => {
   const watches = useSelector((state) => state.catalogCardsReducer.watchCards);
   const straps = useSelector((state) => state.catalogCardsReducer.strapCards);
   const card = watches.concat(straps).find((product) => product.id === id);
+
+  if (!card) return <Redirect to='/'/>;
+
   const { vendor, price } = card;
 
   const previewBlock = (
