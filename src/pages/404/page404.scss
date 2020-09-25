@@ -1,0 +1,41 @@
+@import '../../sass/utils';
+
+.container {
+
+  &__page404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+    padding-top: 100px;
+  }
+
+}
+
+.page404 {
+
+  &__text {
+    font-size: pxToRem(30);
+    font-family: Roboto, Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__button {
+    margin-left: 50px;
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 12px;
+    font-family: Roboto Medium, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 16px;
+    color: #fff;
+    background-color: #c39052;
+    border: 0;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

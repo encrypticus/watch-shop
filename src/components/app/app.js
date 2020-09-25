@@ -7,6 +7,7 @@ import CardPage from '#pages/card';
 import CatalogPage from '#pages/catalog';
 import ProductCartPage from '#pages/product-cart';
 import FavoritesCartPage from '#pages/favorites-cart';
+import Page404 from '#pages/404';
 import MainNav from '#comps/main-nav';
 import store from '#store';
 import Footer from '#comps/footer';
@@ -26,7 +27,7 @@ const App = () => (
             <Route path='/card/:id' exact component={CardPage}/>
             <Route path='/product-cart' exact component={ProductCartPage}/>
             <Route path='/favorites-cart' exact component={FavoritesCartPage}/>
-            <Route render={() => (<h1 className="text-center">Страница не найдена</h1>)}/>
+            <Route component={Page404}/>
           </Switch>
 
           <ToastContainer

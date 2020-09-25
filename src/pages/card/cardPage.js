@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Page404 from '#pages/404';
 
 import './card-page.scss';
 import Header from '#comps/header';
@@ -14,7 +15,7 @@ const CardPage = () => {
   const straps = useSelector((state) => state.catalogCardsReducer.strapCards);
   const card = watches.concat(straps).find((product) => product.id === id);
 
-  if (!card) return <Redirect to='/'/>;
+  if (!card) return <Page404/>;
 
   const { vendor, price } = card;
 
