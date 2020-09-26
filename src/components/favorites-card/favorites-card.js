@@ -28,14 +28,28 @@ const FavoritesCard = (props) => {
 
   return (
     <div className='favorites-card'>
-      <Link to={`/card/${props.id}`}>
+      <Link
+        to={{
+          pathname: `/card/${props.id}`,
+          search: `?productType=${productType}&index=${index}`,
+        }}
+        className='card__link'
+      >
         <img src={src} alt={vendor}/>
       </Link>
 
       <div className='favorites-card__description'>
-        <Link to={`/card/${id}`} className='favorites-card__link'>
-          <h4 className='favorites-card__vendor'>{vendor}</h4>
-        </Link>
+        <h4 className='favorites-card__vendor'>
+          <Link
+            to={{
+              pathname: `/card/${props.id}`,
+              search: `?productType=${productType}&index=${index}`,
+            }}
+            className='favorites-card__link'
+          >
+            {vendor}
+          </Link>
+        </h4>
         <div>цвет: {colors[color]}</div>
         <div>материал: {materials[material]}</div>
         {mechanisms[mechanism] ? <div>механизм: {mechanisms[mechanism]}</div> : null}

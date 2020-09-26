@@ -27,7 +27,13 @@ const Card = (props) => {
     <div className='card'>
       <div className='card__header'>
         <h4 className='card__vendor'>
-          <Link to={`/card/${props.id}`} className='card__link'>
+          <Link
+            to={{
+              pathname: `/card/${props.id}`,
+              search: `?productType=${productType}&index=${index}`,
+            }}
+            className='card__link'
+          >
             {props.vendor}
           </Link>
         </h4>
@@ -72,7 +78,10 @@ const Card = (props) => {
       </div>
       <p className='card__price'>{`${props.price} ₽`}</p>
       <div className='card__body'>
-        <Link to={`/card/${props.id}`} className='card__link'>
+        <Link to={{
+          pathname: `/card/${props.id}`,
+          search: `?productType=${productType}&index=${index}`,
+        }}>
           <img className='card__image' src={props.src} alt={props.vendor}/>
         </Link>
       </div>

@@ -35,14 +35,28 @@ const ShoppingCard = (props) => {
 
   return (
     <div className='shopping-card'>
-      <Link to={`/card/${props.id}`}>
+      <Link
+        to={{
+          pathname: `/card/${props.id}`,
+          search: `?productType=${productType}&index=${index}`,
+        }}
+        className='card__link'
+      >
         <img src={src} alt={vendor}/>
       </Link>
 
       <div className='shopping-card__description'>
-        <Link to={`/card/${props.id}`} className='shopping-card__link'>
-          <h4 className='shopping-card__vendor'>{vendor}</h4>
-        </Link>
+        <h4 className='shopping-card__vendor'>
+          <Link
+            className='shopping-card__link'
+            to={{
+              pathname: `/card/${props.id}`,
+              search: `?productType=${productType}&index=${index}`,
+            }}
+          >
+            {vendor}
+          </Link>
+        </h4>
         <div>цвет: {colors[color]}</div>
         <div>материал: {materials[material]}</div>
         {mechanisms[mechanism] ? <div>механизм: {mechanisms[mechanism]}</div> : null}

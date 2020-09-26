@@ -81,5 +81,16 @@
 
   &__button {
     margin-top: pxToRem(63);
+
+    button:disabled {
+      cursor: not-allowed;
+      background-color: rgba(0, 0, 0, .5);
+    }
+  }
+
+  &__in-cart {
+    font-size: 16px;
+    font-weight: bold;
+    color: #444240;
   }
 }

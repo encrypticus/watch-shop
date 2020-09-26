@@ -1,23 +1,54 @@
 import React from 'react';
-import { useParams, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useParams, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { addProductToCartRequest } from '#act/product-cart';
 import Page404 from '#pages/404';
-
 import './card-page.scss';
 import Header from '#comps/header';
 import Breadcrumbs from '#comps/breadcrumbs';
 import CardCarousel, { CardCarouselPreview } from '#comps/card-carousel';
-import LikeButton from '#comps/like-button';
+import AddRemoveProductBtn from '#comps/add-remove-product-btn';
+import { cartTypes } from '#const';
 
 const CardPage = () => {
   const { id } = useParams();
   const watches = useSelector((state) => state.catalogCardsReducer.watchCards);
   const straps = useSelector((state) => state.catalogCardsReducer.strapCards);
+  const { isUserSignedIn } = useSelector((state) => state.authReducer);
   const card = watches.concat(straps).find((product) => product.id === id);
+  const dispatch = useDispatch();
 
   if (!card) return <Page404/>;
 
-  const { vendor, price } = card;
+  const useQuery = () => new URLSearchParams(useLocation().search);
+  const productType = useQuery().get('productType');
+  const index = parseInt(useQuery().get('index'));
+
+  const {
+    vendor,
+    price,
+    src,
+    color,
+    material,
+    mechanism,
+    addToCartFetching,
+    addToFavoritesFetching,
+    uniqueFavoritesId,
+    inCart,
+    inFavorites,
+  } = card;
+
+  const addProductToCart = () => {
+    if (!isUserSignedIn) {
+      toast.dark('Войдите, чтобы добавить товар в корзину');
+      return;
+    }
+
+    dispatch(addProductToCartRequest({
+      vendor, price, src, color, material, mechanism, id, inCart, inFavorites, index, productType, cartType: cartTypes.product,
+    }));
+  };
 
   const previewBlock = (
     <>
@@ -35,6 +66,17 @@ const CardPage = () => {
       <CardCarouselPreview src='/img/watch-full-3.png'/>
       <CardCarouselPreview src='/img/watch-full-4.png'/>
     </>
+  );
+
+  const btn = (
+    <button
+      className='button'
+      type='button'
+      onClick={addProductToCart}
+      disabled={addToCartFetching}
+    >
+      {addToCartFetching ? 'Загрузка' : 'В корзину'}
+    </button>
   );
 
   return (
@@ -59,7 +101,21 @@ const CardPage = () => {
                 <h3 className='card-block__vendor'>
                   {vendor}, 26mm
                 </h3>
-                <LikeButton/>
+                <AddRemoveProductBtn
+                  vendor={vendor}
+                  price={price}
+                  src={src}
+                  color={color}
+                  material={material}
+                  mechanism={mechanism}
+                  id={id}
+                  index={index}
+                  addToFavoritesFetching={addToFavoritesFetching}
+                  inFavorites={inFavorites}
+                  uniqueFavoritesId={uniqueFavoritesId}
+                  productType={productType}
+                  cartType={cartTypes.favorites}
+                />
               </div>
 
               <p className='card-block__price'>
@@ -79,9 +135,7 @@ const CardPage = () => {
                 necessitatibus quisquam reprehenderit voluptatum?
               </p>
               <p className='card-block__button'>
-                <button className='button' type='button'>
-                  В корзину
-                </button>
+                {inCart ? <span className='card-block__in-cart'>В корзине</span> : btn}
               </p>
             </div>
           </section>
