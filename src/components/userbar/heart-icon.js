@@ -1,10 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { fetchFavoritesCart } from '#act/favorites-cart';
 
 const HeartIcon = () => {
   const { favorites } = useSelector((state) => state.favoritesCartReducer);
   const favoritesCartIsNotEmpty = !!favorites;
+  const dispatch = useDispatch();
+  const { isUserSignedIn } = useSelector((state) => state.authReducer);
+
+  useEffect(() => {
+    isUserSignedIn && dispatch(fetchFavoritesCart());
+  }, []);
 
   return (
     <div className='cart-icon'>

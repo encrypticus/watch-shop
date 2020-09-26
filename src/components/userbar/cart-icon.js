@@ -1,10 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { fetchProductCart } from '#act/product-cart';
 
 const CartIcon = () => {
   const { products } = useSelector((state) => state.productCartReducer);
   const productCartIsNotEmpty = !!products; // same as productCartIsNotEmpty = products ? true : false
+  const dispatch = useDispatch();
+  const { isUserSignedIn } = useSelector((state) => state.authReducer);
+
+  useEffect(() => {
+    isUserSignedIn && dispatch(fetchProductCart());
+  }, []);
 
   return (
     <div className='cart-icon'>
