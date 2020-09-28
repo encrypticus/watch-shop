@@ -25,6 +25,11 @@
     text-transform: capitalize;
     cursor: pointer;
     outline: none;
+    transition: color .2s;
+
+    &:hover {
+      color: lighten(#444240, 40);
+    }
 
     &:active,
     &:focus {

@@ -14,8 +14,10 @@
     line-height: 16px;
     color: #555248;
     text-decoration: none;
+    transition: color .2s;
 
-    &_active {
+    &_active,
+    &:hover {
       color: #A69876;
     }
   }

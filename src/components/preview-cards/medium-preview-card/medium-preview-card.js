@@ -19,7 +19,7 @@ const MediumPreviewCard = () => (
         <div className='medium-preview-card__decor-line-wrapper'>
           <DecorLine small/>
         </div>
-        <Link to='/' className='medium-preview-card__link'>
+        <Link to='/catalog' className='medium-preview-card__link'>
           Подробнее
         </Link>
       </div>

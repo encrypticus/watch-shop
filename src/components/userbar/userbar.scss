@@ -9,6 +9,11 @@
 
 .cart-icon {
   position: relative;
+  transition: transform .2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   &__badge {
     position: absolute;

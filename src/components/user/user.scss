@@ -9,6 +9,11 @@ $rt-font-family: Roboto, Arial, sans-serif;
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    transition: transform .2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__list {

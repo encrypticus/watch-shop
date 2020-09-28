@@ -15,7 +15,7 @@ const LargePreviewCard = () => (
           <div className='large-preview-card__decor-line-wrapper'>
             <DecorLine />
           </div>
-          <Link to='/' className='large-preview-card__link'>
+          <Link to='/catalog' className='large-preview-card__link'>
             Подробнее
           </Link>
         </div>

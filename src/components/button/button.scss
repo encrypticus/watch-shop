@@ -14,6 +14,15 @@
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color .3s;
+
+  &:hover {
+    background-color: lighten(#444240, 10);
+  }
+
+  &:active {
+    background-color: darken(#444240, 10);
+  }
 
   &_color_brown {
     background: #D4B098;

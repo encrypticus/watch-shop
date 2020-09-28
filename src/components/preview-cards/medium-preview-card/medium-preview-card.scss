@@ -42,6 +42,11 @@
     line-height: 21px;
     color: #1B1A17;
     text-decoration: none;
+    transition: color .2s;
+
+    &:hover {
+      color: lighten(#1B1A17, 40);
+    }
   }
 
   &__decor-line-wrapper {

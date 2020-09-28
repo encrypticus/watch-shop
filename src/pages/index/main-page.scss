@@ -29,6 +29,11 @@ $h-gutter: 0;
     line-height: 21px;
     color: #444240;
     text-decoration: none;
+    transition: color .3s;
+
+    &:hover {
+      color: lighten(#444240, 20);
+    }
 
     &::after {
       content: '';

@@ -105,6 +105,16 @@
     max-width: 185px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .3s;
+
+    &:hover {
+      background-color: lighten(#31302C, 10);
+    }
+
+    &:active {
+      background-color: darken(#31302C, 10);
+    }
 
     @include for-phone-landscape-down {
       max-width: unset;
