@@ -4,8 +4,9 @@ import reducers from './reducers/reducer';
 import sagas from './sagas/sagas';
 
 const saga = createSagaMiddleware();
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const dev = process.env.NODE_ENV === 'development';
+const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = dev && devtools ? devtools : compose;
 
 const store = createStore(reducers, composeEnhancers(
   applyMiddleware(saga),
