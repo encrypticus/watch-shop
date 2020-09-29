@@ -1,7 +1,7 @@
 {
-  "name": "webpack-starter-kit",
+  "name": "watch-shop",
   "version": "1.0.0",
-  "description": "Стартовый репозиторий для frontend-разработки c webpack на борту",
+  "description": "Шаблон интернет магазина на React/Redux + Redux-Saga + Firebase",
   "main": "index.js",
   "scripts": {
     "browser-sync": "cross-env mode=development webpack --mode development --watch",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/encrypticus/webpack-starter-kit.git"
+    "url": "git+https://github.com/encrypticus/watch-shop.git"
   },
   "keywords": [
     "webpack",
@@ -24,9 +24,9 @@
   "author": "Alexander Timofeev aka encrypticus",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/encrypticus/webpack-starter-kit/issues"
+    "url": "https://github.com/encrypticus/watch-shop/issues"
   },
-  "homepage": "https://github.com/encrypticus/webpack-starter-kit#readme",
+  "homepage": "https://github.com/encrypticus/watch-shop#readme",
   "browserslist": [
     "defaults"
   ],
