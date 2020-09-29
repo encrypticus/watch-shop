@@ -340,6 +340,7 @@ export const colors = {
   brown: 'коричневый',
   green: 'зелёный',
   red: 'красный',
+  yellow: 'жёлтый',
 };
 
 export const materials = {
