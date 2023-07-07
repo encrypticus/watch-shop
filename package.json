@@ -65,7 +65,7 @@
     "pug-html-loader": "^1.1.5",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
-    "stylelint": "^12.0.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^3.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
